@@ -1,0 +1,260 @@
+//animation
+@keyframes showing {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes menuShadow {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0.5;
+    }
+}
+
+@keyframes cartShadow {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0.5;
+    }
+}
+
+@keyframes alertShadow {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0.8;
+    }
+}
+
+//class setting
+.navLinks {
+    li {
+        margin-left: 34px;
+        display: inline-block;
+        list-style: none;
+
+        a {
+            font-size: 13px;
+            font-weight: bold;
+            line-height: 25px;
+            color: $white;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+    }
+
+    li:nth-child(1) {
+        margin-left: 0;
+    }
+}
+
+.specialTitle {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 19px;
+    color: $primary;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+}
+
+button {
+    margin-top: 40px;
+    width: 160px;
+    height: 48px;
+    border: none;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.mainBtn {
+    background-color: $primary;
+    color: $white;
+}
+
+.blackBtn {
+    background-color: $black;
+    color: $white;
+}
+
+.hollowBtn {
+    margin-top: 32px;
+    border: 1px solid $black;
+    background-color: transparent;
+    color: $black;
+}
+
+//layout
+body {
+    background-color: $main_bg;
+
+    .shadow {
+        content: "";
+        width: 100%;
+        height: 100vh;
+        background-color: $gray;
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+        visibility: hidden;
+    }
+
+    .popup {
+        padding: 20px;
+        width: 40%;
+        min-width: 450px;
+        max-width: 550px;
+        border-radius: 10px;
+        background-color: $white;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 20;
+        visibility: hidden;
+
+        div {
+            text-align: right;
+
+            button {
+                margin-top: 24px;
+                width: 72px;
+                height: 32px;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+    }
+
+    main {
+        padding: 0 11%;
+        width: 100%;
+
+        .goBack {
+            margin: 80px 0 56px 0;
+            opacity: 0.5;
+            display: inline-block;
+        }
+    }
+}
+
+body.menuShadow {
+    .shadow {
+        visibility: visible;
+        animation: menuShadow 0.6s forwards;
+    }
+}
+
+body.cartShadow {
+    .shadow {
+        visibility: visible;
+        animation: cartShadow 0.6s forwards;
+    }
+}
+
+body.alertShadow {
+    .shadow {
+        visibility: visible;
+        animation: alertShadow 0.4s forwards;
+        z-index: 15;
+    }
+
+    .popup {
+        visibility: visible;
+        animation: showing 0.4s forwards;
+    }
+}
+
+@media screen and (hover:hover) {
+    .navLinks {
+        li {
+            &:hover {
+                cursor: pointer;
+                color: $primary;
+            }
+
+            a:hover {
+                color: $primary;
+            }
+        }
+    }
+
+    button:hover {
+        cursor: pointer;
+    }
+
+    .mainBtn:hover {
+        background-color: $light_primary;
+    }
+
+    .blackBtn:hover {
+        background-color: $dark_gray;
+    }
+
+    .hollowBtn:hover {
+        background-color: $black;
+        color: $white;
+    }
+
+    body main .goBack:hover {
+        cursor: pointer;
+        color: $primary;
+        opacity: 1;
+        text-decoration: underline;
+    }
+}
+
+@media screen and (max-width:1024px) {
+    body {
+        .popup {
+            min-width: 400px;
+        }
+
+        main {
+            padding: 0 40px;
+
+            .goBack {
+                margin: 32px 0 24px 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:500px) {
+    body {
+        .popup {
+            width: calc(100% - 48px);
+            min-width: auto;
+        }
+
+        main {
+            padding: 0 24px;
+
+            .goBack {
+                margin: 16px 0 24px 0;
+            }
+        }
+    }
+}
