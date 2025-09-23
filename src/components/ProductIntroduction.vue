@@ -27,27 +27,15 @@ updatePicSize()
     margin-top: 160px;
 }
 
-section {
-    margin-bottom: 160px;
-}
-
 @media screen and (max-width:1024px) {
     .loading {
         margin-top: 120px;
-    }
-
-    section {
-        margin-bottom: 120px;
     }
 }
 
 @media screen and (max-width:500px) {
     .loading {
         margin-top: 90px;
-    }
-
-    section {
-        margin-bottom: 90px;
     }
 }
 </style>

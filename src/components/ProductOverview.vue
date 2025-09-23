@@ -1,8 +1,17 @@
 <script setup>
 import AddToCartUnit from '@/components/AddToCartUnit.vue'
+import DialogBox from '@/components/DialogBox.vue'
 import { useAssets } from '@/composables/useAssets'
+import { ref } from 'vue'
 
 const { product, picSize } = defineProps(['product', 'picSize'])
+const dialogMsg = ref('')
+const showDialog = ref(false)
+
+function createDialog(msg) {
+    dialogMsg.value = msg
+    showDialog.value = true
+}
 </script>
 
 <template>
@@ -15,9 +24,10 @@ const { product, picSize } = defineProps(['product', 'picSize'])
             <h1>{{ product.name }}</h1>
             <p class="description">{{ product.description }}</p>
             <p class="price">{{ product.price.toLocaleString() }}</p>
-            <AddToCartUnit />
+            <AddToCartUnit :product @showDialogBox="createDialog" />
         </div>
     </section>
+    <DialogBox v-if="showDialog" @closeDialog="showDialog = !showDialog" :msg="dialogMsg" />
 </template>
 
 <style lang="scss" scoped>

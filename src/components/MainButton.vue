@@ -1,5 +1,11 @@
+<script setup>
+import { useTemplateRef } from 'vue'
+const btn = useTemplateRef('btn')
+defineExpose({ btn })
+</script>
+
 <template>
-    <button class="mainBtn">
+    <button class="mainBtn" ref="btn">
         <slot></slot>
     </button>
 </template>

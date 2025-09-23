@@ -47,61 +47,61 @@ footer {
         left: 11%;
         top: 0;
     }
+}
 
-    nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-    section {
-        margin: 36px 0 32px 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+section {
+    margin: 36px 0 32px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-        .text {
-            flex-basis: 42%;
+    .text {
+        flex-basis: 42%;
 
-            p {
-                color: $white;
-                opacity: 0.5;
-            }
-
-            .copyright {
-                margin-top: 56px;
-                font-weight: bold;
-            }
+        p {
+            color: $white;
+            opacity: 0.5;
         }
 
-        .sns {
-            img {
-                margin-left: 16px;
-                vertical-align: middle;
-            }
-
-            img:nth-child(1) {
-                margin-left: 0;
-            }
+        .copyright {
+            margin-top: 56px;
+            font-weight: bold;
         }
     }
 
-    .attribution {
-        padding: 0 6px 16px 6px;
-        width: 100%;
-        font-size: 12px;
-        color: $dark_gray;
-        text-align: center;
+    .sns {
+        img {
+            margin-left: 16px;
+            vertical-align: middle;
+        }
 
-        a {
-            font-size: 12px;
-            color: $dark_gray;
+        img:nth-child(1) {
+            margin-left: 0;
         }
     }
 }
 
+.attribution {
+    padding: 0 6px 16px 6px;
+    width: 100%;
+    font-size: 12px;
+    color: $dark_gray;
+    text-align: center;
+
+    a {
+        font-size: 12px;
+        color: $dark_gray;
+    }
+}
+
 @media screen and (hover:hover) {
-    footer section .sns img:hover {
+    .sns img:hover {
         cursor: pointer;
         filter: invert(46%) sepia(96%) saturate(312%) hue-rotate(338deg) brightness(99%) contrast(92%);
     }
@@ -114,36 +114,40 @@ footer {
         &::before {
             left: 40px;
         }
+    }
 
-        nav {
-            display: block;
+    nav {
+        display: block;
 
-            .logo {
-                margin-bottom: 32px;
+        .logo {
+            margin-bottom: 32px;
+        }
+
+        .navLinks {
+            :deep(li) {
+                margin-left: 24px;
             }
 
-            .navLinks {
-                li {
-                    margin-left: 24px;
-                }
+            :deep(li):nth-child(1) {
+                margin-left: 0;
+            }
+        }
+    }
+
+    section {
+        display: block;
+        position: relative;
+
+        .text {
+            .copyright {
+                margin-top: 80px;
             }
         }
 
-        section {
-            display: block;
-            position: relative;
-
-            .text {
-                .copyright {
-                    margin-top: 80px;
-                }
-            }
-
-            .sns {
-                position: absolute;
-                right: 0;
-                bottom: 0;
-            }
+        .sns {
+            position: absolute;
+            right: 0;
+            bottom: 0;
         }
     }
 }
@@ -156,33 +160,33 @@ footer {
             left: 50%;
             transform: translateX(-50%);
         }
+    }
 
-        nav {
-            text-align: center;
+    nav {
+        text-align: center;
 
-            .logo {
-                margin-bottom: 48px;
-            }
-
-            .navLinks {
-                li {
-                    margin: 16px 0 0 0;
-                    display: block;
-                }
-
-                li:nth-child(1) {
-                    margin-top: 0;
-                }
-            }
+        .logo {
+            margin-bottom: 48px;
         }
 
-        section {
-            text-align: center;
-
-            .sns {
-                margin-top: 48px;
-                position: static;
+        .navLinks {
+            :deep(li) {
+                margin: 16px 0 0 0;
+                display: block;
             }
+
+            :deep(li):nth-child(1) {
+                margin-top: 0;
+            }
+        }
+    }
+
+    section {
+        text-align: center;
+
+        .sns {
+            margin-top: 48px;
+            position: static;
         }
     }
 }

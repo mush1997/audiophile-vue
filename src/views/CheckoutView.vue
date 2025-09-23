@@ -1,15 +1,10 @@
 <script setup>
 import HeaderSection from '@/components/HeaderSection.vue'
-import MenuList from '@/components/MenuList.vue'
 import ThankModal from '@/components/ThankModal.vue'
-import FooterSection from '@/components/FooterSection.vue'
-import MainButton from '@/components/MainButton.vue'
 </script>
 
 <template>
     <HeaderSection />
-
-    <MenuList class="menu hide" />
 
     <main>
         <p class="goBack" @click="$router.go(-1)">Go Back</p>
@@ -139,7 +134,6 @@ import MainButton from '@/components/MainButton.vue'
     </main>
 
     <ThankModal />
-    <FooterSection />
 </template>
 
 <style lang="scss" scoped>

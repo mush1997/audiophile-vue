@@ -19,7 +19,8 @@ const categories = [
 
 <template>
     <section class="menuComponent">
-        <div v-for="category in categories" :key="category.name">
+        <div class="wrapper" v-for="category in categories" :key="category.name"
+            @click="$router.push({ path: `/category/${category.name.toLowerCase()}` }).catch(error => error)">
             <img :src="useAssets(`/src${category.img}`)" :alt="category.name">
             <div>
                 <p>{{ category.name }}</p>
@@ -37,84 +38,78 @@ const categories = [
     display: flex;
     justify-content: center;
     gap: 30px;
+}
 
-    &>div {
-        flex-basis: 33%;
-        padding-bottom: 60px;
-        text-align: center;
-        position: relative;
+.wrapper {
+    flex-basis: 33%;
+    padding-bottom: 60px;
+    text-align: center;
+    position: relative;
 
-        &::after {
-            content: "";
-            width: 100%;
-            height: 72%;
-            border-radius: 10px;
-            background-color: $block_bg;
-            display: block;
-            position: absolute;
-            bottom: 0;
-            z-index: -1;
+    &::after {
+        content: "";
+        width: 100%;
+        height: 72%;
+        border-radius: 10px;
+        background-color: $block_bg;
+        display: block;
+        position: absolute;
+        bottom: 0;
+        z-index: -1;
+    }
+
+    &>img {
+        width: 70%;
+    }
+
+    div {
+        padding: 60px 6px 30px 6px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+
+        p:nth-child(1) {
+            margin-bottom: 16px;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 24px;
+            letter-spacing: 1.3px;
+            text-transform: uppercase;
         }
 
-        &>img {
-            width: 70%;
-        }
+        p:nth-child(2) {
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-        div {
-            padding: 60px 6px 30px 6px;
-            width: 100%;
-            position: absolute;
-            bottom: 0;
-
-            p:nth-child(1) {
-                margin-bottom: 16px;
-                font-size: 18px;
+            span {
+                font-size: 13px;
                 font-weight: bold;
-                line-height: 24px;
-                letter-spacing: 1.3px;
+                color: $dark_gray;
+                letter-spacing: 1px;
                 text-transform: uppercase;
             }
 
-            p:nth-child(2) {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                span {
-                    font-size: 13px;
-                    font-weight: bold;
-                    color: $dark_gray;
-                    letter-spacing: 1px;
-                    text-transform: uppercase;
-                }
-
-                img {
-                    margin-left: 14px;
-                }
+            img {
+                margin-left: 14px;
             }
-        }
-    }
-
-    &>div:last-child {
-        &>img {
-            position: relative;
-            top: 16px;
         }
     }
 }
 
-.hide {
-    display: none;
+.wrapper:last-child {
+    &>img {
+        position: relative;
+        top: 16px;
+    }
 }
 
 @media screen and (hover:hover) {
-    .menuComponent {
-        &>div:hover {
-            cursor: pointer;
+    .wrapper:hover {
+        cursor: pointer;
 
-            div p:nth-child(2) span {
-                color: $primary;
-            }
+        div p:nth-child(2) span {
+            color: $primary;
         }
     }
 }
@@ -126,12 +121,8 @@ const categories = [
 }
 
 @media screen and (max-width:1200px) {
-    .menuComponent {
-        &>div {
-            div {
-                padding-bottom: 20px;
-            }
-        }
+    .wrapper div {
+        padding-bottom: 20px;
     }
 }
 
@@ -139,48 +130,37 @@ const categories = [
     .menuComponent {
         margin: 120px 0;
         padding: 0 40px;
+    }
 
-        &>div {
-            &>img {
-                width: 60%;
-                min-width: 130px;
-            }
-
-            div {
-                p:nth-child(1) {
-                    font-size: 14px;
-                    letter-spacing: 1.1px;
-                }
-            }
+    .wrapper {
+        &>img {
+            width: 60%;
+            min-width: 130px;
         }
 
-        &>div:last-child {
-            &>img {
-                width: 65%;
-                top: 0;
+        div {
+            p:nth-child(1) {
+                font-size: 14px;
+                letter-spacing: 1.1px;
             }
         }
     }
 
-    .menu {
-        margin: 0;
-        padding: 96px 40px;
-        background-color: $white;
-        position: absolute;
-        top: 90px;
-        left: 0;
-        z-index: 10;
-        animation: showing 0.8s forwards;
+    .wrapper:last-child {
+        &>img {
+            width: 65%;
+            top: 0;
+        }
     }
 }
 
 @media screen and (max-width:820px) {
     .menuComponent {
         gap: 20px;
+    }
 
-        &>div {
-            padding-bottom: 70px;
-        }
+    .wrapper {
+        padding-bottom: 70px;
     }
 }
 
@@ -191,36 +171,31 @@ const categories = [
         flex-wrap: wrap;
         justify-content: flex-start;
         gap: 16px;
+    }
 
-        &>div {
-            flex-basis: 100%;
+    .wrapper {
+        flex-basis: 100%;
 
-            &::after {
-                height: 80%;
-            }
-
-            &>img {
-                width: 40%;
-                min-width: 100px;
-            }
-
-            div {
-                p:nth-child(1) {
-                    font-size: 15px;
-                }
-            }
+        &::after {
+            height: 80%;
         }
 
-        &>div:last-child {
-            &>img {
-                width: 45%;
+        &>img {
+            width: 40%;
+            min-width: 100px;
+        }
+
+        div {
+            p:nth-child(1) {
+                font-size: 15px;
             }
         }
     }
 
-    .menu {
-        margin: 0;
-        padding: 40px 24px;
+    .wrapper:last-child {
+        &>img {
+            width: 45%;
+        }
     }
 }
 </style>

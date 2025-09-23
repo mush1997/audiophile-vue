@@ -8,38 +8,33 @@
 </template>
 
 <style lang="scss" scoped>
-.navLinks {
-    li {
-        margin-left: 34px;
-        display: inline-block;
-        list-style: none;
+li {
+    margin-left: 34px;
+    display: inline-block;
+    list-style: none;
 
-        a {
-            display: block;
-            font-size: 13px;
-            font-weight: bold;
-            line-height: 25px;
-            color: $white;
-            letter-spacing: 2px;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-    }
-
-    li:nth-child(1) {
-        margin-left: 0;
+    a {
+        display: block;
+        font-size: 13px;
+        font-weight: bold;
+        line-height: 25px;
+        color: $white;
+        letter-spacing: 2px;
+        text-decoration: none;
+        text-transform: uppercase;
     }
 }
 
-@media screen and (hover: hover) {
-    .navLinks {
-        li {
-            &:hover {
-                cursor: pointer;
-                color: $primary;
-            }
+li:nth-child(1) {
+    margin-left: 0;
+}
 
-            a:hover {
+@media screen and (hover: hover) {
+    li {
+        &:hover {
+            cursor: pointer;
+
+            a {
                 color: $primary;
             }
         }

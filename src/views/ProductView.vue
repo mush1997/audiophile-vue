@@ -3,8 +3,6 @@ import HeaderSection from '@/components/HeaderSection.vue'
 import MenuList from '@/components/MenuList.vue'
 import ProductIntroduction from '@/components/ProductIntroduction.vue'
 import RecommendedProucts from '@/components/RecommendedProucts.vue'
-import AsideSection from '@/components/AsideSection.vue'
-import FooterSection from '@/components/FooterSection.vue'
 
 import { useDataStore } from '@/stores/data'
 import { storeToRefs } from 'pinia'
@@ -29,8 +27,6 @@ setTimeout(() => getProductsData(), 3000)
 <template>
     <HeaderSection />
 
-    <MenuList class="menu hide" />
-
     <main>
         <ProductIntroduction :product :finished />
     </main>
@@ -38,8 +34,22 @@ setTimeout(() => getProductsData(), 3000)
     <RecommendedProucts :otherItems="product.others" :finished />
 
     <MenuList />
-    <AsideSection />
-    <FooterSection />
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+main :deep(section) {
+    margin-bottom: 160px;
+}
+
+@media screen and (max-width:1024px) {
+    main :deep(section) {
+        margin-bottom: 120px;
+    }
+}
+
+@media screen and (max-width:500px) {
+    main :deep(section) {
+        margin-bottom: 90px;
+    }
+}
+</style>

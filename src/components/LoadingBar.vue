@@ -6,7 +6,21 @@
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
+.loading {
+    display: flex;
+    justify-content: center;
+    animation: load 3s infinite;
+
+    p {
+        font-size: 40px;
+        font-weight: bold;
+        line-height: 44px;
+        letter-spacing: 2px;
+        color: $gray;
+    }
+}
+
 @keyframes load {
     0% {
         opacity: 0.2;
@@ -26,20 +40,6 @@
 
     100% {
         opacity: 1;
-    }
-}
-
-.loading {
-    display: flex;
-    justify-content: center;
-    animation: load 3s infinite;
-
-    p {
-        font-size: 40px;
-        font-weight: bold;
-        line-height: 44px;
-        letter-spacing: 2px;
-        color: $gray;
     }
 }
 </style>

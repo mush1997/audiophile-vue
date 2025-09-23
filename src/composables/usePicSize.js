@@ -6,11 +6,11 @@ export function usePicSize() {
 
   function updatePicSize() {
     if (window.innerWidth > 1024) {
-      picSize.value = "desktop";
+      picSize.value = "desktop"
     } else if (window.innerWidth > 500) {
-      picSize.value = "tablet";
+      picSize.value = "tablet"
     } else {
-      picSize.value = "mobile";
+      picSize.value = "mobile"
     }
     // console.log(picSize.value)
   }

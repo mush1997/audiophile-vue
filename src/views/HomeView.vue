@@ -3,8 +3,6 @@ import HeaderSection from '@/components/HeaderSection.vue'
 import LatestProduct from '@/components/LatestProduct.vue'
 import MenuList from '@/components/MenuList.vue'
 import PopularProducts from '@/components/PopularProducts.vue'
-import AsideSection from '@/components/AsideSection.vue'
-import FooterSection from '@/components/FooterSection.vue'
 
 import { provide } from 'vue'
 
@@ -22,15 +20,11 @@ provide('product', product)
         <LatestProduct />
     </HeaderSection>
 
-    <MenuList class="menu hide" />
     <MenuList />
 
     <main>
         <PopularProducts />
     </main>
-
-    <AsideSection />
-    <FooterSection />
 </template>
 
 <style lang="scss" scoped>
@@ -53,10 +47,6 @@ main {
     gap: 48px 30px;
 }
 
-aside {
-    margin: 200px 0;
-}
-
 @media screen and (max-width:1024px) {
     header {
         background-image: url("@/assets/home/tablet/image-header.jpg");
@@ -67,17 +57,9 @@ aside {
         margin: 96px 0;
     }
 
-    .menu {
-        margin: 0;
-    }
-
     main {
         grid-template-rows: minmax(675px, 2.25fr) minmax(300px, 1fr) minmax(300px, 1fr);
         gap: 32px 12px;
-    }
-
-    aside {
-        margin: 96px 0;
     }
 }
 
@@ -97,20 +79,12 @@ aside {
         margin: 40px 0 120px 0;
     }
 
-    .menu {
-        margin: 0;
-    }
-
     main {
         grid-template-rows: minmax(520px, 2.25fr) 1fr 1fr 1fr;
         grid-template-columns: 100%;
         gap: 24px;
 
 
-    }
-
-    aside {
-        margin: 120px 0;
     }
 }
 </style>

@@ -37,37 +37,37 @@ updatePicSize()
         line-height: 36px;
         letter-spacing: 1.15px;
     }
+}
 
-    .container {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
 
-        div {
-            flex-basis: 33%;
-            text-align: center;
+    div {
+        flex-basis: 33%;
+        text-align: center;
 
-            img {
-                width: 100%;
-                border-radius: 10px;
-            }
+        img {
+            width: 100%;
+            border-radius: 10px;
+        }
 
-            h4 {
-                margin-top: 28px;
-                font-size: 24px;
-                line-height: 33px;
-                letter-spacing: 1.7px;
-            }
+        h4 {
+            margin-top: 28px;
+            font-size: 24px;
+            line-height: 33px;
+            letter-spacing: 1.7px;
+        }
 
-            button {
-                margin-top: 28px;
-            }
+        button {
+            margin-top: 28px;
         }
     }
 }
 
 @media screen and (min-width:1700px) {
-    .recommended .container {
+    .container {
         gap: 60px;
     }
 }
@@ -80,63 +80,55 @@ updatePicSize()
         h3 {
             margin-bottom: 56px;
         }
+    }
 
-        .container {
-            div {
-                img {
-                    max-width: 240px;
-                }
-            }
-        }
+    .container div img {
+        max-width: 240px;
     }
 }
 
 @media screen and (max-width:820px) {
-    .recommended {
-        .container {
-            gap: 20px;
+    .container {
+        gap: 20px;
 
-            div {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                align-items: center;
+        div {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
 
-                img {
-                    max-width: 220px;
-                }
+            img {
+                max-width: 220px;
+            }
 
-                h4 {
-                    margin-top: 20px;
-                    max-width: 140px
-                }
+            h4 {
+                margin-top: 20px;
+                max-width: 140px
+            }
 
-                button {
-                    margin-top: 20px;
-                    width: 140px;
-                    height: 40px;
-                }
+            button {
+                margin-top: 20px;
+                width: 140px;
+                height: 40px;
             }
         }
     }
 }
 
 @media screen and (max-width:640px) {
-    .recommended {
-        .container {
-            justify-content: space-around;
+    .container {
+        justify-content: space-around;
 
-            div {
-                h4 {
-                    max-width: 120px;
-                    font-size: 19px;
-                }
+        div {
+            h4 {
+                max-width: 120px;
+                font-size: 19px;
+            }
 
-                button {
-                    width: 120px;
-                    height: 36px;
-                    font-size: 12px;
-                }
+            button {
+                width: 120px;
+                height: 36px;
+                font-size: 12px;
             }
         }
     }
@@ -151,30 +143,30 @@ updatePicSize()
             font-size: 24px;
             letter-spacing: 1px;
         }
+    }
 
-        .container {
-            flex-wrap: wrap;
-            justify-content: flex-start;
-            gap: 56px;
+    .container {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 56px;
 
-            div {
-                flex-basis: 100%;
+        div {
+            flex-basis: 100%;
 
-                img {
-                    max-width: 100%;
-                }
-
-                h4 {
-                    max-width: none;
-                    font-size: 24px;
-                }
-
-                button {
-                    margin-top: 16px;
-                    font-size: 13px;
-                }
-
+            img {
+                max-width: 100%;
             }
+
+            h4 {
+                max-width: none;
+                font-size: 24px;
+            }
+
+            button {
+                margin-top: 16px;
+                font-size: 13px;
+            }
+
         }
     }
 }

@@ -1,39 +1,44 @@
 <script setup>
 import MainButton from '@/components/MainButton.vue'
+import { ref } from 'vue'
 
-// function plusOrMinusQuantity(event) {
-//     if (event.target.id === "plus") {
-//         quantity.textContent = Number(quantity.textContent) + 1;
-//     } else if (quantity.textContent !== "1") {
-//         quantity.textContent = Number(quantity.textContent) - 1;
-//     }
-// }
+const { product } = defineProps(['product'])
+const emit = defineEmits(['showDialogBox'])
+const quantity = ref(1)
 
-// function addToCart() {
-//     let productName = document.querySelector(".overview h1").textContent;
-//     let productSlug = document.querySelector(".overview div").dataset.slug;
-//     let productPrice = document.querySelector(".price").textContent;
-//     let product = { "name": productName, "slug": productSlug, "price": productPrice, "amount": Number(quantity.textContent) };
-//     let list = JSON.parse(window.localStorage.getItem("cartList"));
+function plusOrMinusQuantity(operator) {
+    if (operator === "plus") {
+        quantity.value++
+    } else if (operator === "minus" && quantity.value !== 1) {
+        quantity.value--
+    }
+}
 
-//     if (!list) {
-//         window.localStorage.setItem("cartList", JSON.stringify([product]));
-//     } else {
-//         let index = list.findIndex(item => item["name"] === productName);
-//         index < 0 ? list.push(product) : list[index]["amount"] += Number(quantity.textContent);
-//         window.localStorage.setItem("cartList", JSON.stringify(list));
-//     }
+function addToCart(product) {
+    const item = { "name": product.name, "slug": product.slug, "price": product.price, "amount": quantity.value }
+    const list = JSON.parse(window.localStorage.getItem("cartList"))
 
-//     showPopupMsg("Added successfully!");
-//     quantity.textContent = "1";
-// }
+    if (!list) {
+        window.localStorage.setItem("cartList", JSON.stringify([item]))
+    } else {
+        const index = list.findIndex(items => items["name"] === item.name)
+        index < 0 ? list.push(item) : list[index]["amount"] += quantity.value
+        window.localStorage.setItem("cartList", JSON.stringify(list))
+    }
+
+    emit('showDialogBox', 'Added successfully!')
+    quantity.value = 1
+}
 </script>
 
 <template>
     <div class="addToCart">
-        <p><span id="minus" @click="plusOrMinusQuantity">-</span><span id="quantity">1</span><span id="plus"
-                @click="plusOrMinusQuantity">+</span></p>
-        <MainButton @click="addToCart">Add to cart</MainButton>
+        <p>
+            <span id="minus" @click="plusOrMinusQuantity('minus')">-</span>
+            <span id="quantity">{{ quantity }}</span>
+            <span id="plus" @click="plusOrMinusQuantity('plus')">+</span>
+        </p>
+        <MainButton @click="addToCart(product)">Add to cart</MainButton>
     </div>
 </template>
 

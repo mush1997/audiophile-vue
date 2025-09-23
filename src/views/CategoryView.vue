@@ -2,8 +2,6 @@
 import HeaderSection from '@/components/HeaderSection.vue'
 import MenuList from '@/components/MenuList.vue'
 import ProductList from '@/components/ProductList.vue'
-import AsideSection from '@/components/AsideSection.vue'
-import FooterSection from '@/components/FooterSection.vue'
 
 import { useDataStore } from '@/stores/data'
 import { storeToRefs } from 'pinia'
@@ -32,15 +30,11 @@ setTimeout(() => getProductsData(), 3000)
         </div>
     </HeaderSection>
 
-    <MenuList class="menu hide" />
-
     <main>
         <ProductList :products :finished />
     </main>
 
     <MenuList />
-    <AsideSection />
-    <FooterSection />
 </template>
 
 <style lang="scss" scoped>
