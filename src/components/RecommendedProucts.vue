@@ -4,14 +4,14 @@ import MainButton from '@/components/MainButton.vue'
 import { usePicSize } from '@/composables/usePicSize'
 import { useAssets } from '@/composables/useAssets'
 
-const { otherItems, finished } = defineProps(['otherItems', 'finished'])
+const { otherItems } = defineProps(['otherItems'])
 const { picSize, updatePicSize } = usePicSize()
 
 updatePicSize()
 </script>
 
 <template>
-    <section v-if="finished" class="recommended">
+    <section class="recommended">
         <h3>You may also like</h3>
         <div class="container">
             <div v-for="item in otherItems" :key="item.slug">

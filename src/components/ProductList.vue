@@ -1,30 +1,26 @@
 <script setup>
-import LoadingBar from '@/components/LoadingBar.vue'
 import MainButton from '@/components/MainButton.vue'
 
 import { usePicSize } from '@/composables/usePicSize'
 import { useAssets } from '@/composables/useAssets'
 
-const { products, finished } = defineProps(['products', 'finished'])
+const { products } = defineProps(['products'])
 const { picSize, updatePicSize } = usePicSize()
 
 updatePicSize()
 </script>
 
 <template>
-    <LoadingBar v-if="!finished" />
-    <template v-else>
-        <section class="product" v-for="product in products" :key="product.id">
-            <img :src="useAssets(`/src${product.categoryImage[picSize]}`)" :alt="product.name">
-            <div>
-                <p class="specialTitle" v-if="product.new">New product</p>
-                <h2>{{ product.name }}</h2>
-                <p>{{ product.description }}</p>
-                <MainButton @click="$router.push({ path: `/product/${product.slug}` }).catch(error => error)">See
-                    product</MainButton>
-            </div>
-        </section>
-    </template>
+    <section class="product" v-for="product in products" :key="product.id">
+        <img :src="useAssets(`/src${product.categoryImage[picSize]}`)" :alt="product.name">
+        <div>
+            <p class="specialTitle" v-if="product.new">New product</p>
+            <h2>{{ product.name }}</h2>
+            <p>{{ product.description }}</p>
+            <MainButton @click="$router.push({ path: `/product/${product.slug}` }).catch(error => error)">See
+                product</MainButton>
+        </div>
+    </section>
 </template>
 
 <style lang="scss" scoped>

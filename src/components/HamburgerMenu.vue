@@ -1,13 +1,13 @@
 <script setup>
 import MenuList from '@/components/MenuList.vue'
 
-import { useWidthStore } from '@/stores/width'
+import { useMenuStore } from '@/stores/menu'
 import { storeToRefs } from 'pinia'
 import { useEventListener } from '@vueuse/core'
 
-const widthStore = useWidthStore()
-const { hideMenu } = storeToRefs(widthStore)
-const { getInnerWidth } = widthStore
+const menuStore = useMenuStore()
+const { hideMenu } = storeToRefs(menuStore)
+const { getInnerWidth } = menuStore
 
 getInnerWidth()
 useEventListener(window, "resize", getInnerWidth)

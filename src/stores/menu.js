@@ -1,11 +1,10 @@
 import { ref } from 'vue'
-import { defineStore } from 'pinia'
+import { defineStore, storeToRefs } from 'pinia'
+import { useShadowStore } from './shadow'
 
-export const useWidthStore = defineStore('width', () => {
+export const useMenuStore = defineStore('menu', () => {
+  const { menuShadow } = storeToRefs(useShadowStore())
   const hideMenu = ref(true)
-  const menuShadow = ref(false)
-  const cartShadow = ref(false)
-  const alertShadow = ref(false)
 
   function getInnerWidth() {
     if (window.innerWidth > 1024) {
@@ -31,5 +30,5 @@ export const useWidthStore = defineStore('width', () => {
     }, { once: true })
   }
 
-  return { hideMenu, menuShadow, cartShadow, alertShadow, getInnerWidth, prohibitTab, showHideMenu }
+  return { hideMenu, getInnerWidth, prohibitTab, showHideMenu }
 })

@@ -1,6 +1,7 @@
 <script setup>
 import HeaderSection from '@/components/HeaderSection.vue'
-import MenuList from '@/components/MenuList.vue'
+import LoadingBar from '@/components/LoadingBar.vue'
+import NoDataText from '@/components/NoDataText.vue'
 import ProductList from '@/components/ProductList.vue'
 
 import { useDataStore } from '@/stores/data'
@@ -17,10 +18,6 @@ const products = computed(() => productData.value.length === 0 ? [] : productDat
 
 // getProductsData()
 setTimeout(() => getProductsData(), 3000)
-
-//     if (allProducts.value.length === 0) {
-//         AsideSection.style.marginTop = "0";
-//     }
 </script>
 
 <template>
@@ -31,10 +28,17 @@ setTimeout(() => getProductsData(), 3000)
     </HeaderSection>
 
     <main>
-        <ProductList :products :finished />
+        <LoadingBar v-if="!finished" />
+        <NoDataText v-else-if="products.length === 0">
+            <template v-slot:firstLine>
+                <p>Oops! The category you required is not found.</p>
+            </template>
+            <template v-slot:secondLine>
+                <p>Please check the categories below!</p>
+            </template>
+        </NoDataText>
+        <ProductList v-else :products />
     </main>
-
-    <MenuList />
 </template>
 
 <style lang="scss" scoped>
@@ -54,7 +58,6 @@ setTimeout(() => getProductsData(), 3000)
 main {
     padding-top: 160px;
 }
-
 
 @media screen and (max-width:1024px) {
     main {

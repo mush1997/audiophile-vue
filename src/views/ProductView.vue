@@ -1,6 +1,6 @@
 <script setup>
-import HeaderSection from '@/components/HeaderSection.vue'
-import MenuList from '@/components/MenuList.vue'
+import LoadingBar from '@/components/LoadingBar.vue'
+import NoDataText from '@/components/NoDataText.vue'
 import ProductIntroduction from '@/components/ProductIntroduction.vue'
 import RecommendedProucts from '@/components/RecommendedProucts.vue'
 
@@ -18,36 +18,54 @@ const product = computed(() => productData.value.length === 0 ? [] : productData
 
 // getProductsData()
 setTimeout(() => getProductsData(), 3000)
-
-// if (!product) {
-//     MenuList.style.marginTop = "0";
-// }
 </script>
 
 <template>
-    <HeaderSection />
-
     <main>
-        <ProductIntroduction :product :finished />
+        <LoadingBar v-if="!finished" />
+        <NoDataText v-else-if="!product">
+            <template v-slot:firstLine>
+                <p>Oops! The product you required is not found.</p>
+            </template>
+            <template v-slot:secondLine>
+                <p>Please check our products in the categories below!</p>
+            </template>
+        </NoDataText>
+        <ProductIntroduction v-else :product />
     </main>
 
-    <RecommendedProucts :otherItems="product.others" :finished />
-
-    <MenuList />
+    <RecommendedProucts v-if="finished && product" :otherItems="product ? product.others : []" />
 </template>
 
 <style lang="scss" scoped>
+.loading,
+.text {
+    margin-top: 160px;
+}
+
 main :deep(section) {
     margin-bottom: 160px;
 }
 
 @media screen and (max-width:1024px) {
+
+    .loading,
+    .text {
+        margin-top: 120px;
+    }
+
     main :deep(section) {
         margin-bottom: 120px;
     }
 }
 
 @media screen and (max-width:500px) {
+
+    .loading,
+    .text {
+        margin-top: 90px;
+    }
+
     main :deep(section) {
         margin-bottom: 90px;
     }

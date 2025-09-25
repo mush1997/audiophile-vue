@@ -1,8 +1,7 @@
 <script setup>
 import NavLinks from '@/components/NavLinks.vue'
-import { useWidthStore } from '@/stores/width'
-const widthStore = useWidthStore()
-const { showHideMenu } = widthStore
+import { useMenuStore } from '@/stores/menu'
+const { showHideMenu } = useMenuStore()
 </script>
 
 <template>

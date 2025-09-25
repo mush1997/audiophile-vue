@@ -1,9 +1,8 @@
 <script setup>
-import { useWidthStore } from '@/stores/width'
+import { useShadowStore } from '@/stores/shadow'
 import { storeToRefs } from 'pinia'
 
-const widthStore = useWidthStore()
-const { menuShadow, cartShadow, alertShadow } = storeToRefs(widthStore)
+const { menuShadow, cartShadow, alertShadow } = storeToRefs(useShadowStore())
 </script>
 
 <template>

@@ -8,6 +8,7 @@
 
 <style lang="scss" scoped>
 .loading {
+    height: 120px;
     display: flex;
     justify-content: center;
     animation: load 3s infinite;
@@ -18,6 +19,13 @@
         line-height: 44px;
         letter-spacing: 2px;
         color: $gray;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .loading {
+        margin-bottom: -60px;
+        height: 150px;
     }
 }
 

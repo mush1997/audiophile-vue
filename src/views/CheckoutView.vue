@@ -1,11 +1,8 @@
 <script setup>
-import HeaderSection from '@/components/HeaderSection.vue'
 import ThankModal from '@/components/ThankModal.vue'
 </script>
 
 <template>
-    <HeaderSection />
-
     <main>
         <p class="goBack" @click="$router.go(-1)">Go Back</p>
         <form action="" method="post" autocomplete="off">

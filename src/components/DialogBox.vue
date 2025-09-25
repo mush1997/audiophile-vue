@@ -1,14 +1,15 @@
 <script setup>
 import MainButton from '@/components/MainButton.vue'
-import { useWidthStore } from '@/stores/width'
+import { useShadowStore } from '@/stores/shadow'
+import { useMenuStore } from '@/stores/menu'
 import { storeToRefs } from 'pinia'
 import { useTemplateRef, onMounted } from 'vue'
 
 const { msg } = defineProps(['msg'])
 const emit = defineEmits(['closeDialog'])
-const widthStore = useWidthStore()
-const { alertShadow, cartShadow } = storeToRefs(widthStore)
-const { prohibitTab } = widthStore
+
+const { alertShadow, cartShadow } = storeToRefs(useShadowStore())
+const { prohibitTab } = useMenuStore()
 
 const msgBox = useTemplateRef('msgBox')
 const closeBtn = useTemplateRef('closeBtn')
