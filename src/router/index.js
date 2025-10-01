@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useMenuStore } from '@/stores/menu'
+import { useCartStore } from '@/stores/cart'
 import { useShadowStore } from '@/stores/shadow'
 import { storeToRefs } from 'pinia'
 
@@ -19,8 +20,10 @@ const router = createRouter({
 
 router.beforeEach(() => {
   const { hideMenu } = storeToRefs(useMenuStore())
+  const { hideCart } = storeToRefs(useCartStore())
   const { menuShadow, cartShadow, alertShadow } = storeToRefs(useShadowStore())
   hideMenu.value = true
+  hideCart.value = true
   menuShadow.value = false
   cartShadow.value = false
   alertShadow.value = false

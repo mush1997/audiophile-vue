@@ -1,21 +1,20 @@
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { defineStore, storeToRefs } from 'pinia'
 import { useShadowStore } from './shadow'
+import { usePicSize } from '@/composables/usePicSize'
 
 export const useMenuStore = defineStore('menu', () => {
-  const { menuShadow } = storeToRefs(useShadowStore())
+  const shadowStore = useShadowStore()
+  const { menuShadow } = storeToRefs(shadowStore)
+  const { prohibitTab } = shadowStore
+  const { width } = usePicSize()
   const hideMenu = ref(true)
 
   function getInnerWidth() {
-    if (window.innerWidth > 1024) {
+    if (width > 1024) {
       hideMenu.value = true
       menuShadow.value = false
     }
-  }
-
-  function prohibitTab(event) {
-    console.log(event.key)
-    event.key === "Tab" ? event.preventDefault() : ""
   }
 
   function showHideMenu() {
@@ -30,5 +29,7 @@ export const useMenuStore = defineStore('menu', () => {
     }, { once: true })
   }
 
-  return { hideMenu, getInnerWidth, prohibitTab, showHideMenu }
+  watch(width, getInnerWidth, { immediate: true })
+
+  return { hideMenu, getInnerWidth, showHideMenu }
 })

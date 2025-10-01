@@ -5,9 +5,9 @@ import { usePicSize } from '@/composables/usePicSize'
 import { useAssets } from '@/composables/useAssets'
 
 const { products } = defineProps(['products'])
-const { picSize, updatePicSize } = usePicSize()
-
-updatePicSize()
+const { picSize } = usePicSize()
+// const { picSize, updatePicSize } = usePicSize()
+// updatePicSize()
 </script>
 
 <template>

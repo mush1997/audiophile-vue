@@ -1,7 +1,9 @@
 <script setup>
 import NavLinks from '@/components/NavLinks.vue'
 import { useMenuStore } from '@/stores/menu'
+import { useCartStore } from '@/stores/cart'
 const { showHideMenu } = useMenuStore()
+const { showHideCart } = useCartStore()
 </script>
 
 <template>
@@ -10,7 +12,7 @@ const { showHideMenu } = useMenuStore()
         <img class="logo" src="@/assets/shared/desktop/logo.svg" alt="logo"
             @click="$router.push({ path: '/' }).catch(error => error)">
         <NavLinks />
-        <img class="cartBtn" src="@/assets/shared/desktop/icon-cart.svg" alt="cart">
+        <img class="cartBtn" src="@/assets/shared/desktop/icon-cart.svg" alt="cart" @click="showHideCart">
     </nav>
 </template>
 

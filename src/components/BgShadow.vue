@@ -2,12 +2,12 @@
 import { useShadowStore } from '@/stores/shadow'
 import { storeToRefs } from 'pinia'
 
-const { menuShadow, cartShadow, alertShadow } = storeToRefs(useShadowStore())
+const { menuShadow, cartShadow, alertShadow, modalShadow } = storeToRefs(useShadowStore())
+const shadowClass = { 'menuShadow': menuShadow, 'cartShadow': cartShadow, 'alertShadow': alertShadow, 'modalShadow': modalShadow }
 </script>
 
 <template>
-    <div class="shadow" :class="{ 'menuShadow': menuShadow, 'cartShadow': cartShadow, 'alertShadow': alertShadow }">
-    </div>
+    <div class="shadow" :class="shadowClass"></div>
 </template>
 
 <style lang="scss" scoped>
@@ -24,14 +24,11 @@ const { menuShadow, cartShadow, alertShadow } = storeToRefs(useShadowStore())
     visibility: hidden;
 }
 
-.shadow.menuShadow {
+.shadow.menuShadow,
+.shadow.cartShadow,
+.shadow.modalShadow {
     visibility: visible;
-    animation: menuShadow 0.6s forwards;
-}
-
-.shadow.cartShadow {
-    visibility: visible;
-    animation: cartShadow 0.6s forwards;
+    animation: normalShadow 0.6s forwards;
 }
 
 .shadow.alertShadow {
@@ -40,17 +37,7 @@ const { menuShadow, cartShadow, alertShadow } = storeToRefs(useShadowStore())
     z-index: 15;
 }
 
-@keyframes menuShadow {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 0.5;
-    }
-}
-
-@keyframes cartShadow {
+@keyframes normalShadow {
     from {
         opacity: 0;
     }

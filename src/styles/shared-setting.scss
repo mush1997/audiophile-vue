@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'manrope';
+  font-family: 'manrope', sans-serif;
   font-size: 15px;
   font-weight: 500;
   line-height: 25px;
@@ -43,6 +43,12 @@ main {
   display: inline-block;
 }
 
+.minus,
+.plus {
+  font-size: 18px;
+  opacity: 0.25;
+}
+
 @keyframes showing {
   from {
     opacity: 0;
@@ -59,6 +65,13 @@ main {
     color: $primary;
     opacity: 1;
     text-decoration: underline;
+  }
+
+  .minus:hover,
+  .plus:hover {
+    cursor: pointer;
+    color: $primary;
+    opacity: 1;
   }
 }
 

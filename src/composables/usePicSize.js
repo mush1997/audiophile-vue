@@ -1,21 +1,25 @@
-import { ref } from 'vue'
-import { useEventListener } from '@vueuse/core'
+import { ref, watch } from 'vue'
+// import { useEventListener } from '@vueuse/core'
+import { createSharedComposable, useWindowSize } from '@vueuse/core'
 
 export function usePicSize() {
   const picSize = ref("")
+  const useSharedWindowSize = createSharedComposable(useWindowSize)
+  const { width } = useSharedWindowSize()
 
   function updatePicSize() {
-    if (window.innerWidth > 1024) {
+    if (width > 1024) {
       picSize.value = "desktop"
-    } else if (window.innerWidth > 500) {
+    } else if (width > 500) {
       picSize.value = "tablet"
     } else {
       picSize.value = "mobile"
     }
-    // console.log(picSize.value)
   }
 
-  useEventListener(window, "resize", updatePicSize)
+  // useEventListener(window, "resize", updatePicSize)
 
-  return { picSize, updatePicSize }
+  watch(width, updatePicSize, { immediate: true })
+
+  return { picSize, width, updatePicSize }
 }

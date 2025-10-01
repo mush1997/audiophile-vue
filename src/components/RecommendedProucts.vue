@@ -5,9 +5,9 @@ import { usePicSize } from '@/composables/usePicSize'
 import { useAssets } from '@/composables/useAssets'
 
 const { otherItems } = defineProps(['otherItems'])
-const { picSize, updatePicSize } = usePicSize()
-
-updatePicSize()
+const { picSize } = usePicSize()
+// const { picSize, updatePicSize } = usePicSize()
+// updatePicSize()
 </script>
 
 <template>

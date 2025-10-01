@@ -1,62 +1,62 @@
 <script setup>
+import SummaryBrick from './SummaryBrick.vue'
 import MainButton from '@/components/MainButton.vue'
+
+import { useShadowStore } from '@/stores/shadow'
+import { useModalStore } from '@/stores/modal'
+import { useCartStore } from '@/stores/cart'
+import { storeToRefs } from 'pinia'
+import { useRouter } from 'vue-router'
+import { useTemplateRef, onMounted } from 'vue'
+
+const shadowStore = useShadowStore()
+const { modalShadow } = storeToRefs(shadowStore)
+const { prohibitTab } = shadowStore
+const { showModal } = storeToRefs(useModalStore())
+const { cartList } = storeToRefs(useCartStore())
+
+const router = useRouter()
+const thankModal = useTemplateRef('thankModal')
+const closeModalBtn = useTemplateRef('closeModalBtn')
+
+function closeThankModal() {
+    resetForm()
+    thankModal.value.classList.remove("show")
+    showModal.value = false
+    modalShadow.value = false
+    router.push({ path: '/' }).catch(error => error)
+}
+
+function resetForm() {
+    document.querySelector("form").reset();
+    document.removeEventListener("keydown", prohibitTab);
+    // thankModal.value.classList.remove("show");
+    cartList.value = []
+    // window.localStorage.removeItem("cartList")
+    // setTimeout(() => { document.body.classList.remove("modalShadow") }, 400);
+    // setTimeout(() => { window.location.href = "./index.html" }, 900);
+}
+
+onMounted(() => {
+    thankModal.value.style.top = (window.innerHeight - thankModal.value.clientHeight) / 2 + window.scrollY + "px"
+    thankModal.value.classList.add("show")
+    closeModalBtn.value.btn.focus()
+})
 </script>
 
 <template>
-    <section class="thankModal">
-        <img src="@/assets/checkout/icon-order-confirmation.svg" alt="">
-        <h2>Thank you for your order</h2>
-        <p>You will receive an email confirmation shortly.</p>
-        <div class="summaryBrick">
-            <div class="leftPart">
-                <div class="dropdown">
-                    <p>and <span></span> other item(s)</p>
-                    <p>View less</p>
-                </div>
-            </div>
-            <div class="rightPart">
-                <p>Grand Total</p>
-                <p class="grandTotalNum"></p>
-            </div>
-        </div>
-        <MainButton @click="$router.push({ path: '/' }).catch(error => error)">Back to home</MainButton>
-    </section>
+    <Teleport to="body">
+        <section class="thankModal" ref="thankModal">
+            <img src="@/assets/checkout/icon-order-confirmation.svg" alt="">
+            <h2>Thank you for your order</h2>
+            <p>You will receive an email confirmation shortly.</p>
+            <SummaryBrick />
+            <MainButton @click="closeThankModal" ref="closeModalBtn">Back to home</MainButton>
+        </section>
+    </Teleport>
 </template>
 
 <style lang="scss" scoped>
-@keyframes modalShadow {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 0.5;
-    }
-}
-
-@keyframes dropdownOpen {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 0.5;
-    }
-}
-
-body.modalShadow {
-    .shadow {
-        visibility: visible;
-        animation: modalShadow 0.6s forwards;
-    }
-}
-
-.quantityNum {
-    margin-left: 24px;
-    font-weight: bold;
-    opacity: 0.5;
-}
-
 .thankModal {
     padding: 48px;
     width: 40%;
@@ -88,136 +88,14 @@ body.modalShadow {
         opacity: 0.5;
     }
 
-    .summaryBrick {
-        width: 100%;
-        border-radius: 10px;
-        display: flex;
-
-        .leftPart {
-            flex-basis: 360px;
-            flex-grow: 1;
-            padding: 8px 20px;
-            max-height: 170px;
-            overflow-x: hidden;
-            overflow-y: auto;
-            overscroll-behavior: none;
-            border-radius: 10px 0 0 10px;
-            background-color: $block_bg;
-
-            p {
-                font-weight: bold;
-                opacity: 0.5;
-            }
-
-            .line {
-                padding: 12px 0;
-                width: 100%;
-                min-width: 300px;
-                display: none;
-
-                &>div {
-                    width: 85%;
-                    display: inline-flex;
-                    align-items: center;
-
-                    img {
-                        margin-right: 16px;
-                        width: 50px;
-                    }
-
-                    div {
-                        p:nth-child(1) {
-                            margin-bottom: 4px;
-                            line-height: 20px;
-                            opacity: 1;
-                        }
-
-                        p:nth-child(2) {
-                            font-size: 14px;
-                        }
-                    }
-                }
-
-                .quantityNum {
-                    display: inline-block;
-                    vertical-align: top;
-                }
-            }
-
-            .line:first-of-type {
-                display: block;
-            }
-
-            .line.show {
-                display: block;
-                animation: showing 0.8s forwards;
-            }
-
-            .dropdown {
-                padding: 12px 0;
-                text-align: center;
-                border-top: 2px solid gainsboro;
-
-                p {
-                    font-size: 13px;
-                    display: inline-block;
-                    animation: dropdownOpen 0.8s forwards;
-
-                    span {
-                        font-size: 13px;
-                        font-weight: bold;
-                    }
-                }
-
-                p:last-child {
-                    display: none;
-                }
-            }
-        }
-
-        .leftPart.centered {
-            display: flex;
-            align-items: center;
-        }
-
-        .rightPart {
-            flex-basis: 150px;
-            padding: 24px;
-            background-color: $black;
-            border-radius: 0 10px 10px 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-
-            p:first-child {
-                margin-bottom: 8px;
-                color: $white;
-                text-transform: uppercase;
-                opacity: 0.5;
-            }
-
-            .grandTotalNum {
-                font-size: 18px;
-                font-weight: bold;
-                color: $white;
-            }
-        }
-    }
-
     button {
         width: 100%;
     }
 }
 
-.thankModal.show {
+.show {
     display: block;
     animation: showing 0.8s forwards;
-}
-
-@media screen and (hover:hover) {
-    .thankModal .summaryBrick .leftPart .dropdown p:hover {
-        cursor: pointer;
-    }
 }
 
 @media screen and (max-width:1024px) {
@@ -244,27 +122,6 @@ body.modalShadow {
         &>p {
             margin: 16px 0 24px 0;
         }
-
-        .summaryBrick {
-            flex-wrap: wrap;
-
-            .leftPart {
-                flex-basis: 100%;
-                flex-grow: 0;
-                padding: 8px 16px;
-                border-radius: 10px 10px 0 0;
-
-                .line {
-                    min-width: auto;
-                }
-            }
-
-            .rightPart {
-                flex-basis: 100%;
-                border-radius: 0 0 10px 10px;
-                justify-content: flex-start;
-            }
-        }
     }
 }
 
@@ -280,17 +137,6 @@ body.modalShadow {
             margin: 12px 0 16px 0;
         }
 
-        .summaryBrick .leftPart .line {
-            &>div img {
-                margin-right: 8px;
-                width: 40px;
-            }
-
-            .quantityNum {
-                margin-left: 12px;
-            }
-        }
-
         button {
             margin-top: 24px;
         }
@@ -300,20 +146,6 @@ body.modalShadow {
 @media screen and (max-width:400px) {
     .thankModal {
         padding: 20px;
-
-        .summaryBrick .leftPart {
-            max-height: 180px;
-
-            .line {
-                &>div {
-                    width: 100%;
-                }
-
-                .quantityNum {
-                    margin-left: 48px;
-                }
-            }
-        }
     }
 }
 </style>

@@ -6,9 +6,9 @@ import ProductPics from '@/components/ProductPics.vue'
 import { usePicSize } from '@/composables/usePicSize'
 
 const { product } = defineProps(['product'])
-const { picSize, updatePicSize } = usePicSize()
-
-updatePicSize()
+const { picSize } = usePicSize()
+// const { picSize, updatePicSize } = usePicSize()
+// updatePicSize()
 </script>
 
 <template>

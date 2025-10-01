@@ -1,23 +1,29 @@
 <script setup>
 import MainButton from '@/components/MainButton.vue'
 import { useShadowStore } from '@/stores/shadow'
-import { useMenuStore } from '@/stores/menu'
+import { useDialogStore } from '@/stores/dialog'
 import { storeToRefs } from 'pinia'
 import { useTemplateRef, onMounted } from 'vue'
 
-const { msg } = defineProps(['msg'])
-const emit = defineEmits(['closeDialog'])
+// const { msg } = defineProps(['msg'])
+// const emit = defineEmits(['closeDialog'])
 
-const { alertShadow, cartShadow } = storeToRefs(useShadowStore())
-const { prohibitTab } = useMenuStore()
+const shadowStore = useShadowStore()
+const { alertShadow, cartShadow } = storeToRefs(shadowStore)
+const { prohibitTab } = shadowStore
+const dialogStore = useDialogStore()
+const { dialogMsg, showDialog } = storeToRefs(dialogStore)
 
 const msgBox = useTemplateRef('msgBox')
 const closeBtn = useTemplateRef('closeBtn')
 
-function closeDialogBox() {
+function closeDialog() {
+    msgBox.value.classList.remove("show")
     alertShadow.value = false
+    showDialog.value = false
+    dialogMsg.value = ''
     cartShadow.value ? "" : document.removeEventListener("keydown", prohibitTab)
-    emit('closeDialog')
+    // emit('closeDialog')
 }
 
 onMounted(() => {
@@ -32,9 +38,10 @@ onMounted(() => {
 <template>
     <Teleport to="body">
         <div class="popup" ref="msgBox">
-            <p>{{ msg }}</p>
+            <!-- <p>{{ msg }}</p> -->
+            <p>{{ dialogMsg }}</p>
             <div>
-                <MainButton @click="closeDialogBox" ref="closeBtn">Close</MainButton>
+                <MainButton @click="closeDialog" ref="closeBtn">Close</MainButton>
             </div>
         </div>
     </Teleport>
@@ -52,7 +59,7 @@ onMounted(() => {
     left: 50%;
     transform: translateX(-50%);
     z-index: 20;
-    visibility: hidden;
+    display: none;
 
     div {
         text-align: right;
@@ -70,7 +77,7 @@ onMounted(() => {
 }
 
 .show {
-    visibility: visible;
+    display: block;
     animation: showing 0.4s forwards;
 }
 
