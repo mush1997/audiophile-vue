@@ -4,7 +4,7 @@ import { storeToRefs } from 'pinia'
 
 const { item } = defineProps(['item'])
 const emit = defineEmits(['showDialogBox'])
-const { cartList } = storeToRefs(useCartStore())
+const { cartList, emptyCart } = storeToRefs(useCartStore())
 
 function plusInCart() {
     cartList.value.find(item => item["name"] === item.value.name)["amount"] = item.value.amount + 1;
@@ -18,7 +18,7 @@ function minusInCart() {
         cartList.value.find(item => item["name"] === item.value.name)["amount"] = item.value.amount - 1;
     }
 
-    if (cartList.value.length === 0) { emit('showDialogBox', 'Your cart will be empty.') }
+    if (emptyCart.value) { emit('showDialogBox', 'Your cart will be empty.') }
 }
 </script>
 

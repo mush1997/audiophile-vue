@@ -1,5 +1,5 @@
-import { ref } from 'vue'
 import { defineStore } from 'pinia'
+import { ref } from 'vue'
 
 export const useShadowStore = defineStore('shadow', () => {
   const menuShadow = ref(false)

@@ -1,6 +1,6 @@
-import { ref } from 'vue'
 import { defineStore, storeToRefs } from 'pinia'
-import { useShadowStore } from './shadow'
+import { useShadowStore } from '@/stores/shadow'
+import { ref } from 'vue'
 
 export const useModalStore = defineStore('modal', () => {
   const shadowStore = useShadowStore()

@@ -4,15 +4,15 @@ import OrderNotes from '@/components/OrderNotes.vue'
 
 import { useCartStore } from '@/stores/cart'
 import { storeToRefs } from 'pinia'
-const { cartList } = storeToRefs(useCartStore())
+const { cartList, emptyCart } = storeToRefs(useCartStore())
 </script>
 
 <template>
-    <section class="summary" :class="{ 'empty': cartList.length === 0 }">
+    <section class="summary" :class="{ 'empty': emptyCart }">
         <h2>Summary</h2>
-        <p v-if="cartList.length === 0" class="defaultText">You have not added any products yet.</p>
+        <p v-if="emptyCart" class="defaultText">You have not added any products yet.</p>
         <template v-else>
-            <OrderItemList>
+            <OrderItemList :cartList>
                 <p class="amount">x{{ item.amount }}</p>
             </OrderItemList>
             <OrderNotes />

@@ -1,25 +1,25 @@
 <script setup>
 import CheckoutForm from '@/components/CheckoutForm.vue'
-import { onMounted } from 'vue'
+import { useCartStore } from '@/stores/cart'
+import { storeToRefs } from 'pinia'
 
-onMounted(() => {
-    if (cartList.length === 0) {
-        const height = document.querySelector("footer").clientHeight + document.querySelector("header").clientHeight
-        document.querySelector("main").style.minHeight = `calc(100vh - ${height}px)`
-    }
-})
+const { emptyCart } = storeToRefs(useCartStore())
 </script>
 
 <template>
-    <main>
+    <main :class="{ 'basicHeight': emptyCart }">
         <p class="goBack" @click="$router.go(-1)">Go Back</p>
-        <CheckoutForm />
+        <CheckoutForm :emptyCart />
     </main>
 </template>
 
 <style lang="scss" scoped>
 main {
     margin-bottom: 130px;
+}
+
+.basicHeight {
+    min-height: calc(100vh - 430px);
 }
 
 @media screen and (max-width:500px) {

@@ -1,5 +1,5 @@
 <script setup>
-import OrderItemList from './OrderItemList.vue'
+import OrderItemList from '@/components/OrderItemList.vue'
 import CartQuantityUnit from '@/components/CartQuantityUnit.vue'
 import MainButton from '@/components/MainButton.vue'
 import DialogBox from './DialogBox.vue'
@@ -9,7 +9,9 @@ import { useDialogStore } from '@/stores/dialog'
 import { storeToRefs } from 'pinia'
 // import { ref } from 'vue'
 
-const { cartList, hideCart, total } = storeToRefs(useCartStore())
+const cartStore = useCartStore()
+const { cartList, hideCart, emptyCart, total } = storeToRefs(cartStore)
+const { $reset } = cartStore
 const dialogStore = useDialogStore()
 const { showDialog } = storeToRefs(dialogStore)
 const { createDialog } = dialogStore
@@ -22,8 +24,8 @@ const { createDialog } = dialogStore
 // }
 
 function removeAll() {
-    if (cartList.value.length === 0) { return }
-    cartList.value = []
+    if (emptyCart.value) { return }
+    $reset()
     // window.localStorage.removeItem("cartList");
     createDialog('Your cart will be empty.')
 }
@@ -35,9 +37,9 @@ function removeAll() {
             <p>Cart (<span>{{ cartList.length || 0 }}</span>)</p>
             <p @click="removeAll">Remove All</p>
         </div>
-        <p v-if="cartList.length === 0" class="defaultText">Your cart is empty.</p>
+        <p v-if="emptyCart" class="defaultText">Your cart is empty.</p>
         <template v-else>
-            <OrderItemList>
+            <OrderItemList :cartList>
                 <CartQuantityUnit @showDialogBox="createDialog" />
             </OrderItemList>
             <div class="totalSum">
@@ -55,6 +57,9 @@ function removeAll() {
     width: 30%;
     min-width: 480px;
     max-width: 650px;
+    max-height: calc(100vh - 240px);
+    overflow-y: auto;
+    overscroll-behavior: none;
     border-radius: 10px;
     background-color: $white;
     position: absolute;
@@ -62,6 +67,10 @@ function removeAll() {
     right: 11%;
     z-index: 10;
     animation: showing 0.8s forwards;
+}
+
+.hide {
+    display: none;
 }
 
 .cartTitle {

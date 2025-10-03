@@ -1,13 +1,12 @@
 <script setup>
 import MainButton from '@/components/MainButton.vue'
 
-import { usePicSize } from '@/composables/usePicSize'
+import { useSizeStore } from '@/stores/size'
 import { useAssets } from '@/composables/useAssets'
+import { storeToRefs } from 'pinia'
 
 const { products } = defineProps(['products'])
-const { picSize } = usePicSize()
-// const { picSize, updatePicSize } = usePicSize()
-// updatePicSize()
+const { picSize } = storeToRefs(useSizeStore())
 </script>
 
 <template>

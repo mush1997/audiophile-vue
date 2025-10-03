@@ -1,9 +1,10 @@
 <script setup>
 import { useShadowStore } from '@/stores/shadow'
 import { storeToRefs } from 'pinia'
+import { computed } from 'vue'
 
 const { menuShadow, cartShadow, alertShadow, modalShadow } = storeToRefs(useShadowStore())
-const shadowClass = { 'menuShadow': menuShadow, 'cartShadow': cartShadow, 'alertShadow': alertShadow, 'modalShadow': modalShadow }
+const shadowClass = computed(() => ({ 'menuShadow': menuShadow.value, 'cartShadow': cartShadow.value, 'alertShadow': alertShadow.value, 'modalShadow': modalShadow.value }))
 </script>
 
 <template>

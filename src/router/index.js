@@ -21,12 +21,11 @@ const router = createRouter({
 router.beforeEach(() => {
   const { hideMenu } = storeToRefs(useMenuStore())
   const { hideCart } = storeToRefs(useCartStore())
-  const { menuShadow, cartShadow, alertShadow } = storeToRefs(useShadowStore())
+  const { menuShadow, cartShadow } = storeToRefs(useShadowStore())
   hideMenu.value = true
   hideCart.value = true
   menuShadow.value = false
   cartShadow.value = false
-  alertShadow.value = false
 })
 
 export default router

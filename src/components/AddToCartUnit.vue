@@ -20,7 +20,7 @@ function editQuantity(operator) {
 
 function addToCart(product) {
     const item = { "name": product.name, "slug": product.slug, "price": product.price, "amount": quantity.value }
-    const index = cartList.value.findIndex(items => items["name"] === item.name)
+    const index = cartList.value.findIndex(item => item["name"] === item.name)
     index < 0 ? cartList.value.push(item) : cartList.value[index]["amount"] += quantity.value
     // window.localStorage.setItem("cartList", JSON.stringify(cartList.value))
     emit('showDialogBox', 'Added successfully!')

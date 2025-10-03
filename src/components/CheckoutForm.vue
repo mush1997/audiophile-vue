@@ -1,11 +1,13 @@
 <script setup>
-import OrderDetails from '@/components/OrderDetails.vue';
-import OrderSummary from '@/components/OrderSummary.vue';
+import OrderDetails from '@/components/OrderDetails.vue'
+import OrderSummary from '@/components/OrderSummary.vue'
+
+const { emptyCart } = defineProps(['emptyCart'])
 </script>
 
 <template>
     <form action="" method="post" autocomplete="off" @keydown.enter.prevent @submit.prevent>
-        <OrderDetails v-show="cartList.length !== 0" />
+        <OrderDetails v-show="!emptyCart" />
         <OrderSummary />
     </form>
 </template>

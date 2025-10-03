@@ -13,29 +13,30 @@ const shadowStore = useShadowStore()
 const { modalShadow } = storeToRefs(shadowStore)
 const { prohibitTab } = shadowStore
 const { showModal } = storeToRefs(useModalStore())
-const { cartList } = storeToRefs(useCartStore())
+const { $reset } = useCartStore()
 
 const router = useRouter()
 const thankModal = useTemplateRef('thankModal')
 const closeModalBtn = useTemplateRef('closeModalBtn')
 
 function closeThankModal() {
-    resetForm()
+    document.querySelector("form").reset()
+    document.removeEventListener("keydown", prohibitTab)
     thankModal.value.classList.remove("show")
     showModal.value = false
     modalShadow.value = false
+    $reset()
     router.push({ path: '/' }).catch(error => error)
 }
 
-function resetForm() {
-    document.querySelector("form").reset();
-    document.removeEventListener("keydown", prohibitTab);
-    // thankModal.value.classList.remove("show");
-    cartList.value = []
-    // window.localStorage.removeItem("cartList")
-    // setTimeout(() => { document.body.classList.remove("modalShadow") }, 400);
-    // setTimeout(() => { window.location.href = "./index.html" }, 900);
-}
+// function resetForm() {
+//     document.querySelector("form").reset();
+//     document.removeEventListener("keydown", prohibitTab);
+//     thankModal.value.classList.remove("show");
+//     window.localStorage.removeItem("cartList")
+//     setTimeout(() => { document.body.classList.remove("modalShadow") }, 400);
+//     setTimeout(() => { window.location.href = "./index.html" }, 900);
+// }
 
 onMounted(() => {
     thankModal.value.style.top = (window.innerHeight - thankModal.value.clientHeight) / 2 + window.scrollY + "px"

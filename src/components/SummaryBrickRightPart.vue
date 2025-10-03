@@ -7,7 +7,7 @@ const { grandTotal } = storeToRefs(useCartStore())
 <template>
     <div class="rightPart">
         <p>Grand Total</p>
-        <p class="grandTotalNum">{{ grandTotal.toLocaleString() }}</p>
+        <p class="grandTotalNum">$ {{ grandTotal.toLocaleString() }}</p>
     </div>
 </template>
 

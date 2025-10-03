@@ -37,10 +37,10 @@ function validateForm() {
 
 <template>
     <div class="notes">
-        <p><span>Total</span><span class="finalTotal">{{ total.toLocaleString() }}</span></p>
-        <p><span>Shipping</span><span class="shippingFee">{{ shipping.toLocaleString() }}</span></p>
-        <p><span>VAT(20%)</span><span class="vat">{{ vat.toLocaleString() }}</span></p>
-        <p><span>Grand total</span><span class="grandTotal">{{ grandTotal.toLocaleString() }}</span></p>
+        <p><span>Total</span><span class="finalTotal">$ {{ total.toLocaleString() }}</span></p>
+        <p><span>Shipping</span><span class="shippingFee">$ {{ shipping.toLocaleString() }}</span></p>
+        <p><span>VAT(20%)</span><span class="vat">$ {{ vat.toLocaleString() }}</span></p>
+        <p><span>Grand total</span><span class="grandTotal">$ {{ grandTotal.toLocaleString() }}</span></p>
         <MainButton @click.prevent="validateForm">Continue & pay</MainButton>
     </div>
     <ThankModal v-if="showModal" />

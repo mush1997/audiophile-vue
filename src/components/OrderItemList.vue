@@ -1,8 +1,7 @@
 <script setup>
 import { useAssets } from '@/composables/useAssets'
-import { useCartStore } from '@/stores/cart'
-import { storeToRefs } from 'pinia'
-const { cartList } = storeToRefs(useCartStore())
+
+const { cartList } = defineProps(['cartList'])
 </script>
 
 <template>

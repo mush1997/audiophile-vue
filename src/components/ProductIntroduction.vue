@@ -3,12 +3,11 @@ import ProductOverview from '@/components/ProductOverview.vue'
 import ProductDetails from '@/components/ProductDetails.vue'
 import ProductPics from '@/components/ProductPics.vue'
 
-import { usePicSize } from '@/composables/usePicSize'
+import { useSizeStore } from '@/stores/size'
+import { storeToRefs } from 'pinia'
 
 const { product } = defineProps(['product'])
-const { picSize } = usePicSize()
-// const { picSize, updatePicSize } = usePicSize()
-// updatePicSize()
+const { picSize } = storeToRefs(useSizeStore())
 </script>
 
 <template>
