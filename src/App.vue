@@ -3,10 +3,10 @@ import { defineAsyncComponent } from 'vue'
 
 const HeaderSection = defineAsyncComponent(() => import('@/components/HeaderSection.vue'))
 const MenuList = defineAsyncComponent(() => import('@/components/MenuList.vue'))
-const AsideSection = defineAsyncComponent(() => import('@/components/AsideSection.vue'))
-const FooterSection = defineAsyncComponent(() => import('@/components/FooterSection.vue'))
 const BgShadow = defineAsyncComponent(() => import('@/components/BgShadow.vue'))
 const ShoppingCart = defineAsyncComponent(() => import('@/components/ShoppingCart.vue'))
+const AsideSection = defineAsyncComponent(() => import('@/components/AsideSection.vue'))
+const FooterSection = defineAsyncComponent(() => import('@/components/FooterSection.vue'))
 </script>
 
 <template>

@@ -4,20 +4,11 @@ import DialogBox from '@/components/DialogBox.vue'
 import { useAssets } from '@/composables/useAssets'
 import { useDialogStore } from '@/stores/dialog'
 import { storeToRefs } from 'pinia'
-// import { ref } from 'vue'
 
 const { product, picSize } = defineProps(['product', 'picSize'])
 const dialogStore = useDialogStore()
 const { showDialog } = storeToRefs(dialogStore)
 const { createDialog } = dialogStore
-
-// const dialogMsg = ref('')
-// const showDialog = ref(false)
-
-// function createDialog(msg) {
-//     dialogMsg.value = msg
-//     showDialog.value = true
-// }
 </script>
 
 <template>
@@ -30,11 +21,9 @@ const { createDialog } = dialogStore
             <h1>{{ product.name }}</h1>
             <p class="description">{{ product.description }}</p>
             <p class="price">{{ product.price.toLocaleString() }}</p>
-            <!-- <AddToCartUnit :product @showDialogBox="createDialog" /> -->
-            <AddToCartUnit :product @showDialogBox="createDialog" />
+            <AddToCartUnit @showDialogBox="createDialog" :product />
         </div>
     </section>
-    <!-- <DialogBox v-if="showDialog" @closeDialog="showDialog = false" :msg="dialogMsg" /> -->
     <DialogBox v-if="showDialog" />
 </template>
 

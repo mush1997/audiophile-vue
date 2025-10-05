@@ -6,7 +6,7 @@ import { ref, computed, readonly } from 'vue'
 export const useCartStore = defineStore('cart', () => {
   const shadowStore = useShadowStore()
   const { cartShadow } = storeToRefs(shadowStore)
-  const { prohibitTab } = shadowStore
+  const { showHideToggle } = shadowStore
 
   const cartList = useLocalStorage('cartList', [])
   const hideCart = ref(true)
@@ -14,23 +14,33 @@ export const useCartStore = defineStore('cart', () => {
   const total = computed(() => cartList.value.map(item => item.price * item.amount).reduce((pre, next) => pre + next, 0))
   const shipping = ref(50)
   const vat = computed(() => Math.round(total.value * 0.2))
-  const grandTotal = computed(() => Math.round(total.value * 1.2 + shipping.value))
+  const grandTotal = computed(() => Math.round(total.value * 1.2) + shipping.value)
 
   function showHideCart() {
-    hideCart.value = false
-    cartShadow.value = true
-    document.addEventListener("keydown", prohibitTab)
+    showHideToggle(hideCart, cartShadow)
+  }
 
-    document.querySelector(".shadow").addEventListener("click", () => {
-      hideCart.value = true
-      cartShadow.value = false
-      document.removeEventListener("keydown", prohibitTab)
-    }, { once: true })
+  function addItem(newItem, quantity) {
+    const index = cartList.value.findIndex(item => item["name"] === newItem.name)
+    index < 0 ? cartList.value.push(newItem) : cartList.value[index]["amount"] += quantity
+  }
+
+  function plusItem(itemName, itemAmount) {
+    cartList.value.find(item => item["name"] === itemName)["amount"] = itemAmount + 1
+  }
+
+  function minusItem(itemName, itemAmount) {
+    cartList.value.find(item => item["name"] === itemName)["amount"] = itemAmount - 1
+  }
+
+  function removeItem(itemName) {
+    const index = cartList.value.findIndex(item => item["name"] === itemName)
+    cartList.value.splice(index, 1)
   }
 
   function $reset() {
     cartList.value = []
   }
 
-  return { cartList: readonly(cartList), hideCart, emptyCart, total, shipping, vat, grandTotal, showHideCart, $reset }
+  return { cartList: readonly(cartList), hideCart, emptyCart, total, shipping, vat, grandTotal, showHideCart, addItem, plusItem, minusItem, removeItem, $reset }
 })

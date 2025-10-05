@@ -11,5 +11,17 @@ export const useShadowStore = defineStore('shadow', () => {
     event.key === "Tab" ? event.preventDefault() : ""
   }
 
-  return { menuShadow, cartShadow, alertShadow, modalShadow, prohibitTab }
+  function showHideToggle(hideState, shadow) {
+    hideState.value = false
+    shadow.value = true
+    document.addEventListener("keydown", prohibitTab)
+
+    document.querySelector(".shadow").addEventListener("click", () => {
+      hideState.value = true
+      shadow.value = false
+      document.removeEventListener("keydown", prohibitTab)
+    }, { once: true })
+  }
+
+  return { menuShadow, cartShadow, alertShadow, modalShadow, prohibitTab, showHideToggle }
 })

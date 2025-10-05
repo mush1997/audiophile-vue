@@ -4,29 +4,25 @@ import { storeToRefs } from 'pinia'
 
 const { item } = defineProps(['item'])
 const emit = defineEmits(['showDialogBox'])
-const { cartList, emptyCart } = storeToRefs(useCartStore())
+const cartStore = useCartStore()
+const { emptyCart } = storeToRefs(cartStore)
+const { plusItem, minusItem, removeItem } = cartStore
 
-function plusInCart() {
-    cartList.value.find(item => item["name"] === item.value.name)["amount"] = item.value.amount + 1;
+function plusInCart(itemName, itemAmount) {
+    plusItem(itemName, itemAmount)
 }
 
-function minusInCart() {
-    if (item.value.amount === 1) {
-        const index = cartList.value.findIndex(item => item["name"] === item.value.name);
-        cartList.value.splice(index, 1);
-    } else {
-        cartList.value.find(item => item["name"] === item.value.name)["amount"] = item.value.amount - 1;
-    }
-
+function minusInCart(itemName, itemAmount) {
+    itemAmount === 1 ? removeItem(itemName) : minusItem(itemName, itemAmount)
     if (emptyCart.value) { emit('showDialogBox', 'Your cart will be empty.') }
 }
 </script>
 
 <template>
     <p class="cartQuantity">
-        <span class="minus" @click="plusInCart">-</span>
+        <span class="minus" @click="minusInCart(item.name, item.amount)">-</span>
         <span>{{ item.amount }}</span>
-        <span class="plus" @click="minusInCart">+</span>
+        <span class="plus" @click="plusInCart(item.name, item.amount)">+</span>
     </p>
 </template>
 

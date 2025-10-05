@@ -1,53 +1,25 @@
 <script setup>
 import SummaryBrick from './SummaryBrick.vue'
 import MainButton from '@/components/MainButton.vue'
-
-import { useShadowStore } from '@/stores/shadow'
 import { useModalStore } from '@/stores/modal'
-import { useCartStore } from '@/stores/cart'
 import { storeToRefs } from 'pinia'
-import { useRouter } from 'vue-router'
 import { useTemplateRef, onMounted } from 'vue'
 
-const shadowStore = useShadowStore()
-const { modalShadow } = storeToRefs(shadowStore)
-const { prohibitTab } = shadowStore
-const { showModal } = storeToRefs(useModalStore())
-const { $reset } = useCartStore()
-
-const router = useRouter()
+const modalStore = useModalStore()
+const { showModal } = storeToRefs(modalStore)
+const { closeThankModal } = modalStore
 const thankModal = useTemplateRef('thankModal')
 const closeModalBtn = useTemplateRef('closeModalBtn')
 
-function closeThankModal() {
-    document.querySelector("form").reset()
-    document.removeEventListener("keydown", prohibitTab)
-    thankModal.value.classList.remove("show")
-    showModal.value = false
-    modalShadow.value = false
-    $reset()
-    router.push({ path: '/' }).catch(error => error)
-}
-
-// function resetForm() {
-//     document.querySelector("form").reset();
-//     document.removeEventListener("keydown", prohibitTab);
-//     thankModal.value.classList.remove("show");
-//     window.localStorage.removeItem("cartList")
-//     setTimeout(() => { document.body.classList.remove("modalShadow") }, 400);
-//     setTimeout(() => { window.location.href = "./index.html" }, 900);
-// }
-
 onMounted(() => {
     thankModal.value.style.top = (window.innerHeight - thankModal.value.clientHeight) / 2 + window.scrollY + "px"
-    thankModal.value.classList.add("show")
     closeModalBtn.value.btn.focus()
 })
 </script>
 
 <template>
     <Teleport to="body">
-        <section class="thankModal" ref="thankModal">
+        <section class="thankModal" :class="{ 'show': showModal }" ref="thankModal">
             <img src="@/assets/checkout/icon-order-confirmation.svg" alt="">
             <h2>Thank you for your order</h2>
             <p>You will receive an email confirmation shortly.</p>

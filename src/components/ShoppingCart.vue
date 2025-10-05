@@ -7,7 +7,6 @@ import DialogBox from './DialogBox.vue'
 import { useCartStore } from '@/stores/cart'
 import { useDialogStore } from '@/stores/dialog'
 import { storeToRefs } from 'pinia'
-// import { ref } from 'vue'
 
 const cartStore = useCartStore()
 const { cartList, hideCart, emptyCart, total } = storeToRefs(cartStore)
@@ -15,18 +14,10 @@ const { $reset } = cartStore
 const dialogStore = useDialogStore()
 const { showDialog } = storeToRefs(dialogStore)
 const { createDialog } = dialogStore
-// const dialogMsg = ref('')
-// const showDialog = ref(false)
-
-// function createDialog(msg) {
-//     dialogMsg.value = msg
-//     showDialog.value = true
-// }
 
 function removeAll() {
     if (emptyCart.value) { return }
     $reset()
-    // window.localStorage.removeItem("cartList");
     createDialog('Your cart will be empty.')
 }
 </script>
@@ -39,8 +30,8 @@ function removeAll() {
         </div>
         <p v-if="emptyCart" class="defaultText">Your cart is empty.</p>
         <template v-else>
-            <OrderItemList :cartList>
-                <CartQuantityUnit @showDialogBox="createDialog" />
+            <OrderItemList :cartList v-slot="{ item }">
+                <CartQuantityUnit @showDialogBox="createDialog" :item />
             </OrderItemList>
             <div class="totalSum">
                 <p><span>Total</span><span class="totalNum">{{ total.toLocaleString() }}</span></p>

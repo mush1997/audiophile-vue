@@ -11,7 +11,7 @@ const showLess = ref(cartList.value.length > 1)
 
 <template>
     <div class="leftPart" :class="{ 'centered': cartList.length === 1 }">
-        <OrderItemList :class="{ 'show': !showLess }" :cartList>
+        <OrderItemList :class="{ 'show': !showLess }" v-slot="{ item }" :cartList>
             <p class="amount">x{{ item.amount }}</p>
         </OrderItemList> />
         <div class="dropdown" :class="{ 'hide': cartList.length === 1 }">

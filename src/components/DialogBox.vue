@@ -1,47 +1,27 @@
 <script setup>
 import MainButton from '@/components/MainButton.vue'
-import { useShadowStore } from '@/stores/shadow'
 import { useDialogStore } from '@/stores/dialog'
 import { storeToRefs } from 'pinia'
 import { useTemplateRef, onMounted } from 'vue'
 
-// const { msg } = defineProps(['msg'])
-// const emit = defineEmits(['closeDialog'])
-
-const shadowStore = useShadowStore()
-const { alertShadow, cartShadow } = storeToRefs(shadowStore)
-const { prohibitTab } = shadowStore
 const dialogStore = useDialogStore()
-const { dialogMsg, showDialog } = storeToRefs(dialogStore)
-
+const { showDialog, dialogMsg } = storeToRefs(dialogStore)
+const { closeDialog } = dialogStore
 const msgBox = useTemplateRef('msgBox')
-const closeBtn = useTemplateRef('closeBtn')
-
-function closeDialog() {
-    msgBox.value.classList.remove("show")
-    alertShadow.value = false
-    showDialog.value = false
-    dialogMsg.value = ''
-    cartShadow.value ? "" : document.removeEventListener("keydown", prohibitTab)
-    // emit('closeDialog')
-}
+const closeDialogBtn = useTemplateRef('closeDialogBtn')
 
 onMounted(() => {
     msgBox.value.style.top = (window.innerHeight - msgBox.value.clientHeight) / 2 + window.scrollY + "px"
-    msgBox.value.classList.add("show")
-    alertShadow.value = true
-    document.addEventListener("keydown", prohibitTab)
-    closeBtn.value.btn.focus()
+    closeDialogBtn.value.btn.focus()
 })
 </script>
 
 <template>
     <Teleport to="body">
-        <div class="popup" ref="msgBox">
-            <!-- <p>{{ msg }}</p> -->
+        <div class="popup" :class="{ 'show': showDialog }" ref="msgBox">
             <p>{{ dialogMsg }}</p>
             <div>
-                <MainButton @click="closeDialog" ref="closeBtn">Close</MainButton>
+                <MainButton @click="closeDialog" ref="closeDialogBtn">Close</MainButton>
             </div>
         </div>
     </Teleport>

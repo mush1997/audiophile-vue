@@ -6,7 +6,7 @@ import { computed, ref, watchEffect } from 'vue'
 export const useMenuStore = defineStore('menu', () => {
   const shadowStore = useShadowStore()
   const { menuShadow } = storeToRefs(shadowStore)
-  const { prohibitTab } = shadowStore
+  const { showHideToggle } = shadowStore
   const { width } = useWindowSize()
   const isDesktop = computed(() => width.value > 1024)
   const hideMenu = ref(true)
@@ -19,15 +19,7 @@ export const useMenuStore = defineStore('menu', () => {
   }
 
   function showHideMenu() {
-    hideMenu.value = false
-    menuShadow.value = true
-    document.addEventListener("keydown", prohibitTab)
-
-    document.querySelector(".shadow").addEventListener("click", () => {
-      hideMenu.value = true
-      menuShadow.value = false
-      document.removeEventListener("keydown", prohibitTab)
-    }, { once: true })
+    showHideToggle(hideMenu, menuShadow)
   }
 
   watchEffect(checkDevice)
