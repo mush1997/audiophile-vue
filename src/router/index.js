@@ -15,17 +15,24 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
-  scrollBehavior: (to, from, savedPosition) => savedPosition || { top: 0, behavior: 'smooth' }
+  scrollBehavior: (to, from, savedPosition) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(savedPosition || { top: 0, behavior: 'smooth' })
+      }, 150)
+    })
+  }
 })
 
 router.beforeEach(() => {
   const { hideMenu } = storeToRefs(useMenuStore())
   const { hideCart } = storeToRefs(useCartStore())
-  const { menuShadow, cartShadow } = storeToRefs(useShadowStore())
-  hideMenu.value = true
-  hideCart.value = true
-  menuShadow.value = false
-  cartShadow.value = false
+  const shadowStore = useShadowStore()
+  const { menuShadow, cartShadow } = storeToRefs(shadowStore)
+  const { hideShadow } = shadowStore
+
+  hideShadow(hideMenu, menuShadow)
+  hideShadow(hideCart, cartShadow)
 })
 
 export default router

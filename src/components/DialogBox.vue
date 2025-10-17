@@ -1,27 +1,30 @@
 <script setup>
 import MainButton from '@/components/MainButton.vue'
-import { useDialogStore } from '@/stores/dialog'
-import { storeToRefs } from 'pinia'
-import { useTemplateRef, onMounted } from 'vue'
+import { useShadowStore } from '@/stores/shadow'
+import { useTemplateRef, onMounted, onBeforeUnmount } from 'vue'
 
-const dialogStore = useDialogStore()
-const { showDialog, dialogMsg } = storeToRefs(dialogStore)
-const { closeDialog } = dialogStore
-const msgBox = useTemplateRef('msgBox')
-const closeDialogBtn = useTemplateRef('closeDialogBtn')
+const { dialogMsg } = defineProps(['dialogMsg'])
+const emit = defineEmits(['closeMsgBox'])
+const { prohibitTab } = useShadowStore()
+const closeMsgBtn = useTemplateRef('closeMsgBtn')
 
 onMounted(() => {
-    msgBox.value.style.top = (window.innerHeight - msgBox.value.clientHeight) / 2 + window.scrollY + "px"
-    closeDialogBtn.value.btn.focus()
+    document.addEventListener("keydown", prohibitTab)
+    closeMsgBtn.value.btn.focus()
+})
+
+onBeforeUnmount(() => {
+    document.removeEventListener("keydown", prohibitTab)
+    emit('closeMsgBox')
 })
 </script>
 
 <template>
     <Teleport to="body">
-        <div class="popup" :class="{ 'show': showDialog }" ref="msgBox">
+        <div class="popup" :class="{ 'show': dialogMsg.length > 0 }">
             <p>{{ dialogMsg }}</p>
             <div>
-                <MainButton @click="closeDialog" ref="closeDialogBtn">Close</MainButton>
+                <MainButton @click="$emit('closeMsgBox')" ref="closeMsgBtn">Close</MainButton>
             </div>
         </div>
     </Teleport>
@@ -35,9 +38,10 @@ onMounted(() => {
     max-width: 550px;
     border-radius: 10px;
     background-color: $white;
-    position: absolute;
+    position: fixed;
     left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
     z-index: 20;
     display: none;
 

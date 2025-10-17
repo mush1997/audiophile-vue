@@ -11,7 +11,7 @@
     height: 120px;
     display: flex;
     justify-content: center;
-    animation: load 3s infinite;
+    animation: load 2s infinite;
 
     p {
         font-size: 40px;

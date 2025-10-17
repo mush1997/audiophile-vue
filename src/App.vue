@@ -13,10 +13,10 @@ const FooterSection = defineAsyncComponent(() => import('@/components/FooterSect
   <HeaderSection v-show="$route.name !== 'Home' && $route.name !== 'Category'" />
   <router-view />
   <MenuList v-show="$route.name !== 'Home' && $route.name !== 'Checkout'" />
-  <BgShadow />
+  <BgShadow v-once />
   <ShoppingCart />
   <AsideSection v-show="$route.name !== 'Checkout'" />
-  <FooterSection />
+  <FooterSection v-once />
 </template>
 
 <style lang="scss" src="@/styles/shared-setting.scss"></style>

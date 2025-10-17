@@ -6,23 +6,18 @@ import { computed, ref, watchEffect } from 'vue'
 export const useMenuStore = defineStore('menu', () => {
   const shadowStore = useShadowStore()
   const { menuShadow } = storeToRefs(shadowStore)
-  const { showHideToggle } = shadowStore
+  const { hideShadow } = shadowStore
   const { width } = useWindowSize()
   const isDesktop = computed(() => width.value > 1024)
   const hideMenu = ref(true)
 
-  function checkDevice() {
+  function checkDeviceWidth() {
     if (isDesktop.value) {
-      hideMenu.value = true
-      menuShadow.value = false
+      hideShadow(hideMenu, menuShadow)
     }
   }
 
-  function showHideMenu() {
-    showHideToggle(hideMenu, menuShadow)
-  }
+  watchEffect(checkDeviceWidth)
 
-  watchEffect(checkDevice)
-
-  return { width, hideMenu, showHideMenu }
+  return { width, hideMenu }
 })

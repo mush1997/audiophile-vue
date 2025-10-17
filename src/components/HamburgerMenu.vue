@@ -23,7 +23,7 @@ const { hideMenu } = storeToRefs(menuStore)
         padding: 96px 40px;
         background-color: $white;
         position: absolute;
-        top: 90px;
+        top: 92px;
         left: 0;
         z-index: 10;
         animation: showing 0.8s forwards;

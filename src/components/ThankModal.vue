@@ -2,29 +2,37 @@
 import SummaryBrick from './SummaryBrick.vue'
 import MainButton from '@/components/MainButton.vue'
 import { useModalStore } from '@/stores/modal'
+import { useShadowStore } from '@/stores/shadow'
 import { storeToRefs } from 'pinia'
-import { useTemplateRef, onMounted } from 'vue'
+import { useTemplateRef, onMounted, onBeforeUnmount } from 'vue'
 
 const modalStore = useModalStore()
 const { showModal } = storeToRefs(modalStore)
 const { closeThankModal } = modalStore
-const thankModal = useTemplateRef('thankModal')
+const { prohibitTab } = useShadowStore()
 const closeModalBtn = useTemplateRef('closeModalBtn')
 
 onMounted(() => {
-    thankModal.value.style.top = (window.innerHeight - thankModal.value.clientHeight) / 2 + window.scrollY + "px"
+    document.addEventListener("keydown", prohibitTab)
     closeModalBtn.value.btn.focus()
+})
+
+onBeforeUnmount(() => {
+    document.removeEventListener("keydown", prohibitTab)
+    closeThankModal()
 })
 </script>
 
 <template>
     <Teleport to="body">
-        <section class="thankModal" :class="{ 'show': showModal }" ref="thankModal">
+        <section class="thankModal" :class="{ 'show': showModal }">
             <img src="@/assets/checkout/icon-order-confirmation.svg" alt="">
             <h2>Thank you for your order</h2>
             <p>You will receive an email confirmation shortly.</p>
             <SummaryBrick />
-            <MainButton @click="closeThankModal" ref="closeModalBtn">Back to home</MainButton>
+            <MainButton @click="closeThankModal(true); $router.push({ path: '/' }).catch(error => error)"
+                ref="closeModalBtn">
+                Back to home</MainButton>
         </section>
     </Teleport>
 </template>
@@ -40,9 +48,10 @@ onMounted(() => {
     overscroll-behavior: none;
     border-radius: 10px;
     background-color: $white;
-    position: absolute;
+    position: fixed;
     left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
     z-index: 10;
     display: none;
 

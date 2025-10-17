@@ -4,7 +4,7 @@ export function useFormValidation() {
   }
 
   function checkFormat(nameAttr, inputValue) {
-    if (inputValue === "") { return false }
+    if (inputValue === "") { return true }
 
     const regexStr = /^[a-zA-Z]+([a-zA-Z-\s]{0,})+[a-zA-Z]$/
     const regexEmail = /^([a-zA-Z0-9]{1,})+[a-zA-Z0-9._-]+@([a-zA-Z0-9]{1,})+([a-zA-Z0-9.-]{0,})+(\.[a-zA-Z]{2,})$/

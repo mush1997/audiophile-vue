@@ -1,14 +1,8 @@
 <script setup>
 import AddToCartUnit from '@/components/AddToCartUnit.vue'
-import DialogBox from '@/components/DialogBox.vue'
 import { useAssets } from '@/composables/useAssets'
-import { useDialogStore } from '@/stores/dialog'
-import { storeToRefs } from 'pinia'
 
 const { product, picSize } = defineProps(['product', 'picSize'])
-const dialogStore = useDialogStore()
-const { showDialog } = storeToRefs(dialogStore)
-const { createDialog } = dialogStore
 </script>
 
 <template>
@@ -21,10 +15,9 @@ const { createDialog } = dialogStore
             <h1>{{ product.name }}</h1>
             <p class="description">{{ product.description }}</p>
             <p class="price">{{ product.price.toLocaleString() }}</p>
-            <AddToCartUnit @showDialogBox="createDialog" :product />
+            <AddToCartUnit :product />
         </div>
     </section>
-    <DialogBox v-if="showDialog" />
 </template>
 
 <style lang="scss" scoped>

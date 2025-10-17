@@ -2,8 +2,22 @@
 import NavLinks from '@/components/NavLinks.vue'
 import { useMenuStore } from '@/stores/menu'
 import { useCartStore } from '@/stores/cart'
-const { showHideMenu } = useMenuStore()
-const { showHideCart } = useCartStore()
+import { useShadowStore } from '@/stores/shadow'
+import { storeToRefs } from 'pinia'
+
+const { hideMenu } = storeToRefs(useMenuStore())
+const { hideCart } = storeToRefs(useCartStore())
+const shadowStore = useShadowStore()
+const { menuShadow, cartShadow } = storeToRefs(shadowStore)
+const { showHideToggle } = shadowStore
+
+function showHideMenu() {
+    showHideToggle(hideMenu, menuShadow)
+}
+
+function showHideCart() {
+    showHideToggle(hideCart, cartShadow)
+}
 </script>
 
 <template>

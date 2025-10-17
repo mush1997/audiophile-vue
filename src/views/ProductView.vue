@@ -17,7 +17,7 @@ const currentProduct = route.params.productName
 const product = computed(() => productData.value.length === 0 ? [] : productData.value.find(data => data.slug === currentProduct))
 
 // getProductsData()
-productData.value.length === 0 ? setTimeout(() => getProductsData(), 3000) : ''
+productData.value.length === 0 ? setTimeout(() => getProductsData(), 2000) : ''
 </script>
 
 <template>

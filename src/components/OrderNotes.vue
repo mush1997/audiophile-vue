@@ -1,37 +1,34 @@
 <script setup>
 import MainButton from '@/components/MainButton.vue'
 import ThankModal from '@/components/ThankModal.vue'
-import DialogBox from './DialogBox.vue'
+import DialogBox from '@/components/DialogBox.vue'
+import { useDialog } from '@/composables/useDialog'
 import { useModalStore } from '@/stores/modal'
 import { useCartStore } from '@/stores/cart'
-import { useDialogStore } from '@/stores/dialog'
 import { storeToRefs } from 'pinia'
-// import { ref } from 'vue'
 
+const { dialogMsg, showDialog, createDialog, closeDialog } = useDialog()
 const modalStore = useModalStore()
 const { showModal } = storeToRefs(modalStore)
 const { showThankModal } = useModalStore()
 const { total, shipping, vat, grandTotal } = storeToRefs(useCartStore())
-const dialogStore = useDialogStore()
-const { showDialog } = storeToRefs(dialogStore)
-const { createDialog } = dialogStore
-// const showDialog = ref(false)
 
 function validateForm() {
     const textInputs = Array.from(document.querySelectorAll(".field"))
     const blanks = textInputs.filter(field => !field.classList.contains("error") && field.closest(".fieldSet").style.display !== "none" && field.querySelector("input").value === "")
 
-    if (blanks.length === 0) {
-        showThankModal()
-    } else {
-        blanks.forEach(blank => {
-            blank.classList.add("error")
-            blank.querySelector(".warning").style.display = "block"
-        })
+    showThankModal()
 
-        createDialog('Please make sure that you fill in all the blanks in the correct format.')
-        // showDialog.value = true
-    }
+    // if (blanks.length === 0 && !document.querySelectorAll(".error")) {
+    //     showThankModal()
+    // } else {
+    //     blanks.forEach(blank => {
+    //         blank.classList.add("error")
+    //         blank.querySelector(".warning").style.display = "block"
+    //     })
+
+    //     createDialog('Please make sure that you fill in all the blanks in the correct format.')
+    // }
 }
 </script>
 
@@ -44,7 +41,7 @@ function validateForm() {
         <MainButton @click.prevent="validateForm">Continue & pay</MainButton>
     </div>
     <ThankModal v-if="showModal" />
-    <DialogBox v-if="showDialog" />
+    <DialogBox v-if="showDialog" @closeMsgBox="closeDialog" :dialogMsg />
 </template>
 
 <style lang="scss" scoped>

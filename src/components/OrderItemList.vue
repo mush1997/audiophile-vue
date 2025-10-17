@@ -5,12 +5,12 @@ const { cartList } = defineProps(['cartList'])
 </script>
 
 <template>
-    <div class="item" v-for="item in cartList" :key="item.name">
+    <div class="item" :class="$attrs.class" v-for="item in cartList" :key="item.name">
         <div>
             <img :src="useAssets(`/src/assets/cart/image-${item.slug}.jpg`)" :alt="item.name">
             <div>
                 <p>{{ item.name }}</p>
-                <p>{{ item.price.toLocaleString() }}</p>
+                <p>$ {{ item.price.toLocaleString() }}</p>
             </div>
         </div>
         <slot :item></slot>
@@ -45,6 +45,12 @@ const { cartList } = defineProps(['cartList'])
                 opacity: 0.5;
             }
         }
+    }
+
+    :slotted(.amount) {
+        margin-left: 24px;
+        font-weight: bold;
+        opacity: 0.5;
     }
 }
 

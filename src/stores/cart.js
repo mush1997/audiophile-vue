@@ -1,13 +1,8 @@
-import { defineStore, storeToRefs } from 'pinia'
-import { useShadowStore } from '@/stores/shadow'
+import { defineStore } from 'pinia'
 import { useLocalStorage } from '@vueuse/core'
 import { ref, computed, readonly } from 'vue'
 
 export const useCartStore = defineStore('cart', () => {
-  const shadowStore = useShadowStore()
-  const { cartShadow } = storeToRefs(shadowStore)
-  const { showHideToggle } = shadowStore
-
   const cartList = useLocalStorage('cartList', [])
   const hideCart = ref(true)
   const emptyCart = computed(() => cartList.value.length === 0)
@@ -15,10 +10,6 @@ export const useCartStore = defineStore('cart', () => {
   const shipping = ref(50)
   const vat = computed(() => Math.round(total.value * 0.2))
   const grandTotal = computed(() => Math.round(total.value * 1.2) + shipping.value)
-
-  function showHideCart() {
-    showHideToggle(hideCart, cartShadow)
-  }
 
   function addItem(newItem, quantity) {
     const index = cartList.value.findIndex(item => item["name"] === newItem.name)
@@ -38,9 +29,9 @@ export const useCartStore = defineStore('cart', () => {
     cartList.value.splice(index, 1)
   }
 
-  function $reset() {
+  function resetCart() {
     cartList.value = []
   }
 
-  return { cartList: readonly(cartList), hideCart, emptyCart, total, shipping, vat, grandTotal, showHideCart, addItem, plusItem, minusItem, removeItem, $reset }
+  return { cartList: readonly(cartList), hideCart, emptyCart, total, shipping, vat, grandTotal, addItem, plusItem, minusItem, removeItem, resetCart }
 })

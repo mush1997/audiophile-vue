@@ -1,10 +1,12 @@
 <script setup>
 import MainButton from '@/components/MainButton.vue'
+import DialogBox from '@/components/DialogBox.vue'
+import { useDialog } from '@/composables/useDialog'
 import { useCartStore } from '@/stores/cart'
 import { ref } from 'vue'
 
 const { product } = defineProps(['product'])
-const emit = defineEmits(['showDialogBox'])
+const { dialogMsg, showDialog, createDialog, closeDialog } = useDialog()
 const { addItem } = useCartStore()
 const quantity = ref(1)
 
@@ -19,7 +21,7 @@ function editQuantity(operator) {
 function addToCart(product) {
     const item = { "name": product.name, "slug": product.slug, "price": product.price, "amount": quantity.value }
     addItem(item, quantity.value)
-    emit('showDialogBox', 'Added successfully!')
+    createDialog('Added successfully!')
     quantity.value = 1
 }
 </script>
@@ -33,6 +35,7 @@ function addToCart(product) {
         </p>
         <MainButton @click="addToCart(product)">Add to cart</MainButton>
     </div>
+    <DialogBox v-if="showDialog" @closeMsgBox="closeDialog" :dialogMsg />
 </template>
 
 <style lang="scss" scoped>

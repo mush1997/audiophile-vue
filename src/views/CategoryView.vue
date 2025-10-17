@@ -17,7 +17,7 @@ const currentCategory = route.params.categoryName
 const products = computed(() => productData.value.length === 0 ? [] : productData.value.filter(data => data.category === currentCategory).reverse())
 
 // getProductsData()
-productData.value.length === 0 ? setTimeout(() => getProductsData(), 3000) : ''
+productData.value.length === 0 ? setTimeout(() => getProductsData(), 2000) : ''
 </script>
 
 <template>

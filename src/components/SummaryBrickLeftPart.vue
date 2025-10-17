@@ -1,23 +1,22 @@
 <script setup>
 import OrderItemList from './OrderItemList.vue'
-
 import { useCartStore } from '@/stores/cart'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
 
 const { cartList } = storeToRefs(useCartStore())
-const showLess = ref(cartList.value.length > 1)
+const isCollapsed = ref(cartList.value.length > 1)
 </script>
 
 <template>
     <div class="leftPart" :class="{ 'centered': cartList.length === 1 }">
-        <OrderItemList :class="{ 'show': !showLess }" v-slot="{ item }" :cartList>
+        <OrderItemList v-slot="{ item }" :class="{ 'show': !isCollapsed }" :cartList>
             <p class="amount">x{{ item.amount }}</p>
-        </OrderItemList> />
-        <div class="dropdown" :class="{ 'hide': cartList.length === 1 }">
-            <p v-show="showLess" @click="showLess = !showLess">and <span>{{ cartList.length - 1 }}</span> other item(s)
-            </p>
-            <p v-show="!showLess" @click="showLess = !showLess">View less</p>
+        </OrderItemList>
+        <div class="dropdown" v-if="cartList.length > 1">
+            <p v-show="isCollapsed" @click="isCollapsed = !isCollapsed">and <span>{{ cartList.length - 1
+            }}</span> other item(s)</p>
+            <p v-show="!isCollapsed" @click="isCollapsed = !isCollapsed">View less</p>
         </div>
     </div>
 </template>
@@ -46,18 +45,16 @@ const showLess = ref(cartList.value.length > 1)
 }
 
 :deep(.item) {
+    margin-top: 0;
     padding: 12px 0;
-    width: 100%;
     min-width: 300px;
     display: none;
 
     &>div {
         width: 85%;
         display: inline-flex;
-        align-items: center;
 
         img {
-            margin-right: 16px;
             width: 50px;
         }
 
@@ -67,17 +64,10 @@ const showLess = ref(cartList.value.length > 1)
                 line-height: 20px;
                 opacity: 1;
             }
-
-            p:nth-child(2) {
-                font-size: 14px;
-            }
         }
     }
 
     .amount {
-        margin-left: 24px;
-        font-weight: bold;
-        opacity: 0.5;
         display: inline-block;
         vertical-align: top;
     }
@@ -87,7 +77,7 @@ const showLess = ref(cartList.value.length > 1)
     display: block;
 }
 
-:deep(.item):not(:first-of-type).show {
+:deep(.item).show:not(:first-of-type) {
     display: block;
     animation: showing 0.8s forwards;
 }

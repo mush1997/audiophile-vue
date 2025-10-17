@@ -2,28 +2,39 @@
 import OrderItemList from '@/components/OrderItemList.vue'
 import CartQuantityUnit from '@/components/CartQuantityUnit.vue'
 import MainButton from '@/components/MainButton.vue'
-import DialogBox from './DialogBox.vue'
-
+import DialogBox from '@/components/DialogBox.vue'
+import { useDialog } from '@/composables/useDialog'
 import { useCartStore } from '@/stores/cart'
-import { useDialogStore } from '@/stores/dialog'
+import { useShadowStore } from '@/stores/shadow'
 import { storeToRefs } from 'pinia'
+import { useTemplateRef, onMounted, watch } from 'vue'
 
+const { dialogMsg, showDialog, createDialog, closeDialog } = useDialog()
 const cartStore = useCartStore()
 const { cartList, hideCart, emptyCart, total } = storeToRefs(cartStore)
-const { $reset } = cartStore
-const dialogStore = useDialogStore()
-const { showDialog } = storeToRefs(dialogStore)
-const { createDialog } = dialogStore
+const { resetCart } = cartStore
+
+const shadowStore = useShadowStore()
+const { cartShadow } = storeToRefs(shadowStore)
+const { hideShadow } = shadowStore
+const cart = useTemplateRef('cart')
 
 function removeAll() {
     if (emptyCart.value) { return }
-    $reset()
+    hideShadow(hideCart, cartShadow)
     createDialog('Your cart will be empty.')
+    resetCart()
 }
+
+onMounted(() => {
+    watch(cartShadow, () => {
+        cart.value.scrollTop = 0
+    })
+})
 </script>
 
 <template>
-    <section class="cart" :class="{ 'hide': hideCart }">
+    <section class="cart" :class="{ 'hide': hideCart }" ref="cart">
         <div class="cartTitle">
             <p>Cart (<span>{{ cartList.length || 0 }}</span>)</p>
             <p @click="removeAll">Remove All</p>
@@ -39,7 +50,7 @@ function removeAll() {
             </div>
         </template>
     </section>
-    <DialogBox v-if="showDialog" />
+    <DialogBox v-if="showDialog" @closeMsgBox="closeDialog" :dialogMsg />
 </template>
 
 <style lang="scss" scoped>
@@ -154,16 +165,6 @@ function removeAll() {
         min-width: auto;
         max-width: 480px;
         right: 40px;
-    }
-
-    :deep(.item) {
-        &>div {
-            width: 78%;
-
-            img {
-                width: 90px;
-            }
-        }
     }
 }
 
