@@ -5,8 +5,7 @@
     <main>
         <div>
             <h1>Oops! We cannot find the page you required.</h1>
-            <p>Please click <router-link to="/">here</router-link> to homepage or check our products in the categories
-                below!</p>
+            <p>Please click <router-link to="/">here</router-link> to homepage or check our products below!</p>
         </div>
     </main>
 </template>

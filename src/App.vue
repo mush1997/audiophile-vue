@@ -1,22 +1,28 @@
 <script setup>
-import { defineAsyncComponent } from 'vue'
-
-const HeaderSection = defineAsyncComponent(() => import('@/components/HeaderSection.vue'))
-const MenuList = defineAsyncComponent(() => import('@/components/MenuList.vue'))
-const BgShadow = defineAsyncComponent(() => import('@/components/BgShadow.vue'))
-const ShoppingCart = defineAsyncComponent(() => import('@/components/ShoppingCart.vue'))
-const AsideSection = defineAsyncComponent(() => import('@/components/AsideSection.vue'))
-const FooterSection = defineAsyncComponent(() => import('@/components/FooterSection.vue'))
+import BasicLayout from './components/BasicLayout.vue'
+import LoadingBar from './components/LoadingBar.vue'
 </script>
 
 <template>
-  <HeaderSection v-show="$route.name !== 'Home' && $route.name !== 'Category'" />
-  <router-view />
-  <MenuList v-show="$route.name !== 'Home' && $route.name !== 'Checkout'" />
-  <BgShadow v-once />
-  <ShoppingCart />
-  <AsideSection v-show="$route.name !== 'Checkout'" />
-  <FooterSection v-once />
+  <Suspense>
+    <template #default>
+      <BasicLayout />
+    </template>
+    <template #fallback>
+      <LoadingBar />
+    </template>
+  </Suspense>
 </template>
 
 <style lang="scss" src="@/styles/shared-setting.scss"></style>
+
+<style scoped>
+.loading {
+  height: 100vh;
+}
+
+.loading :deep(p) {
+  font-size: 48px;
+  line-height: 48px;
+}
+</style>

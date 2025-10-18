@@ -22,7 +22,7 @@ const cart = useTemplateRef('cart')
 function removeAll() {
     if (emptyCart.value) { return }
     hideShadow(hideCart, cartShadow)
-    createDialog('Your cart will be empty.')
+    createDialog('Your cart is empty now.')
     resetCart()
 }
 

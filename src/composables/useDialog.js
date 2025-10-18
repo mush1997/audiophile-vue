@@ -8,7 +8,6 @@ export function useDialog() {
   const showDialog = ref(false)
 
   function createDialog(msg) {
-    console.log(msg)
     dialogMsg.value = msg
     alertShadow.value = true
     showDialog.value = true

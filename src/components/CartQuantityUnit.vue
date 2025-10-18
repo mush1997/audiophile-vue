@@ -20,9 +20,10 @@ function plusInCart(itemName, itemAmount) {
 
 function minusInCart(itemName, itemAmount) {
     itemAmount === 1 ? removeItem(itemName) : minusItem(itemName, itemAmount)
+
     if (emptyCart.value) {
         hideShadow(hideCart, cartShadow)
-        emit('showDialogBox', 'Your cart will be empty.')
+        emit('showDialogBox', 'Your cart is empty now.')
     }
 }
 </script>

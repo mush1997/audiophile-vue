@@ -11,6 +11,7 @@
     height: 120px;
     display: flex;
     justify-content: center;
+    align-items: center;
     animation: load 2s infinite;
 
     p {

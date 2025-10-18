@@ -1,8 +1,10 @@
 <script setup>
+import { defineAsyncComponent } from 'vue'
 import LoadingBar from '@/components/LoadingBar.vue'
 import NoDataText from '@/components/NoDataText.vue'
 import ProductIntroduction from '@/components/ProductIntroduction.vue'
-import RecommendedProucts from '@/components/RecommendedProucts.vue'
+const RecommendedProucts = defineAsyncComponent(() => import('@/components/RecommendedProucts.vue'))
+// import RecommendedProucts from '@/components/RecommendedProucts.vue'
 
 import { useDataStore } from '@/stores/data'
 import { storeToRefs } from 'pinia'
@@ -13,11 +15,11 @@ const dataStore = useDataStore()
 const { productData, finished } = storeToRefs(dataStore)
 const { getProductsData } = dataStore
 const route = useRoute()
-const currentProduct = route.params.productName
-const product = computed(() => productData.value.length === 0 ? [] : productData.value.find(data => data.slug === currentProduct))
+const currentProduct = computed(() => route.params.productName)
+const product = computed(() => productData.value.length === 0 ? [] : productData.value.find(data => data.slug === currentProduct.value))
 
-// getProductsData()
-productData.value.length === 0 ? setTimeout(() => getProductsData(), 2000) : ''
+if (productData.value.length === 0) { getProductsData() }
+// if (productData.value.length === 0) { setTimeout(() => getProductsData(), 2000) }
 </script>
 
 <template>
