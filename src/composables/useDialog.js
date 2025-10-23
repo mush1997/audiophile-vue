@@ -1,5 +1,5 @@
-import { storeToRefs } from 'pinia'
 import { useShadowStore } from '@/stores/shadow'
+import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
 
 export function useDialog() {
@@ -15,9 +15,9 @@ export function useDialog() {
 
   function closeDialog() {
     if (!showDialog.value) { return }
-    dialogMsg.value = ''
-    alertShadow.value = false
     showDialog.value = false
+    alertShadow.value = false
+    dialogMsg.value = ''
   }
 
   return { dialogMsg, showDialog, createDialog, closeDialog }

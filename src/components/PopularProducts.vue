@@ -1,32 +1,43 @@
 <script setup>
 import MainButton from '@/components/MainButton.vue'
+import { useAssets } from '@/composables/useAssets'
+import { useSizeStore } from '@/stores/size'
+import { storeToRefs } from 'pinia'
+import { computed } from 'vue'
 
-const products = [
+const { picSize } = storeToRefs(useSizeStore())
+
+const products = computed(() => [
     {
         slug: "zx9-speaker",
         name: "ZX9 Speaker",
         description: "Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.",
-        buttonClass: "blackBtn"
+        buttonClass: "blackBtn",
+        bgImg: [useAssets(`/src/assets/home/${picSize.value}/image-speaker-zx9.png`), ("/src/assets/home/desktop/pattern-circles.svg")]
     },
     {
         slug: "zx7-speaker",
         name: "ZX7 Speaker",
         description: "Stream high quality sound wirelessly with minimal to no loss. The ZX7 speaker uses high-end audiophile components that represents the top of the line powered speakers for home or studio use.",
-        buttonClass: "hollowBtn"
+        buttonClass: "hollowBtn",
+        bgImg: [useAssets(`/src/assets/home/${picSize.value}/image-speaker-zx7.jpg`)]
     },
     {
         slug: "yx1-earphones",
         name: "YX1 Earphones",
         description: "Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature.",
-        buttonClass: "hollowBtn"
+        buttonClass: "hollowBtn",
+        bgImg: [useAssets(`/src/assets/home/${picSize.value}/image-earphones-yx1.jpg`)]
     }
-]
+])
 </script>
 
 <template>
     <template v-for="(product, index) in products" :key="product.name">
-        <section v-if="index === products.length - 1" :class="`item${index + 1}Pic`"></section>
-        <section :class="`item${index + 1}`">
+        <section v-if="index === products.length - 1" :class="`item${index + 1}Pic`"
+            :style="{ backgroundImage: `url(${product.bgImg[0]})` }"></section>
+        <section :class="`item${index + 1}`"
+            :style="index === products.length - 1 ? '' : { backgroundImage: `url(${product.bgImg[0]}), url(${product.bgImg[1]})` }">
             <div>
                 <h2>{{ product.name }}</h2>
                 <p v-show="index === 0"> {{ product.description }}</p>
@@ -55,7 +66,6 @@ section {
 .item1 {
     grid-area: 1/1/2/3;
     background-color: $primary;
-    background-image: url("@/assets/home/desktop/image-speaker-zx9.png"), url("@/assets/home/desktop/pattern-circles.svg");
     background-position: left 20% bottom -10px, left -10% top 10%;
     background-size: auto 75%, 68% auto;
 
@@ -89,14 +99,12 @@ section {
 
 .item2 {
     grid-area: 2/1/3/3;
-    background-image: url("@/assets/home/desktop/image-speaker-zx7.jpg");
     background-position: right top;
     background-size: cover;
 }
 
 .item3Pic {
     grid-area: 3/1/4/2;
-    background-image: url("@/assets/home/desktop/image-earphones-yx1.jpg");
     background-position: center;
     background-size: cover;
 }
@@ -129,7 +137,6 @@ section {
     }
 
     .item1 {
-        background-image: url("@/assets/home/tablet/image-speaker-zx9.png"), url("@/assets/home/desktop/pattern-circles.svg");
         background-position: center top 40px, center top -40px;
         background-size: 30% auto, 110% auto;
         position: relative;
@@ -150,12 +157,7 @@ section {
     }
 
     .item2 {
-        background-image: url("@/assets/home/tablet/image-speaker-zx7.jpg");
         background-position: right bottom;
-    }
-
-    .item3Pic {
-        background-image: url("@/assets/home/tablet/image-earphones-yx1.jpg");
     }
 }
 
@@ -184,7 +186,6 @@ section {
 
     .item1 {
         grid-area: 1/1/2/2;
-        background-image: url("@/assets/home/mobile/image-speaker-zx9.png"), url("@/assets/home/desktop/pattern-circles.svg");
 
         div {
             padding: 24px;
@@ -199,13 +200,11 @@ section {
 
     .item2 {
         grid-area: 2/1/3/2;
-        background-image: url("@/assets/home/mobile/image-speaker-zx7.jpg");
         background-position: right bottom 20%;
     }
 
     .item3Pic {
         grid-area: 3/1/4/2;
-        background-image: url("@/assets/home/mobile/image-earphones-yx1.jpg");
     }
 
     .item3 {

@@ -1,5 +1,5 @@
-import { defineStore, storeToRefs } from 'pinia'
 import { useMenuStore } from '@/stores/menu'
+import { defineStore, storeToRefs } from 'pinia'
 import { computed } from 'vue'
 
 export const useSizeStore = defineStore('size', () => {

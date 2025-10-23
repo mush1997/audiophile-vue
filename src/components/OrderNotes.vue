@@ -13,7 +13,7 @@ const { dialogMsg, showDialog, createDialog, closeDialog } = useDialog()
 const modalStore = useModalStore()
 const { showModal } = storeToRefs(modalStore)
 const { showThankModal } = useModalStore()
-const { total, shipping, vat, grandTotal } = storeToRefs(useCartStore())
+const { total, shipping, VAT, grandTotal } = storeToRefs(useCartStore())
 
 function validateForm() {
     const textInputs = Array.from(document.querySelectorAll(".field"))
@@ -38,7 +38,7 @@ function validateForm() {
     <div class="notes">
         <p><span>Total</span><span class="finalTotal">$ {{ total.toLocaleString() }}</span></p>
         <p><span>Shipping</span><span class="shippingFee">$ {{ shipping.toLocaleString() }}</span></p>
-        <p><span>VAT(20%)</span><span class="vat">$ {{ vat.toLocaleString() }}</span></p>
+        <p><span>VAT(20%)</span><span class="vat">$ {{ VAT.toLocaleString() }}</span></p>
         <p><span>Grand total</span><span class="grandTotal">$ {{ grandTotal.toLocaleString() }}</span></p>
         <MainButton @click.prevent="validateForm">Continue & pay</MainButton>
     </div>

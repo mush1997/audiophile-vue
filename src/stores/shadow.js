@@ -28,6 +28,16 @@ export const useShadowStore = defineStore('shadow', () => {
     }
   }
 
+  function showHideToggle(hideState, shadow) {
+    shadow.value = true
+    hideState.value = false
+    prohibitTabOn()
+
+    const fn = hideShadow.bind(null, hideState, shadow, true)
+    listenerNotes.set('clickFn', fn)
+    document.querySelector(".shadow").addEventListener("click", fn, { once: true })
+  }
+
   function hideShadow(hideState, shadow, clicked = false) {
     const fn = listenerNotes.get('clickFn')
 
@@ -47,15 +57,5 @@ export const useShadowStore = defineStore('shadow', () => {
     }
   }
 
-  function showHideToggle(hideState, shadow) {
-    hideState.value = false
-    shadow.value = true
-    prohibitTabOn()
-
-    const fn = hideShadow.bind(null, hideState, shadow, true)
-    listenerNotes.set('clickFn', fn)
-    document.querySelector(".shadow").addEventListener("click", fn, { once: true })
-  }
-
-  return { menuShadow, cartShadow, alertShadow, modalShadow, prohibitTab, hideShadow, showHideToggle }
+  return { menuShadow, cartShadow, alertShadow, modalShadow, prohibitTab, showHideToggle, hideShadow }
 })

@@ -5,9 +5,8 @@ import MainButton from '@/components/MainButton.vue'
 
 import { useDialog } from '@/composables/useDialog'
 import { useCartStore } from '@/stores/cart'
-import { useShadowStore } from '@/stores/shadow'
 import { storeToRefs } from 'pinia'
-import { defineAsyncComponent, useTemplateRef, onMounted, watch } from 'vue'
+import { defineAsyncComponent, useTemplateRef, onMounted, watchEffect, nextTick } from 'vue'
 
 const DialogBox = defineAsyncComponent(() => import('@/components/DialogBox.vue'))
 
@@ -15,21 +14,23 @@ const { dialogMsg, showDialog, createDialog, closeDialog } = useDialog()
 const cartStore = useCartStore()
 const { cartList, hideCart, emptyCart, total } = storeToRefs(cartStore)
 const { resetCart } = cartStore
-const shadowStore = useShadowStore()
-const { cartShadow } = storeToRefs(shadowStore)
-const { hideShadow } = shadowStore
 const cart = useTemplateRef('cart')
 
 function removeAll() {
     if (emptyCart.value) { return }
-    hideShadow(hideCart, cartShadow)
-    createDialog('Your cart is empty now.')
+    createDialog('Your cart will be empty.')
     resetCart()
 }
 
 onMounted(() => {
-    watch(cartShadow, () => {
-        cart.value.scrollTop = 0
+    watchEffect(() => {
+        if (hideCart.value) {
+            closeDialog()
+        } else {
+            nextTick(() => {
+                cart.value.scrollTop = 0
+            })
+        }
     })
 })
 </script>
@@ -46,7 +47,7 @@ onMounted(() => {
                 <CartQuantityUnit @showDialogBox="createDialog" :item />
             </OrderItemList>
             <div class="totalSum">
-                <p><span>Total</span><span class="totalNum">{{ total.toLocaleString() }}</span></p>
+                <p><span>Total</span><span class="totalNum">$ {{ total.toLocaleString() }}</span></p>
                 <MainButton @click="$router.push({ path: '/checkout' }).catch(error => error)">Checkout</MainButton>
             </div>
         </template>

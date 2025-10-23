@@ -54,7 +54,7 @@ onBeforeUnmount(() => {
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
-    display: none;
+    visibility: hidden;
 
     &>img {
         margin-bottom: 32px;
@@ -77,7 +77,7 @@ onBeforeUnmount(() => {
 }
 
 .show {
-    display: block;
+    visibility: visible;
     animation: showing 0.8s forwards;
 }
 

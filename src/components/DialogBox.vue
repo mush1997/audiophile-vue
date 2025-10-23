@@ -44,7 +44,7 @@ onBeforeUnmount(() => {
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 20;
-    display: none;
+    visibility: hidden;
 
     div {
         text-align: right;
@@ -62,7 +62,7 @@ onBeforeUnmount(() => {
 }
 
 .show {
-    display: block;
+    visibility: visible;
     animation: showing 0.4s forwards;
 }
 

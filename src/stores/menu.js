@@ -1,5 +1,5 @@
-import { defineStore, storeToRefs } from 'pinia'
 import { useShadowStore } from '@/stores/shadow'
+import { defineStore, storeToRefs } from 'pinia'
 import { useWindowSize } from '@vueuse/core'
 import { computed, ref, watchEffect } from 'vue'
 

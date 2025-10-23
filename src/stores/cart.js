@@ -8,7 +8,7 @@ export const useCartStore = defineStore('cart', () => {
   const emptyCart = computed(() => cartList.value.length === 0)
   const total = computed(() => cartList.value.map(item => item.price * item.amount).reduce((pre, next) => pre + next, 0))
   const shipping = ref(50)
-  const vat = computed(() => Math.round(total.value * 0.2))
+  const VAT = computed(() => Math.round(total.value * 0.2))
   const grandTotal = computed(() => Math.round(total.value * 1.2) + shipping.value)
 
   function addItem(newItem, quantity) {
@@ -33,5 +33,5 @@ export const useCartStore = defineStore('cart', () => {
     cartList.value = []
   }
 
-  return { cartList: readonly(cartList), hideCart, emptyCart, total, shipping, vat, grandTotal, addItem, plusItem, minusItem, removeItem, resetCart }
+  return { cartList: readonly(cartList), hideCart, emptyCart, total, shipping, VAT, grandTotal, addItem, plusItem, minusItem, removeItem, resetCart }
 })

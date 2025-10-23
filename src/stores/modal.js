@@ -1,6 +1,6 @@
-import { defineStore, storeToRefs } from 'pinia'
 import { useCartStore } from '@/stores/cart'
 import { useShadowStore } from '@/stores/shadow'
+import { defineStore, storeToRefs } from 'pinia'
 import { ref } from 'vue'
 
 export const useModalStore = defineStore('modal', () => {
@@ -9,15 +9,15 @@ export const useModalStore = defineStore('modal', () => {
   const showModal = ref(false)
 
   function showThankModal() {
-    showModal.value = true
     modalShadow.value = true
+    showModal.value = true
   }
 
   function closeThankModal(finished) {
     if (!showModal.value) { return }
-    if (finished) { resetCart() }
     showModal.value = false
     modalShadow.value = false
+    if (finished) { resetCart() }
   }
 
   return { showModal, showThankModal, closeThankModal }
