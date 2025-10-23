@@ -1,8 +1,7 @@
 <script setup>
-import CustomerInfo from '@/components/CustomerInfo.vue';
-import ShippingInfo from '@/components/ShippingInfo.vue';
-import PaymentInfo from '@/components/PaymentInfo.vue';
-
+import CustomerInfo from '@/components/CustomerInfo.vue'
+import ShippingInfo from '@/components/ShippingInfo.vue'
+import PaymentInfo from '@/components/PaymentInfo.vue'
 </script>
 
 <template>

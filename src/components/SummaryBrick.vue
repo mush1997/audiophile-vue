@@ -1,6 +1,6 @@
 <script setup>
-import SummaryBrickLeftPart from './SummaryBrickLeftPart.vue';
-import SummaryBrickRightPart from './SummaryBrickRightPart.vue';
+import SummaryBrickLeftPart from '@/components/SummaryBrickLeftPart.vue'
+import SummaryBrickRightPart from '@/components/SummaryBrickRightPart.vue'
 </script>
 
 <template>

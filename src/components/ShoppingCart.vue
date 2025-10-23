@@ -2,18 +2,19 @@
 import OrderItemList from '@/components/OrderItemList.vue'
 import CartQuantityUnit from '@/components/CartQuantityUnit.vue'
 import MainButton from '@/components/MainButton.vue'
-import DialogBox from '@/components/DialogBox.vue'
+
 import { useDialog } from '@/composables/useDialog'
 import { useCartStore } from '@/stores/cart'
 import { useShadowStore } from '@/stores/shadow'
 import { storeToRefs } from 'pinia'
-import { useTemplateRef, onMounted, watch } from 'vue'
+import { defineAsyncComponent, useTemplateRef, onMounted, watch } from 'vue'
+
+const DialogBox = defineAsyncComponent(() => import('@/components/DialogBox.vue'))
 
 const { dialogMsg, showDialog, createDialog, closeDialog } = useDialog()
 const cartStore = useCartStore()
 const { cartList, hideCart, emptyCart, total } = storeToRefs(cartStore)
 const { resetCart } = cartStore
-
 const shadowStore = useShadowStore()
 const { cartShadow } = storeToRefs(shadowStore)
 const { hideShadow } = shadowStore

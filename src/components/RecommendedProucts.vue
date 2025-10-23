@@ -1,8 +1,7 @@
 <script setup>
 import MainButton from '@/components/MainButton.vue'
-
-import { useSizeStore } from '@/stores/size'
 import { useAssets } from '@/composables/useAssets'
+import { useSizeStore } from '@/stores/size'
 import { storeToRefs } from 'pinia'
 
 const { otherItems } = defineProps(['otherItems'])

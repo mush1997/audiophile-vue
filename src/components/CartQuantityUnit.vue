@@ -9,7 +9,6 @@ const emit = defineEmits(['showDialogBox'])
 const cartStore = useCartStore()
 const { hideCart, emptyCart } = storeToRefs(cartStore)
 const { plusItem, minusItem, removeItem } = cartStore
-
 const shadowStore = useShadowStore()
 const { cartShadow } = storeToRefs(shadowStore)
 const { hideShadow } = shadowStore

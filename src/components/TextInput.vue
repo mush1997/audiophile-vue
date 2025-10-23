@@ -11,6 +11,7 @@ const { name, inputTitle, placeholder, field, maxlength } = defineProps({
 })
 
 const emit = defineEmits(['checkInput'])
+
 const { formatCardNumber } = useFormValidation()
 const isEmpty = computed(() => field.empty)
 const isInvalid = computed(() => field.invalid)

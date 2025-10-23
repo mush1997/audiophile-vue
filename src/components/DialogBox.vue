@@ -5,6 +5,7 @@ import { useTemplateRef, onMounted, onBeforeUnmount } from 'vue'
 
 const { dialogMsg } = defineProps(['dialogMsg'])
 const emit = defineEmits(['closeMsgBox'])
+
 const { prohibitTab } = useShadowStore()
 const closeMsgBtn = useTemplateRef('closeMsgBtn')
 

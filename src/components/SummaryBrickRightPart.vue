@@ -1,6 +1,7 @@
 <script setup>
 import { useCartStore } from '@/stores/cart'
 import { storeToRefs } from 'pinia'
+
 const { grandTotal } = storeToRefs(useCartStore())
 </script>
 

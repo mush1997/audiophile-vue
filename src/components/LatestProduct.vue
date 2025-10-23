@@ -1,6 +1,6 @@
 <script setup>
-import { inject } from 'vue'
 import MainButton from '@/components/MainButton.vue'
+import { inject } from 'vue'
 
 const product = inject('product')
 </script>

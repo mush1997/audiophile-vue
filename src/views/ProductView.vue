@@ -1,15 +1,14 @@
 <script setup>
-import { defineAsyncComponent } from 'vue'
 import LoadingBar from '@/components/LoadingBar.vue'
-import NoDataText from '@/components/NoDataText.vue'
 import ProductIntroduction from '@/components/ProductIntroduction.vue'
-const RecommendedProucts = defineAsyncComponent(() => import('@/components/RecommendedProucts.vue'))
-// import RecommendedProucts from '@/components/RecommendedProucts.vue'
 
 import { useDataStore } from '@/stores/data'
 import { storeToRefs } from 'pinia'
 import { useRoute } from 'vue-router'
-import { computed } from 'vue'
+import { defineAsyncComponent, computed } from 'vue'
+
+const NoDataText = defineAsyncComponent(() => import('@/components/NoDataText.vue'))
+const RecommendedProucts = defineAsyncComponent(() => import('@/components/RecommendedProucts.vue'))
 
 const dataStore = useDataStore()
 const { productData, finished } = storeToRefs(dataStore)

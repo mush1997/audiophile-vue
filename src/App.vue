@@ -1,6 +1,6 @@
 <script setup>
-import BasicLayout from './components/BasicLayout.vue'
-import LoadingBar from './components/LoadingBar.vue'
+import BasicLayout from '@/components/BasicLayout.vue'
+import LoadingBar from '@/components/LoadingBar.vue'
 </script>
 
 <template>

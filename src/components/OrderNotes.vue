@@ -1,11 +1,13 @@
 <script setup>
 import MainButton from '@/components/MainButton.vue'
-import ThankModal from '@/components/ThankModal.vue'
-import DialogBox from '@/components/DialogBox.vue'
 import { useDialog } from '@/composables/useDialog'
 import { useModalStore } from '@/stores/modal'
 import { useCartStore } from '@/stores/cart'
 import { storeToRefs } from 'pinia'
+import { defineAsyncComponent } from 'vue'
+
+const ThankModal = defineAsyncComponent(() => import('@/components/ThankModal.vue'))
+const DialogBox = defineAsyncComponent(() => import('@/components/DialogBox.vue'))
 
 const { dialogMsg, showDialog, createDialog, closeDialog } = useDialog()
 const modalStore = useModalStore()

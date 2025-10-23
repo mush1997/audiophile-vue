@@ -3,7 +3,6 @@ import HeaderSection from '@/components/HeaderSection.vue'
 import LatestProduct from '@/components/LatestProduct.vue'
 import MenuList from '@/components/MenuList.vue'
 import PopularProducts from '@/components/PopularProducts.vue'
-
 import { provide } from 'vue'
 
 const product = {

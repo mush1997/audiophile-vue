@@ -1,11 +1,12 @@
 <script setup>
 import MainButton from '@/components/MainButton.vue'
-import DialogBox from '@/components/DialogBox.vue'
 import { useDialog } from '@/composables/useDialog'
 import { useCartStore } from '@/stores/cart'
-import { ref } from 'vue'
+import { defineAsyncComponent, ref } from 'vue'
 
+const DialogBox = defineAsyncComponent(() => import('@/components/DialogBox.vue'))
 const { product } = defineProps(['product'])
+
 const { dialogMsg, showDialog, createDialog, closeDialog } = useDialog()
 const { addItem } = useCartStore()
 const quantity = ref(1)

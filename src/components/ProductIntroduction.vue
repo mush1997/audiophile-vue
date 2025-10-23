@@ -16,5 +16,3 @@ const { picSize } = storeToRefs(useSizeStore())
     <ProductDetails :product />
     <ProductPics :pics="product.gallery" :picSize />
 </template>
-
-<style lang="scss" scoped></style>

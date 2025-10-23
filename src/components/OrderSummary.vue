@@ -4,6 +4,7 @@ import OrderNotes from '@/components/OrderNotes.vue'
 
 import { useCartStore } from '@/stores/cart'
 import { storeToRefs } from 'pinia'
+
 const { cartList, emptyCart } = storeToRefs(useCartStore())
 </script>
 

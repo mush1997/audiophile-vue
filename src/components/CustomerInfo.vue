@@ -24,5 +24,3 @@ const phoneNumberField = ref({ empty: false, invalid: false })
         </div>
     </div>
 </template>
-
-<style lang="scss" scoped></style>

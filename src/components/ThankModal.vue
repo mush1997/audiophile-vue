@@ -1,6 +1,7 @@
 <script setup>
-import SummaryBrick from './SummaryBrick.vue'
+import SummaryBrick from '@/components/SummaryBrick.vue'
 import MainButton from '@/components/MainButton.vue'
+
 import { useModalStore } from '@/stores/modal'
 import { useShadowStore } from '@/stores/shadow'
 import { storeToRefs } from 'pinia'

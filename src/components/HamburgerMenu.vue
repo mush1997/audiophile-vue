@@ -1,6 +1,5 @@
 <script setup>
 import MenuList from '@/components/MenuList.vue'
-
 import { useMenuStore } from '@/stores/menu'
 import { storeToRefs } from 'pinia'
 
