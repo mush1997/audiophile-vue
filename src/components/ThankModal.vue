@@ -31,7 +31,7 @@ onBeforeUnmount(() => {
             <h2>Thank you for your order</h2>
             <p>You will receive an email confirmation shortly.</p>
             <SummaryBrick />
-            <MainButton @click="closeThankModal(true); $router.push({ path: '/' }).catch(error => error)"
+            <MainButton @click="closeThankModal(); $router.push({ path: '/' }).catch(error => error)"
                 ref="closeModalBtn">
                 Back to home</MainButton>
         </section>

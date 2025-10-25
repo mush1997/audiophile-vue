@@ -13,11 +13,11 @@ export const useModalStore = defineStore('modal', () => {
     showModal.value = true
   }
 
-  function closeThankModal(finished) {
+  function closeThankModal() {
     if (!showModal.value) { return }
     showModal.value = false
     modalShadow.value = false
-    if (finished) { resetCart() }
+    resetCart()
   }
 
   return { showModal, showThankModal, closeThankModal }

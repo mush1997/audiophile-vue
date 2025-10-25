@@ -19,18 +19,18 @@ function validateForm() {
     const textInputs = Array.from(document.querySelectorAll(".field"))
     const blanks = textInputs.filter(field => !field.classList.contains("error") && field.closest(".fieldSet").style.display !== "none" && field.querySelector("input").value === "")
 
-    showThankModal()
+    // showThankModal()
 
-    // if (blanks.length === 0 && !document.querySelectorAll(".error")) {
-    //     showThankModal()
-    // } else {
-    //     blanks.forEach(blank => {
-    //         blank.classList.add("error")
-    //         blank.querySelector(".warning").style.display = "block"
-    //     })
+    if (blanks.length === 0 && !document.querySelectorAll(".error")) {
+        showThankModal()
+    } else {
+        blanks.forEach(blank => {
+            blank.classList.add("error")
+            blank.querySelector(".warning").style.display = "block"
+        })
 
-    //     createDialog('Please make sure that you fill in all the blanks in the correct format.')
-    // }
+        createDialog('Please make sure that you fill in all the blanks in the correct format.')
+    }
 }
 </script>
 
