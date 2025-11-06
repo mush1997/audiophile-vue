@@ -109,7 +109,10 @@ const categories = [
         cursor: pointer;
 
         div p:nth-child(2) span {
+            font-size: 15px;
+            letter-spacing: 2px;
             color: $primary;
+            transition: all 0.3s ease;
         }
     }
 }

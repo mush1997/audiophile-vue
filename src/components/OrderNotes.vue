@@ -17,16 +17,19 @@ const { total, shipping, VAT, grandTotal } = storeToRefs(useCartStore())
 
 function validateForm() {
     const textInputs = Array.from(document.querySelectorAll(".field"))
-    const blanks = textInputs.filter(field => !field.classList.contains("error") && field.closest(".fieldSet").style.display !== "none" && field.querySelector("input").value === "")
-
-    // showThankModal()
+    const blanks = textInputs.filter(textInput => !textInput.classList.contains("error") && textInput.closest(".fieldSet").style.display !== "none" && textInput.querySelector("input").value === "")
+    console.log(blanks)
 
     if (blanks.length === 0 && !document.querySelectorAll(".error")) {
         showThankModal()
-    } else {
+        return
+    }
+
+    if (blanks.length > 0) {
         blanks.forEach(blank => {
-            blank.classList.add("error")
-            blank.querySelector(".warning").style.display = "block"
+            blank.classList.add("isIgnored")
+            // blank.classList.add("error")
+            // blank.querySelector(".warning").style.display = "block"
         })
 
         createDialog('Please make sure that you fill in all the blanks in the correct format.')

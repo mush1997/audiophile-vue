@@ -6,15 +6,17 @@ import PopularProducts from '@/components/PopularProducts.vue'
 </script>
 
 <template>
-    <HeaderSection>
-        <LatestProduct />
-    </HeaderSection>
+    <div class="transitionWrapper">
+        <HeaderSection>
+            <LatestProduct />
+        </HeaderSection>
 
-    <MenuList />
+        <MenuList />
 
-    <main>
-        <PopularProducts />
-    </main>
+        <main>
+            <PopularProducts />
+        </main>
+    </div>
 </template>
 
 <style lang="scss" scoped>

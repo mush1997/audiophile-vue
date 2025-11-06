@@ -1,7 +1,7 @@
 export function useFormValidation() {
-  function checkEmpty(inputValue) {
-    return inputValue === "" ? true : false
-  }
+  // function checkEmpty(inputValue) {
+  //   return inputValue === "" ? true : false
+  // }
 
   function checkFormat(nameAttr, inputValue) {
     if (inputValue === "") { return true }
@@ -44,10 +44,11 @@ export function useFormValidation() {
     return inputValue
   }
 
-  function checkInputValue(inputValue, field, nameAttr) {
-    field.empty = checkEmpty(inputValue)
-    field.invalid = !checkFormat(nameAttr, inputValue)
-  }
+  // function checkInputValue(inputValue, field, nameAttr) {
+  //   // field.empty = checkEmpty(inputValue)
+  //   return !checkFormat(nameAttr, inputValue)
+  // }
 
-  return { formatCardNumber, checkInputValue }
+  // return { formatCardNumber, checkInputValue }
+  return { formatCardNumber, checkFormat }
 }

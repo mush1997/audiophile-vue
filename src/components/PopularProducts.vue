@@ -40,7 +40,7 @@ const products = computed(() => [
             :style="index === products.length - 1 ? '' : { backgroundImage: `url(${product.bgImg[0]}), url(${product.bgImg[1]})` }">
             <div>
                 <h2>{{ product.name }}</h2>
-                <p v-show="index === 0"> {{ product.description }}</p>
+                <p v-if="index === 0"> {{ product.description }}</p>
                 <MainButton :class="product.buttonClass"
                     @click="$router.push({ path: `/product/${product.slug}` }).catch(error => error)">See
                     product</MainButton>

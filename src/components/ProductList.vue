@@ -9,16 +9,18 @@ const { picSize } = storeToRefs(useSizeStore())
 </script>
 
 <template>
-    <section class="product" v-for="product in products" :key="product.id">
-        <img :src="useAssets(`/src${product.categoryImage[picSize]}`)" :alt="product.name">
-        <div>
-            <p class="specialTitle" v-if="product.new">New product</p>
-            <h2>{{ product.name }}</h2>
-            <p>{{ product.description }}</p>
-            <MainButton @click="$router.push({ path: `/product/${product.slug}` }).catch(error => error)">See
-                product</MainButton>
-        </div>
-    </section>
+    <div class="transitionWrapper">
+        <section class="product" v-for="product in products" :key="product.id">
+            <img :src="useAssets(`/src${product.categoryImage[picSize]}`)" :alt="product.name">
+            <div>
+                <p class="specialTitle" v-if="product.new">New product</p>
+                <h2>{{ product.name }}</h2>
+                <p>{{ product.description }}</p>
+                <MainButton @click="$router.push({ path: `/product/${product.slug}` }).catch(error => error)">See
+                    product</MainButton>
+            </div>
+        </section>
+    </div>
 </template>
 
 <style lang="scss" scoped>

@@ -14,7 +14,7 @@ const { product, picSize } = defineProps(['product', 'picSize'])
             <p class="specialTitle" v-if="product.new">New product</p>
             <h1>{{ product.name }}</h1>
             <p class="description">{{ product.description }}</p>
-            <p class="price">{{ product.price.toLocaleString() }}</p>
+            <p class="price">$ {{ product.price.toLocaleString() }}</p>
             <AddToCartUnit :product />
         </div>
     </section>

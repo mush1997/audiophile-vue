@@ -46,7 +46,7 @@ function addToCart(product) {
 
     p {
         margin-right: 16px;
-        padding: 16px;
+        padding: 0 16px;
         width: 120px;
         height: 48px;
         background-color: $block_bg;
@@ -55,8 +55,12 @@ function addToCart(product) {
         align-items: center;
 
         span {
-            font-size: 14px;
+            width: 20px;
+            display: block;
+            font-size: 16px;
             font-weight: bold;
+            line-height: 48px;
+            text-align: center;
         }
     }
 
@@ -79,6 +83,10 @@ function addToCart(product) {
             margin-right: 10px;
             width: 100px;
             height: 40px;
+
+            span {
+                line-height: 40px;
+            }
         }
 
         button {

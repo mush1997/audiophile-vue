@@ -17,29 +17,35 @@ const route = useRoute()
 const currentCategory = computed(() => route.params.categoryName)
 const products = computed(() => productData.value.length === 0 ? [] : productData.value.filter(data => data.category === currentCategory.value).reverse())
 
-if (productData.value.length === 0) { getProductsData() }
-// if (productData.value.length === 0) { setTimeout(() => getProductsData(), 2000) }
+// if (productData.value.length === 0) { getProductsData() }
+if (productData.value.length === 0) { setTimeout(() => getProductsData(), 1200) }
 </script>
 
 <template>
-    <HeaderSection>
-        <div class="categoryTitle" v-show="products.length !== 0">
-            <h1>{{ currentCategory }}</h1>
-        </div>
-    </HeaderSection>
+    <div class="transitionWrapper">
+        <HeaderSection>
+            <Transition name="fade" appear>
+                <div class="categoryTitle" v-if="products.length !== 0">
+                    <h1>{{ currentCategory }}</h1>
+                </div>
+            </Transition>
+        </HeaderSection>
 
-    <main>
-        <LoadingBar v-if="!finished" />
-        <NoDataText v-else-if="products.length === 0">
-            <template v-slot:firstLine>
-                <p>Oops! The category you required is not found.</p>
-            </template>
-            <template v-slot:secondLine>
-                <p>Please check the categories below!</p>
-            </template>
-        </NoDataText>
-        <ProductList v-else :products />
-    </main>
+        <main>
+            <Transition name="fade" mode="out-in" appear>
+                <LoadingBar v-if="!finished" key="loading" />
+                <NoDataText v-else-if="products.length === 0" key="noData">
+                    <template v-slot:firstLine>
+                        <p>Oops! The category you required is not found.</p>
+                    </template>
+                    <template v-slot:secondLine>
+                        <p>Please check the categories below!</p>
+                    </template>
+                </NoDataText>
+                <ProductList v-else :products key="productList" />
+            </Transition>
+        </main>
+    </div>
 </template>
 
 <style lang="scss" scoped>
@@ -58,6 +64,7 @@ if (productData.value.length === 0) { getProductsData() }
 
 main {
     padding-top: 160px;
+    min-height: 120px;
 }
 
 @media screen and (max-width:1024px) {

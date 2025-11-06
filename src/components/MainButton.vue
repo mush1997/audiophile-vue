@@ -43,6 +43,8 @@ button {
 @media screen and (hover: hover) {
     button:hover {
         cursor: pointer;
+        border-radius: 8px;
+        transition: all 0.2s ease;
     }
 
     .mainBtn:hover {
