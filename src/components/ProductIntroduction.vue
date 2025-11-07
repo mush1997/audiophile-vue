@@ -24,3 +24,21 @@ onMounted(() => {
         <ProductPics :pics="product.gallery" :picSize />
     </div>
 </template>
+
+<style lang="scss" scoped>
+.transitionWrapper {
+    margin-top: -160px;
+}
+
+@media screen and (max-width:1024px) {
+    .transitionWrapper {
+        margin-top: -120px;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .transitionWrapper {
+        margin-top: -90px;
+    }
+}
+</style>

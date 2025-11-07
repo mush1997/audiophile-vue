@@ -18,13 +18,13 @@ const currentCategory = computed(() => route.params.categoryName)
 const products = computed(() => productData.value.length === 0 ? [] : productData.value.filter(data => data.category === currentCategory.value).reverse())
 
 // if (productData.value.length === 0) { getProductsData() }
-if (productData.value.length === 0) { setTimeout(() => getProductsData(), 1200) }
+if (productData.value.length === 0) { setTimeout(() => getProductsData(), 600) }
 </script>
 
 <template>
     <div class="transitionWrapper">
         <HeaderSection>
-            <Transition name="fade" appear>
+            <Transition name="zoom-in" appear>
                 <div class="categoryTitle" v-if="products.length !== 0">
                     <h1>{{ currentCategory }}</h1>
                 </div>
@@ -64,12 +64,24 @@ if (productData.value.length === 0) { setTimeout(() => getProductsData(), 1200) 
 
 main {
     padding-top: 160px;
-    min-height: 120px;
+    min-height: 280px;
+}
+
+.zoom-in-enter-from,
+.zoom-in-leave-to {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.zoom-in-enter-active,
+.zoom-in-leave-active {
+    transition: all 0.4s ease-out;
 }
 
 @media screen and (max-width:1024px) {
     main {
         padding-top: 120px;
+        min-height: 240px;
     }
 }
 
@@ -84,7 +96,9 @@ main {
     }
 
     main {
+        margin-bottom: -60px;
         padding-top: 64px;
+        min-height: 214px;
     }
 }
 </style>

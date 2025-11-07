@@ -21,6 +21,7 @@ button {
     font-weight: bold;
     letter-spacing: 1px;
     text-transform: uppercase;
+    transition: all 0.4s ease;
 }
 
 .mainBtn {
@@ -44,7 +45,6 @@ button {
     button:hover {
         cursor: pointer;
         border-radius: 8px;
-        transition: all 0.2s ease;
     }
 
     .mainBtn:hover {

@@ -37,7 +37,6 @@
 
 @media screen and (max-width:500px) {
     .text {
-        margin-bottom: -60px;
         height: 150px;
 
         :slotted(p) {

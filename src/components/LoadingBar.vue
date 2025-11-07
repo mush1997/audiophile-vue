@@ -23,7 +23,6 @@
 
 @media screen and (max-width:500px) {
     .loading {
-        margin-bottom: -60px;
         height: 150px;
     }
 }

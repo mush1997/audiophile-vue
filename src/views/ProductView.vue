@@ -19,7 +19,7 @@ const product = computed(() => productData.value.length === 0 ? [] : productData
 const renderRecommended = ref(false)
 
 // if (productData.value.length === 0) { getProductsData() }
-if (productData.value.length === 0) { setTimeout(() => getProductsData(), 1200) }
+if (productData.value.length === 0) { setTimeout(() => getProductsData(), 600) }
 </script>
 
 <template>
@@ -47,12 +47,8 @@ if (productData.value.length === 0) { setTimeout(() => getProductsData(), 1200) 
 </template>
 
 <style lang="scss" scoped>
-.loading,
-.text {
-    margin-top: 160px;
-}
-
 main {
+    margin-top: 160px;
     min-height: 120px;
 }
 
@@ -61,9 +57,7 @@ main :deep(section) {
 }
 
 @media screen and (max-width:1024px) {
-
-    .loading,
-    .text {
+    main {
         margin-top: 120px;
     }
 
@@ -73,10 +67,10 @@ main :deep(section) {
 }
 
 @media screen and (max-width:500px) {
-
-    .loading,
-    .text {
+    main {
         margin-top: 90px;
+        margin-bottom: -60px;
+        min-height: 150px;
     }
 
     main :deep(section) {

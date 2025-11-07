@@ -46,6 +46,6 @@ const ShoppingCart = defineAsyncComponent(() => import('@/components/ShoppingCar
 
 .fade-enter-active,
 .fade-leave-active {
-    transition: opacity 0.4s ease;
+    transition: opacity 0.4s ease-out;
 }
 </style>

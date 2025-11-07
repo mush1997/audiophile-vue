@@ -88,6 +88,7 @@ const categories = [
                 color: $dark_gray;
                 letter-spacing: 1px;
                 text-transform: uppercase;
+                transition: all 0.3s ease-out;
             }
 
             img {
@@ -110,9 +111,8 @@ const categories = [
 
         div p:nth-child(2) span {
             font-size: 15px;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             color: $primary;
-            transition: all 0.3s ease;
         }
     }
 }
