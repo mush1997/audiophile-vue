@@ -15,9 +15,7 @@ export function useInputField(name) {
 
     watch(() => field.value.val, () => {
         field.value.markAsTyped()
-        // field.value.typed = true
-        console.log(field.value)
     }, { once: true })
 
-    return { field }
+    return field
 }

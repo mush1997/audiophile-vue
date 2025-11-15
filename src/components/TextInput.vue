@@ -1,6 +1,6 @@
 <script setup>
 import { useFormValidation } from '@/composables/useFormValidation'
-import { useTemplateRef, computed, onMounted, watchEffect } from 'vue'
+import { useTemplateRef, computed, onMounted, onBeforeUnmount } from 'vue'
 
 const { name, inputTitle, placeholder, field, maxlength } = defineProps({
     name: { type: String, required: true },
@@ -12,26 +12,31 @@ const { name, inputTitle, placeholder, field, maxlength } = defineProps({
 
 const emit = defineEmits(['setTyped'])
 const inputVal = defineModel()
-const fieldDiv = useTemplateRef('fieldDiv')
 
 const { formatCardNumber } = useFormValidation()
+const fieldDiv = useTemplateRef('fieldDiv')
 const isEmpty = computed(() => field.empty)
 const isInvalid = computed(() => field.invalid)
+
+const observer = new MutationObserver((mutation) => {
+    console.log(mutation[0].target)
+    if (mutation[0].target.dataset.ignored === "true") {
+        emit('setTyped')
+    }
+})
 
 function inputHandler(event) {
     if (name === 'cardNumber') {
         event.target.value = formatCardNumber(event.target.value)
-        // emit('checkInput', name, event.target.value)
     }
 }
 
 onMounted(() => {
-    watchEffect(() => {
-        if (fieldDiv.value.classList.contains("isIgnored")) {
-            console.log(123)
-            emit('setTyped')
-        }
-    })
+    observer.observe(fieldDiv.value, { attributes: true, attributeFilter: ['data-ignored'] })
+})
+
+onBeforeUnmount(() => {
+    observer.disconnect()
 })
 </script>
 
@@ -54,7 +59,7 @@ onMounted(() => {
     right: 0;
 }
 
-.error {
+.field.error {
     p:first-child {
         color: $warning;
     }

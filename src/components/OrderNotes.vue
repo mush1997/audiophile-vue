@@ -12,27 +12,21 @@ const DialogBox = defineAsyncComponent(() => import('@/components/DialogBox.vue'
 const { dialogMsg, showDialog, createDialog, closeDialog } = useDialog()
 const modalStore = useModalStore()
 const { showModal } = storeToRefs(modalStore)
-const { showThankModal } = useModalStore()
+const { showThankModal } = modalStore
 const { total, shipping, VAT, grandTotal } = storeToRefs(useCartStore())
 
 function validateForm() {
-    const textInputs = Array.from(document.querySelectorAll(".field"))
-    const blanks = textInputs.filter(textInput => !textInput.classList.contains("error") && textInput.closest(".fieldSet").style.display !== "none" && textInput.querySelector("input").value === "")
-    console.log(blanks)
-
-    if (blanks.length === 0 && !document.querySelectorAll(".error")) {
-        showThankModal()
-        return
-    }
+    const textInputs = Array.from(document.querySelectorAll(".field")).filter(field => field.closest(".fieldSet").style.display !== "none")
+    const blanks = textInputs.filter(textInput => !textInput.classList.contains("error") && textInput.querySelector("input").value === "")
+    const errors = textInputs.filter(textInput => textInput.classList.contains("error"))
 
     if (blanks.length > 0) {
-        blanks.forEach(blank => {
-            blank.classList.add("isIgnored")
-            // blank.classList.add("error")
-            // blank.querySelector(".warning").style.display = "block"
-        })
-
+        blanks.forEach(blank => { blank.dataset.ignored = "true" })
         createDialog('Please make sure that you fill in all the blanks in the correct format.')
+    } else if (errors.length > 0) {
+        createDialog('Please make sure that all the information is entered in the correct format.')
+    } else {
+        showThankModal()
     }
 }
 </script>

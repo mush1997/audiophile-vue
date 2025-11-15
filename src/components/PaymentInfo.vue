@@ -1,17 +1,13 @@
 <script setup>
 import TextInput from '@/components/TextInput.vue'
 import { useInputField } from '@/composables/useInputField'
-// import { useFormValidation } from '@/composables/useFormValidation'
 import { ref, computed } from 'vue'
 
-// const { checkInputValue } = useFormValidation()
 const creditCardField = useInputField("cardNumber")
 const cvcField = useInputField("CVC")
 const payment = ref('credit card')
 const creditCard = computed(() => payment.value === 'credit card')
 const onDelivery = computed(() => payment.value === 'on delivery')
-// const creditCardField = ref({ empty: false, invalid: false })
-// const cvcField = ref({ empty: false, invalid: false })
 </script>
 
 <template>
@@ -43,14 +39,11 @@ const onDelivery = computed(() => payment.value === 'on delivery')
 
     <div v-show="creditCard" class="fieldSet creditCard">
         <div class="row">
-            <!-- <TextInput name="cardNumber" inputTitle="Credit Card Number" placeholder="e.g. 1234 5678 9123 0000"
-                maxlength="19" :field="creditCardField" @checkInput="checkInputValue" />
-            <TextInput name="CVC" inputTitle="CVC" placeholder="e.g. 123" maxlength="3" :field="cvcField"
-                @checkInput="checkInputValue" /> -->
             <TextInput name="cardNumber" inputTitle="Credit Card Number" placeholder="e.g. 1234 5678 9123 0000"
-                maxlength="19" :field="creditCardField" v-model="creditCardField.val" />
+                maxlength="19" :field="creditCardField" @setTyped="creditCardField.markAsTyped()"
+                v-model="creditCardField.val" />
             <TextInput name="CVC" inputTitle="CVC" placeholder="e.g. 123" maxlength="3" :field="cvcField"
-                v-model="cvcField.val" />
+                @setTyped="cvcField.markAsTyped()" v-model="cvcField.val" />
         </div>
     </div>
 </template>
