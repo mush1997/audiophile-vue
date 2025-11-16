@@ -15,7 +15,7 @@ const isCollapsed = ref(cartList.value.length > 1)
         </OrderItemList>
         <div class="dropdown" v-if="cartList.length > 1">
             <p v-show="isCollapsed" @click="isCollapsed = !isCollapsed">and <span>{{ cartList.length - 1
-                    }}</span> other item(s)</p>
+            }}</span> other item(s)</p>
             <p v-show="!isCollapsed" @click="isCollapsed = !isCollapsed">View less</p>
         </div>
     </div>
@@ -48,7 +48,6 @@ const isCollapsed = ref(cartList.value.length > 1)
     margin-top: 0;
     padding: 12px 0;
     min-width: 300px;
-    display: none;
 
     &>div {
         width: 85%;
@@ -73,13 +72,12 @@ const isCollapsed = ref(cartList.value.length > 1)
     }
 }
 
-:deep(.item):first-of-type {
-    display: block;
+:deep(.item):not(:first-of-type) {
+    display: none;
 }
 
 :deep(.item).show:not(:first-of-type) {
-    display: block;
-    animation: showing 0.8s forwards;
+    display: flex;
 }
 
 .dropdown {
