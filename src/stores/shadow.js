@@ -10,7 +10,6 @@ export const useShadowStore = defineStore('shadow', () => {
   const listenerNotes = new Map()
 
   function prohibitTab(event) {
-    // console.log(event.key)
     if (event.key === "Tab") { event.preventDefault() }
   }
 
