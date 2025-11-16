@@ -1,6 +1,7 @@
 <script setup>
 import { useFormValidation } from '@/composables/useFormValidation'
-import { useTemplateRef, computed, onMounted, onBeforeUnmount } from 'vue'
+import { useMutationObserver } from '@vueuse/core'
+import { useTemplateRef, computed } from 'vue'
 
 const { name, inputTitle, placeholder, field, maxlength } = defineProps({
     name: { type: String, required: true },
@@ -18,26 +19,17 @@ const fieldDiv = useTemplateRef('fieldDiv')
 const isEmpty = computed(() => field.empty)
 const isInvalid = computed(() => field.invalid)
 
-const observer = new MutationObserver((mutation) => {
-    console.log(mutation[0].target)
-    if (mutation[0].target.dataset.ignored === "true") {
-        emit('setTyped')
-    }
-})
-
 function inputHandler(event) {
     if (name === 'cardNumber') {
         event.target.value = formatCardNumber(event.target.value)
     }
 }
 
-onMounted(() => {
-    observer.observe(fieldDiv.value, { attributes: true, attributeFilter: ['data-ignored'] })
-})
-
-onBeforeUnmount(() => {
-    observer.disconnect()
-})
+useMutationObserver(fieldDiv, (mutation) => {
+    if (mutation[0].target.dataset.ignored === "true") {
+        emit('setTyped')
+    }
+}, { attributes: true, attributeFilter: ['data-ignored'] })
 </script>
 
 <template>
