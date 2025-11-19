@@ -1,35 +1,28 @@
-# audiophile-vue
+# Audiophile e-commerce website
 
-This template should help get you started developing with Vue 3 in Vite.
+## Description
 
-## Recommended IDE Setup
+This is a solution to the [Audiophile e-commerce website](https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx) challenge on Frontend Mentor.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+### Features
 
-## Customize configuration
+- Browse and view product details
+- Add products to the shopping cart
+- Checkout process with form validation
+- Responsive design for mobile, tablet, and desktop
+- Dynamic routing with Vue Router
+- State management with Pinia
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Live Demo
 
-## Project Setup
+Live Site URL: [https://mush1997.github.io/audiophile-vue/](https://mush1997.github.io/audiophile-vue/)
 
-```sh
-npm install
-```
+## Technologies
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+- **Vue** v3.5.18
+- **Vue Router** v4.5.1
+- **VueUse** v13.9.0
+- **Pinia** v3.0.3
+- **axios** v1.12.2
+- **SASS/SCSS** v1.92.1
+- **Vite** v7.0.6
