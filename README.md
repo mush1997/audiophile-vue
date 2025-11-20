@@ -12,6 +12,7 @@ src/
 ├── composables/ # Custom hooks and reusable logic
 ├── router/ # Vue Router configuration
 ├── stores/ # Pinia state management
+├── styles/ # shared CSS/SCSS settings and variables
 ├── views/ # Page-level components
 ├── App.vue # Root component
 ├── main.js # Entry point
