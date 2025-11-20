@@ -15,7 +15,7 @@ This is a solution to the [Audiophile e-commerce website](https://www.frontendme
 
 ## Live Demo
 
-Live Site URL: [https://mush1997.github.io/audiophile-vue/](https://mush1997.github.io/audiophile-vue/)
+Live Site URL: [https://audiophile-website-vue.vercel.app/](https://audiophile-website-vue.vercel.app/)
 
 ## Technologies
 
