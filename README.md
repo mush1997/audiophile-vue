@@ -4,6 +4,18 @@
 
 This is a solution to the [Audiophile e-commerce website](https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx) challenge on Frontend Mentor.
 
+### Structure
+
+src/
+├── assets/ # Static assets (images)
+├── components/ # Vue components
+├── composables/ # Custom hooks and reusable logic
+├── router/ # Vue Router configuration
+├── stores/ # Pinia state management
+├── views/ # Page-level components
+├── App.vue # Root component
+├── main.js # Entry point
+
 ### Features
 
 - Browse and view product details
