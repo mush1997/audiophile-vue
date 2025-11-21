@@ -3,19 +3,13 @@
 A modern e-commerce website selling headphones, earphones and speakers.  
 This application was primarily built using **Vue 3 (Composition API)**, **Vue Router** and **Pinia**.
 
-<br>
-
 ## 🔗 Live Demo
 
 Live Site URL: [https://audiophile-website-vue.vercel.app/](https://audiophile-website-vue.vercel.app/)
 
-<br>
-
 ## 📝 Description
 
 This is a complete front-end solution to the [Audiophile e-commerce website](https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx) challenge on _Frontend Mentor_, showcasing a fully functional shopping experience.
-
-<br>
 
 ## ✨ Features
 
@@ -25,8 +19,6 @@ This is a complete front-end solution to the [Audiophile e-commerce website](htt
 - Responsive UI for mobile, tablet and desktop
 - Dynamic routing with Vue Router
 - State management with Pinia
-
- <br>
 
 ## 📁 Structure
 
@@ -42,8 +34,6 @@ src/
 ├── App.vue        # Root component
 ├── main.js        # Entry point
 ```
-
-<br>
 
 ## 🛠️ Technologies
 
