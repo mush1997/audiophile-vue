@@ -29,7 +29,7 @@ onBeforeUnmount(() => {
         <section class="thankModal" :class="{ 'show': showModal }">
             <img src="@/assets/checkout/icon-order-confirmation.svg" alt="">
             <h2>Thank you for your order</h2>
-            <p>You will receive an email confirmation shortly.</p>
+            <p>We have accepted your order. You will receive an email confirmation shortly.</p>
             <SummaryBrick />
             <MainButton @click="closeThankModal(); $router.push({ path: '/' }).catch(error => error)"
                 ref="closeModalBtn">
