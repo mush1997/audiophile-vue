@@ -26,14 +26,15 @@ const { picSize } = storeToRefs(useSizeStore())
 <style lang="scss" scoped>
 .product {
     margin-bottom: 160px;
+    min-height: 400px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     img {
         flex-shrink: 0;
-        border-radius: 10px;
         width: 48%;
+        border-radius: 10px;
     }
 
     div {
