@@ -15,10 +15,10 @@ const { productData, finished } = storeToRefs(dataStore)
 const { getProductsData } = dataStore
 const route = useRoute()
 const currentCategory = computed(() => route.params.categoryName)
-const products = computed(() => productData.value.length === 0 ? [] : productData.value.filter(data => data.category === currentCategory.value).reverse())
+const products = computed(() => productData.value.length === 0 ? [] : productData.value.filter(data => data.category === currentCategory.value))
 
 // if (productData.value.length === 0) { getProductsData() }
-if (productData.value.length === 0) { setTimeout(() => getProductsData(), 600) }
+if (productData.value.length === 0) { setTimeout(() => getProductsData(), 500) }
 </script>
 
 <template>
