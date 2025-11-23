@@ -6,7 +6,7 @@ import { useShadowStore } from '@/stores/shadow'
 import { storeToRefs } from 'pinia'
 
 const { hideMenu } = storeToRefs(useMenuStore())
-const { hideCart } = storeToRefs(useCartStore())
+const { cartList, hideCart } = storeToRefs(useCartStore())
 const shadowStore = useShadowStore()
 const { menuShadow, cartShadow } = storeToRefs(shadowStore)
 const { showHideToggle } = shadowStore
@@ -26,7 +26,10 @@ function showHideCart() {
         <img class="logo" src="@/assets/shared/desktop/logo.svg" alt="logo"
             @click="$router.push({ path: '/' }).catch(error => error)">
         <NavLinks />
-        <img class="cartBtn" src="@/assets/shared/desktop/icon-cart.svg" alt="cart" @click="showHideCart">
+        <div class="cartBtn" @click="showHideCart">
+            <img src="@/assets/shared/desktop/icon-cart.svg" alt="cart">
+            <p>{{ cartList.length || 0 }}</p>
+        </div>
     </nav>
 </template>
 
@@ -43,6 +46,30 @@ nav {
 
     .menuBtn {
         display: none;
+    }
+
+    .cartBtn {
+        position: relative;
+
+        img {
+            display: block;
+        }
+
+        p {
+            padding: 2px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: $primary;
+            font-size: 10px;
+            font-weight: bold;
+            color: $white;
+            text-align: center;
+            line-height: 14px;
+            position: absolute;
+            top: -8px;
+            right: -8px;
+        }
     }
 }
 
@@ -61,7 +88,10 @@ nav {
     }
 
     .cartBtn:hover {
-        filter: invert(46%) sepia(96%) saturate(312%) hue-rotate(338deg) brightness(99%) contrast(92%);
+
+        img {
+            filter: invert(46%) sepia(96%) saturate(312%) hue-rotate(338deg) brightness(99%) contrast(92%);
+        }
     }
 }
 
