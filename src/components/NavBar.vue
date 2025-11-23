@@ -56,7 +56,6 @@ nav {
         }
 
         p {
-            padding: 2px;
             width: 16px;
             height: 16px;
             border-radius: 50%;
@@ -65,7 +64,7 @@ nav {
             font-weight: bold;
             color: $white;
             text-align: center;
-            line-height: 14px;
+            line-height: 16px;
             position: absolute;
             top: -8px;
             right: -8px;
