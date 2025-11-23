@@ -47,6 +47,7 @@ onBeforeUnmount(() => {
     max-height: calc(100vh - 80px);
     overflow-y: auto;
     overscroll-behavior: none;
+    scrollbar-gutter: stable both-edges;
     border-radius: 10px;
     background-color: $white;
     position: fixed;

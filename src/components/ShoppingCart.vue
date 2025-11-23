@@ -64,6 +64,7 @@ onMounted(() => {
     max-height: calc(100vh - 240px);
     overflow-y: auto;
     overscroll-behavior: none;
+    scrollbar-gutter: stable both-edges;
     border-radius: 10px;
     background-color: $white;
     position: absolute;
@@ -150,14 +151,6 @@ onMounted(() => {
         color: $primary;
         text-decoration: underline;
         opacity: 1;
-    }
-}
-
-@media screen and (max-width:1200px) {
-    :deep(.item) {
-        &>div img {
-            width: 90px;
-        }
     }
 }
 

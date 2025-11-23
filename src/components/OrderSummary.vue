@@ -46,9 +46,25 @@ const { cartList, emptyCart } = storeToRefs(useCartStore())
     margin-left: 0;
 }
 
+@media screen and (max-width:1200px) {
+    :deep(.item) {
+        &>div img {
+            width: 60px;
+        }
+    }
+}
+
 @media screen and (max-width:1024px) {
     .summary {
         margin-left: 0;
+    }
+}
+
+@media screen and (max-width:500px) {
+    :deep(.item) {
+        &>div img {
+            width: 50px;
+        }
     }
 }
 </style>

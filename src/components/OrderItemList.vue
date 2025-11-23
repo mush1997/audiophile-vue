@@ -28,6 +28,7 @@ const { cartList } = defineProps(['cartList'])
         width: 78%;
         display: flex;
         align-items: center;
+        overflow: hidden;
 
         img {
             margin-right: 16px;
@@ -36,8 +37,12 @@ const { cartList } = defineProps(['cartList'])
         }
 
         div {
+            overflow: hidden;
+
             p:nth-child(1) {
                 font-weight: bold;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
 
             p:nth-child(2) {
@@ -56,14 +61,6 @@ const { cartList } = defineProps(['cartList'])
 
 .item:first-child {
     margin-top: 0;
-}
-
-@media screen and (max-width:1200px) {
-    .item {
-        &>div img {
-            width: 60px;
-        }
-    }
 }
 
 @media screen and (max-width:1024px) {
