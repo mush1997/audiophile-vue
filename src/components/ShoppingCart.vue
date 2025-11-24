@@ -61,7 +61,7 @@ onMounted(() => {
     width: 30%;
     min-width: 480px;
     max-width: 650px;
-    max-height: calc(100vh - 240px);
+    max-height: calc(100vh - 144px);
     overflow-y: auto;
     overscroll-behavior: none;
     scrollbar-gutter: stable both-edges;
