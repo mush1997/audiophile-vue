@@ -14,20 +14,20 @@ const dataStore = useDataStore()
 const { productData, finished } = storeToRefs(dataStore)
 const { getProductsData } = dataStore
 const route = useRoute()
-const currentProduct = computed(() => route.params.productName)
+const currentProduct = computed(() => route.params.productName.toLowerCase())
 const product = computed(() => productData.value.length === 0 ? [] : productData.value.find(data => data.slug === currentProduct.value))
 const renderRecommended = ref(false)
 
 // if (productData.value.length === 0) { getProductsData() }
-if (productData.value.length === 0) { setTimeout(() => getProductsData(), 600) }
+if (productData.value.length === 0) { setTimeout(() => getProductsData(), 500) }
 </script>
 
 <template>
     <div class="transitionWrapper">
         <main>
             <Transition name="fade" mode="out-in" appear>
-                <LoadingBar v-if="!finished" key="loading" />
-                <NoDataText v-else-if="!product" key="noData">
+                <LoadingBar v-if="!finished" />
+                <NoDataText v-else-if="!product">
                     <template v-slot:firstLine>
                         <p>Oops! The product you required is not found.</p>
                     </template>
@@ -35,8 +35,7 @@ if (productData.value.length === 0) { setTimeout(() => getProductsData(), 600) }
                         <p>Please check our products in the categories below!</p>
                     </template>
                 </NoDataText>
-                <ProductIntroduction v-else @showRecommended="renderRecommended = !renderRecommended" :product
-                    key="productIntro" />
+                <ProductIntroduction v-else @showRecommended="renderRecommended = !renderRecommended" :product />
             </Transition>
         </main>
 

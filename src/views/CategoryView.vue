@@ -14,7 +14,7 @@ const dataStore = useDataStore()
 const { productData, finished } = storeToRefs(dataStore)
 const { getProductsData } = dataStore
 const route = useRoute()
-const currentCategory = computed(() => route.params.categoryName)
+const currentCategory = computed(() => route.params.categoryName.toLowerCase())
 const products = computed(() => productData.value.length === 0 ? [] : productData.value.filter(data => data.category === currentCategory.value))
 
 // if (productData.value.length === 0) { getProductsData() }
@@ -33,8 +33,8 @@ if (productData.value.length === 0) { setTimeout(() => getProductsData(), 500) }
 
         <main>
             <Transition name="fade" mode="out-in" appear>
-                <LoadingBar v-if="!finished" key="loading" />
-                <NoDataText v-else-if="products.length === 0" key="noData">
+                <LoadingBar v-if="!finished" />
+                <NoDataText v-else-if="products.length === 0">
                     <template v-slot:firstLine>
                         <p>Oops! The category you required is not found.</p>
                     </template>
@@ -42,7 +42,7 @@ if (productData.value.length === 0) { setTimeout(() => getProductsData(), 500) }
                         <p>Please check the categories below!</p>
                     </template>
                 </NoDataText>
-                <ProductList v-else :products key="productList" />
+                <ProductList v-else :products />
             </Transition>
         </main>
     </div>
