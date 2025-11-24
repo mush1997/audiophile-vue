@@ -16,12 +16,12 @@ const { showThankModal } = modalStore
 const { total, shipping, VAT, grandTotal } = storeToRefs(useCartStore())
 
 function validateForm() {
-    const textInputs = Array.from(document.querySelectorAll(".field")).filter(field => field.closest(".fieldSet").style.display !== "none")
-    const blanks = textInputs.filter(textInput => !textInput.classList.contains("error") && textInput.querySelector("input").value === "")
-    const errors = textInputs.filter(textInput => textInput.classList.contains("error"))
+    const textInputs = Array.from(document.querySelectorAll('.field')).filter(field => field.closest('.fieldSet').style.display !== 'none')
+    const blanks = textInputs.filter(textInput => !textInput.classList.contains('error') && textInput.querySelector('input').value === '')
+    const errors = textInputs.filter(textInput => textInput.classList.contains('error'))
 
     if (blanks.length > 0) {
-        blanks.forEach(blank => { blank.dataset.ignored = "true" })
+        blanks.forEach(blank => { blank.dataset.ignored = 'true' })
         createDialog('Please make sure that you fill in all the blanks in the correct format.')
     } else if (errors.length > 0) {
         createDialog('Please make sure that all the information is entered in the correct format.')

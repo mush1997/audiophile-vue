@@ -12,20 +12,20 @@ export const useCartStore = defineStore('cart', () => {
   const grandTotal = computed(() => Math.round(total.value * 1.2) + shipping.value)
 
   function addItem(newItem, quantity) {
-    const index = cartList.value.findIndex(item => item["name"] === newItem.name)
-    index < 0 ? cartList.value.push(newItem) : cartList.value[index]["amount"] += quantity
+    const index = cartList.value.findIndex(item => item['name'] === newItem.name)
+    index < 0 ? cartList.value.push(newItem) : cartList.value[index]['amount'] += quantity
   }
 
   function plusItem(itemName, itemAmount) {
-    cartList.value.find(item => item["name"] === itemName)["amount"] = itemAmount + 1
+    cartList.value.find(item => item['name'] === itemName)['amount'] = itemAmount + 1
   }
 
   function minusItem(itemName, itemAmount) {
-    cartList.value.find(item => item["name"] === itemName)["amount"] = itemAmount - 1
+    cartList.value.find(item => item['name'] === itemName)['amount'] = itemAmount - 1
   }
 
   function removeItem(itemName) {
-    const index = cartList.value.findIndex(item => item["name"] === itemName)
+    const index = cartList.value.findIndex(item => item['name'] === itemName)
     cartList.value.splice(index, 1)
   }
 

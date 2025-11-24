@@ -3,16 +3,16 @@ import { useAssets } from '@/composables/useAssets'
 
 const categories = [
     {
-        name: "Headphones",
-        img: "/assets/shared/desktop/image-category-thumbnail-headphones.png"
+        name: 'Headphones',
+        img: '/assets/shared/desktop/image-category-thumbnail-headphones.png'
     },
     {
-        name: "Speakers",
-        img: "/assets/shared/desktop/image-category-thumbnail-speakers.png"
+        name: 'Speakers',
+        img: '/assets/shared/desktop/image-category-thumbnail-speakers.png'
     },
     {
-        name: "Earphones",
-        img: "/assets/shared/desktop/image-category-thumbnail-earphones.png"
+        name: 'Earphones',
+        img: '/assets/shared/desktop/image-category-thumbnail-earphones.png'
     }
 ]
 </script>

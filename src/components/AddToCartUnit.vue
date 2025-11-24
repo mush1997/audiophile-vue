@@ -12,15 +12,15 @@ const { addItem } = useCartStore()
 const quantity = ref(1)
 
 function editQuantity(operator) {
-    if (operator === "plus") {
+    if (operator === 'plus') {
         quantity.value++
-    } else if (operator === "minus" && quantity.value !== 1) {
+    } else if (operator === 'minus' && quantity.value !== 1) {
         quantity.value--
     }
 }
 
 function addToCart(product) {
-    const item = { "name": product.name, "slug": product.slug, "price": product.price, "amount": quantity.value }
+    const item = { 'name': product.name, 'slug': product.slug, 'price': product.price, 'amount': quantity.value }
     addItem(item, quantity.value)
     createDialog('Added successfully!')
     quantity.value = 1

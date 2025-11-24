@@ -3,8 +3,8 @@ import TextInput from '@/components/TextInput.vue'
 import { useInputField } from '@/composables/useInputField'
 import { ref, computed } from 'vue'
 
-const creditCardField = useInputField("cardNumber")
-const cvcField = useInputField("CVC")
+const creditCardField = useInputField('cardNumber')
+const cvcField = useInputField('CVC')
 const payment = ref('credit card')
 const creditCard = computed(() => payment.value === 'credit card')
 const onDelivery = computed(() => payment.value === 'on delivery')

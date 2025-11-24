@@ -2,10 +2,10 @@
 import TextInput from '@/components/TextInput.vue'
 import { useInputField } from '@/composables/useInputField'
 
-const addressField = useInputField("address")
-const ZIPcodeField = useInputField("ZIPcode")
-const cityField = useInputField("city")
-const countryField = useInputField("country")
+const addressField = useInputField('address')
+const ZIPcodeField = useInputField('ZIPcode')
+const cityField = useInputField('city')
+const countryField = useInputField('country')
 </script>
 
 <template>

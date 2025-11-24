@@ -10,19 +10,19 @@ export const useShadowStore = defineStore('shadow', () => {
   const listenerNotes = new Map()
 
   function prohibitTab(event) {
-    if (event.key === "Tab") { event.preventDefault() }
+    if (event.key === 'Tab') { event.preventDefault() }
   }
 
   function prohibitTabOn() {
     if (!listenerNotes.has('keydownFn')) {
-      document.addEventListener("keydown", prohibitTab)
+      document.addEventListener('keydown', prohibitTab)
       listenerNotes.set('keydownFn', prohibitTab)
     }
   }
 
   function prohibitTabOff() {
     if (listenerNotes.has('keydownFn')) {
-      document.removeEventListener("keydown", prohibitTab)
+      document.removeEventListener('keydown', prohibitTab)
       listenerNotes.delete('keydownFn')
     }
   }
@@ -34,7 +34,7 @@ export const useShadowStore = defineStore('shadow', () => {
 
     const fn = hideShadow.bind(null, hideState, shadow, true)
     listenerNotes.set('clickFn', fn)
-    document.querySelector(".shadow").addEventListener("click", fn, { once: true })
+    document.querySelector('.shadow').addEventListener('click', fn, { once: true })
   }
 
   function hideShadow(hideState, shadow, clicked = false) {
@@ -49,7 +49,7 @@ export const useShadowStore = defineStore('shadow', () => {
 
     if (fn && !clicked && shadow.value) {
       prohibitTabOff()
-      document.querySelector(".shadow").removeEventListener("click", fn)
+      document.querySelector('.shadow').removeEventListener('click', fn)
       listenerNotes.delete('clickFn')
       hideState.value = true
       shadow.value = false

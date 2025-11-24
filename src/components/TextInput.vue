@@ -26,7 +26,7 @@ function inputHandler(event) {
 }
 
 useMutationObserver(fieldDiv, (mutation) => {
-    if (mutation[0].target.dataset.ignored === "true") {
+    if (mutation[0].target.dataset.ignored === 'true') {
         emit('setTyped')
     }
 }, { attributes: true, attributeFilter: ['data-ignored'] })

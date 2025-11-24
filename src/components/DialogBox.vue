@@ -10,12 +10,12 @@ const { prohibitTab } = useShadowStore()
 const closeMsgBtn = useTemplateRef('closeMsgBtn')
 
 onMounted(() => {
-    document.addEventListener("keydown", prohibitTab)
+    document.addEventListener('keydown', prohibitTab)
     closeMsgBtn.value.btn.focus()
 })
 
 onBeforeUnmount(() => {
-    document.removeEventListener("keydown", prohibitTab)
+    document.removeEventListener('keydown', prohibitTab)
     emit('closeMsgBox')
 })
 </script>

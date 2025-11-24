@@ -13,7 +13,7 @@ const shadowClass = computed(() => ({ 'menuShadow': menuShadow.value, 'cartShado
 
 <style lang="scss" scoped>
 .shadow {
-    content: '';
+    content: "";
     width: 100%;
     height: 100vh;
     background-color: $gray;

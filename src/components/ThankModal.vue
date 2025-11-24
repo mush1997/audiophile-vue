@@ -14,12 +14,12 @@ const { prohibitTab } = useShadowStore()
 const closeModalBtn = useTemplateRef('closeModalBtn')
 
 onMounted(() => {
-    document.addEventListener("keydown", prohibitTab)
+    document.addEventListener('keydown', prohibitTab)
     closeModalBtn.value.btn.focus()
 })
 
 onBeforeUnmount(() => {
-    document.removeEventListener("keydown", prohibitTab)
+    document.removeEventListener('keydown', prohibitTab)
     closeThankModal()
 })
 </script>

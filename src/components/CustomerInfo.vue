@@ -2,9 +2,9 @@
 import TextInput from '@/components/TextInput.vue'
 import { useInputField } from '@/composables/useInputField'
 
-const nameField = useInputField("name")
-const emailField = useInputField("email")
-const phoneNumberField = useInputField("phoneNumber")
+const nameField = useInputField('name')
+const emailField = useInputField('email')
+const phoneNumberField = useInputField('phoneNumber')
 </script>
 
 <template>

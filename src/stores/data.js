@@ -8,7 +8,7 @@ export const useDataStore = defineStore('data', () => {
 
   async function getProductsData() {
     try {
-      const response = await axios.get("/data.json")
+      const response = await axios.get('/data.json')
       productData.value = response.data
       finished.value = true
     } catch (error) {

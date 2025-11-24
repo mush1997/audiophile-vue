@@ -9,24 +9,24 @@ const { picSize } = storeToRefs(useSizeStore())
 
 const products = computed(() => [
     {
-        slug: "zx9-speaker",
-        name: "ZX9 Speaker",
-        description: "Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.",
-        buttonClass: "blackBtn",
-        bgImg: [useAssets(`/src/assets/home/${picSize.value}/image-speaker-zx9.png`), ("/src/assets/home/desktop/pattern-circles.svg")]
+        slug: 'zx9-speaker',
+        name: 'ZX9 Speaker',
+        description: 'Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.',
+        buttonClass: 'blackBtn',
+        bgImg: [useAssets(`/src/assets/home/${picSize.value}/image-speaker-zx9.png`), ('/src/assets/home/desktop/pattern-circles.svg')]
     },
     {
-        slug: "zx7-speaker",
-        name: "ZX7 Speaker",
-        description: "Stream high quality sound wirelessly with minimal to no loss. The ZX7 speaker uses high-end audiophile components that represents the top of the line powered speakers for home or studio use.",
-        buttonClass: "hollowBtn",
+        slug: 'zx7-speaker',
+        name: 'ZX7 Speaker',
+        description: 'Stream high quality sound wirelessly with minimal to no loss. The ZX7 speaker uses high-end audiophile components that represents the top of the line powered speakers for home or studio use.',
+        buttonClass: 'hollowBtn',
         bgImg: [useAssets(`/src/assets/home/${picSize.value}/image-speaker-zx7.jpg`)]
     },
     {
-        slug: "yx1-earphones",
-        name: "YX1 Earphones",
-        description: "Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature.",
-        buttonClass: "hollowBtn",
+        slug: 'yx1-earphones',
+        name: 'YX1 Earphones',
+        description: 'Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature.',
+        buttonClass: 'hollowBtn',
         bgImg: [useAssets(`/src/assets/home/${picSize.value}/image-earphones-yx1.jpg`)]
     }
 ])

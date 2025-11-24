@@ -43,7 +43,7 @@ onMounted(() => {
         </div>
         <p v-if="emptyCart" class="defaultText">Your cart is empty.</p>
         <template v-else>
-            <OrderItemList :cartList v-slot="{ item }">
+            <OrderItemList v-slot="{ item }" :cartList>
                 <CartQuantityUnit @showDialogBox="createDialog" :item />
             </OrderItemList>
             <div class="totalSum">
