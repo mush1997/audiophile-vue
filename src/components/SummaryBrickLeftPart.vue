@@ -15,7 +15,7 @@ const isCollapsed = ref(cartList.value.length > 1)
         </OrderItemList>
         <div class="dropdown" v-if="cartList.length > 1">
             <p v-show="isCollapsed" @click="isCollapsed = !isCollapsed">and <span>{{ cartList.length - 1
-                    }}</span> other item(s)</p>
+            }}</span> other item(s)</p>
             <p v-show="!isCollapsed" @click="isCollapsed = !isCollapsed">View less</p>
         </div>
     </div>
@@ -30,7 +30,7 @@ const isCollapsed = ref(cartList.value.length > 1)
     overflow-x: hidden;
     overflow-y: auto;
     overscroll-behavior: none;
-    scrollbar-gutter: stable both-edges;
+    scrollbar-gutter: stable;
     border-radius: 10px 0 0 10px;
     background-color: $block_bg;
 

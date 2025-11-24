@@ -9,7 +9,7 @@ const { cartList } = defineProps(['cartList'])
         <div>
             <img :src="useAssets(`/src/assets/cart/image-${item.slug}.jpg`)" :alt="item.name">
             <div>
-                <p>{{ item.name }}</p>
+                <p @click="$router.push({ path: `/product/${item.slug}` }).catch(error => error)">{{ item.name }}</p>
                 <p>$ {{ item.price.toLocaleString() }}</p>
             </div>
         </div>
@@ -61,6 +61,15 @@ const { cartList } = defineProps(['cartList'])
 
 .item:first-child {
     margin-top: 0;
+}
+
+@media screen and (hover:hover) {
+    .item {
+        &>div div p:nth-child(1):hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
 }
 
 @media screen and (max-width:1024px) {
