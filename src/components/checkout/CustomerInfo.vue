@@ -1,5 +1,5 @@
 <script setup>
-import TextInput from '@/components/TextInput.vue'
+import TextInput from '@/components/checkout/TextInput.vue'
 import { useInputField } from '@/composables/useInputField'
 
 const nameField = useInputField('name')

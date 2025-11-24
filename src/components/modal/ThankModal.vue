@@ -1,6 +1,6 @@
 <script setup>
-import SummaryBrick from '@/components/SummaryBrick.vue'
-import MainButton from '@/components/MainButton.vue'
+import SummaryBrick from '@/components/modal/SummaryBrick.vue'
+import MainButton from '@/components/shared/MainButton.vue'
 
 import { useModalStore } from '@/stores/modal'
 import { useShadowStore } from '@/stores/shadow'

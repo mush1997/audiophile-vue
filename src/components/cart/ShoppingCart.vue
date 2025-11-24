@@ -1,14 +1,14 @@
 <script setup>
-import OrderItemList from '@/components/OrderItemList.vue'
-import CartQuantityUnit from '@/components/CartQuantityUnit.vue'
-import MainButton from '@/components/MainButton.vue'
+import OrderItemList from '@/components/shared/OrderItemList.vue'
+import CartQuantityUnit from '@/components/cart/CartQuantityUnit.vue'
+import MainButton from '@/components/shared/MainButton.vue'
 
 import { useDialog } from '@/composables/useDialog'
 import { useCartStore } from '@/stores/cart'
 import { storeToRefs } from 'pinia'
 import { defineAsyncComponent, useTemplateRef, onMounted, watchEffect, nextTick } from 'vue'
 
-const DialogBox = defineAsyncComponent(() => import('@/components/DialogBox.vue'))
+const DialogBox = defineAsyncComponent(() => import('@/components/shared/DialogBox.vue'))
 
 const { dialogMsg, showDialog, createDialog, closeDialog } = useDialog()
 const cartStore = useCartStore()

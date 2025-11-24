@@ -1,5 +1,5 @@
 <script setup>
-import AddToCartUnit from '@/components/AddToCartUnit.vue'
+import AddToCartUnit from '@/components/shared/AddToCartUnit.vue'
 import { useAssets } from '@/composables/useAssets'
 
 const { product, picSize } = defineProps(['product', 'picSize'])

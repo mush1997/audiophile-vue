@@ -1,5 +1,5 @@
 <script setup>
-import NavLinks from '@/components/NavLinks.vue'
+import NavLinks from '@/components/layout/NavLinks.vue'
 import { useMenuStore } from '@/stores/menu'
 import { useCartStore } from '@/stores/cart'
 import { useShadowStore } from '@/stores/shadow'

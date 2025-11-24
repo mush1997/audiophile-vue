@@ -1,6 +1,6 @@
 <script setup>
-import NavBar from '@/components/NavBar.vue'
-import HamburgerMenu from '@/components/HamburgerMenu.vue'
+import NavBar from '@/components/layout/NavBar.vue'
+import HamburgerMenu from '@/components/layout/HamburgerMenu.vue'
 </script>
 
 <template>

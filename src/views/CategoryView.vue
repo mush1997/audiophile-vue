@@ -1,14 +1,14 @@
 <script setup>
-import HeaderSection from '@/components/HeaderSection.vue'
-import LoadingBar from '@/components/LoadingBar.vue'
-import ProductList from '@/components/ProductList.vue'
+import HeaderSection from '@/components/layout/HeaderSection.vue'
+import LoadingBar from '@/components/shared/LoadingBar.vue'
+import ProductList from '@/components/category/ProductList.vue'
 
 import { useDataStore } from '@/stores/data'
 import { storeToRefs } from 'pinia'
 import { useRoute } from 'vue-router'
 import { defineAsyncComponent, computed } from 'vue'
 
-const NoDataText = defineAsyncComponent(() => import('@/components/NoDataText.vue'))
+const NoDataText = defineAsyncComponent(() => import('@/components/shared/NoDataText.vue'))
 
 const dataStore = useDataStore()
 const { productData, finished } = storeToRefs(dataStore)

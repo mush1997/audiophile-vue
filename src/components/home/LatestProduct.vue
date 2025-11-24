@@ -1,5 +1,5 @@
 <script setup>
-import MainButton from '@/components/MainButton.vue'
+import MainButton from '@/components/shared/MainButton.vue'
 
 const product = {
     slug: 'xx99-mark-two-headphones',

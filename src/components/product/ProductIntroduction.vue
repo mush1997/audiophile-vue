@@ -1,7 +1,7 @@
 <script setup>
-import ProductOverview from '@/components/ProductOverview.vue'
-import ProductDetails from '@/components/ProductDetails.vue'
-import ProductPics from '@/components/ProductPics.vue'
+import ProductOverview from '@/components/product/ProductOverview.vue'
+import ProductDetails from '@/components/product/ProductDetails.vue'
+import ProductPics from '@/components/product/ProductPics.vue'
 
 import { useSizeStore } from '@/stores/size'
 import { storeToRefs } from 'pinia'

@@ -1,8 +1,8 @@
 <script setup>
-import HeaderSection from '@/components/HeaderSection.vue'
-import LatestProduct from '@/components/LatestProduct.vue'
-import MenuList from '@/components/MenuList.vue'
-import PopularProducts from '@/components/PopularProducts.vue'
+import HeaderSection from '@/components/layout/HeaderSection.vue'
+import LatestProduct from '@/components/home/LatestProduct.vue'
+import MenuList from '@/components/shared/MenuList.vue'
+import PopularProducts from '@/components/home/PopularProducts.vue'
 </script>
 
 <template>

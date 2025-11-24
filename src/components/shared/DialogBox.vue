@@ -1,5 +1,5 @@
 <script setup>
-import MainButton from '@/components/MainButton.vue'
+import MainButton from '@/components/shared/MainButton.vue'
 import { useShadowStore } from '@/stores/shadow'
 import { useTemplateRef, onMounted, onBeforeUnmount } from 'vue'
 

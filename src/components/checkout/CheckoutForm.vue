@@ -1,6 +1,6 @@
 <script setup>
-import OrderDetails from '@/components/OrderDetails.vue'
-import OrderSummary from '@/components/OrderSummary.vue'
+import OrderDetails from '@/components/checkout/OrderDetails.vue'
+import OrderSummary from '@/components/checkout/OrderSummary.vue'
 
 const { emptyCart } = defineProps(['emptyCart'])
 </script>

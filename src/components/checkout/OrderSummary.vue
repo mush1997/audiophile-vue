@@ -1,6 +1,6 @@
 <script setup>
-import OrderItemList from '@/components/OrderItemList.vue'
-import OrderNotes from '@/components/OrderNotes.vue'
+import OrderItemList from '@/components/shared/OrderItemList.vue'
+import OrderNotes from '@/components/checkout/OrderNotes.vue'
 
 import { useCartStore } from '@/stores/cart'
 import { storeToRefs } from 'pinia'

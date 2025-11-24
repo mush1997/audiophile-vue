@@ -1,12 +1,12 @@
 <script setup>
-import HeaderSection from '@/components/HeaderSection.vue'
-import MenuList from '@/components/MenuList.vue'
-import AsideSection from '@/components/AsideSection.vue'
-import FooterSection from '@/components/FooterSection.vue'
-import BgShadow from '@/components/BgShadow.vue'
+import HeaderSection from '@/components/layout/HeaderSection.vue'
+import MenuList from '@/components/shared/MenuList.vue'
+import AsideSection from '@/components/layout/AsideSection.vue'
+import FooterSection from '@/components/layout/FooterSection.vue'
+import BgShadow from '@/components/layout/BgShadow.vue'
 import { defineAsyncComponent } from 'vue'
 
-const ShoppingCart = defineAsyncComponent(() => import('@/components/ShoppingCart.vue'))
+const ShoppingCart = defineAsyncComponent(() => import('@/components/cart/ShoppingCart.vue'))
 </script>
 
 <template>

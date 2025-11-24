@@ -1,5 +1,5 @@
 <script setup>
-import MainButton from '@/components/MainButton.vue'
+import MainButton from '@/components/shared/MainButton.vue'
 import { useAssets } from '@/composables/useAssets'
 import { useSizeStore } from '@/stores/size'
 import { storeToRefs } from 'pinia'

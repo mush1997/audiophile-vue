@@ -1,5 +1,5 @@
 <script setup>
-import CheckoutForm from '@/components/CheckoutForm.vue'
+import CheckoutForm from '@/components/checkout/CheckoutForm.vue'
 import { useCartStore } from '@/stores/cart'
 import { storeToRefs } from 'pinia'
 
