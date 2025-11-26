@@ -1,5 +1,5 @@
 <script setup>
-import OrderItemList from '@/components/shared/OrderItemList.vue'
+import OrderListItem from '@/components/shared/OrderListItem.vue'
 import OrderNotes from '@/components/checkout/OrderNotes.vue'
 
 import { useCartStore } from '@/stores/cart'
@@ -13,9 +13,9 @@ const { cartList, emptyCart } = storeToRefs(useCartStore())
         <h2>Summary</h2>
         <p v-if="emptyCart" class="defaultText">You have not added any products yet.</p>
         <template v-else>
-            <OrderItemList v-slot="{ item }" :cartList>
+            <OrderListItem v-slot="{ item }" :cartList>
                 <p class="amount">x{{ item.amount }}</p>
-            </OrderItemList>
+            </OrderListItem>
             <OrderNotes />
         </template>
     </section>

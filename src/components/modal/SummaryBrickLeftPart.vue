@@ -1,5 +1,5 @@
 <script setup>
-import OrderItemList from '@/components/shared/OrderItemList.vue'
+import OrderListItem from '@/components/shared/OrderListItem.vue'
 import { useCartStore } from '@/stores/cart'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
@@ -10,9 +10,9 @@ const isCollapsed = ref(cartList.value.length > 1)
 
 <template>
     <div class="leftPart" :class="{ 'centered': cartList.length === 1 }">
-        <OrderItemList v-slot="{ item }" :class="{ 'show': !isCollapsed }" :cartList>
+        <OrderListItem v-slot="{ item }" :class="{ 'show': !isCollapsed }" :cartList>
             <p class="amount">x{{ item.amount }}</p>
-        </OrderItemList>
+        </OrderListItem>
         <div class="dropdown" v-if="cartList.length > 1">
             <p v-show="isCollapsed" @click="isCollapsed = !isCollapsed">and <span>{{ cartList.length - 1
                     }}</span> other item(s)</p>

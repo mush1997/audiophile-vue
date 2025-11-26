@@ -1,5 +1,5 @@
 <script setup>
-import OrderItemList from '@/components/shared/OrderItemList.vue'
+import OrderListItem from '@/components/shared/OrderListItem.vue'
 import CartQuantityUnit from '@/components/cart/CartQuantityUnit.vue'
 import MainButton from '@/components/shared/MainButton.vue'
 
@@ -43,9 +43,9 @@ onMounted(() => {
         </div>
         <p v-if="emptyCart" class="defaultText">Your cart is empty.</p>
         <template v-else>
-            <OrderItemList v-slot="{ item }" :cartList>
+            <OrderListItem v-slot="{ item }" :cartList>
                 <CartQuantityUnit @showDialogBox="createDialog" :item />
-            </OrderItemList>
+            </OrderListItem>
             <div class="totalSum">
                 <p><span>Total</span><span class="totalNum">$ {{ total.toLocaleString() }}</span></p>
                 <MainButton @click="$router.push({ path: '/checkout' }).catch(error => error)">Checkout</MainButton>

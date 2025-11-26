@@ -28,7 +28,7 @@ header {
     background-size: cover;
 }
 
-.menuComponent {
+.menuList {
     margin-top: 120px;
 }
 
@@ -45,7 +45,7 @@ main {
         background-position: bottom center;
     }
 
-    .menuComponent {
+    .menuList {
         margin: 96px 0;
     }
 
@@ -67,7 +67,7 @@ main {
         background-image: url("@/assets/home/mobile/image-header.jpg");
     }
 
-    .menuComponent {
+    .menuList {
         margin: 40px 0 120px 0;
     }
 
