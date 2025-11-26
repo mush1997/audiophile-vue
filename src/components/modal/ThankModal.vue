@@ -92,7 +92,7 @@ onBeforeUnmount(() => {
     .thankModal {
         width: calc(100% - 80px);
         min-width: auto;
-        max-width: auto;
+        max-width: none;
 
         &>img {
             margin-bottom: 24px;

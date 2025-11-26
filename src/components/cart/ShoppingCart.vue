@@ -168,7 +168,7 @@ onMounted(() => {
         margin: 0 24px;
         padding: 24px;
         width: calc(100% - 48px);
-        max-width: auto;
+        max-width: none;
         right: 0;
     }
 
