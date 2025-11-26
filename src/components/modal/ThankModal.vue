@@ -20,7 +20,6 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
     document.removeEventListener('keydown', prohibitTab)
-    closeThankModal()
 })
 </script>
 
