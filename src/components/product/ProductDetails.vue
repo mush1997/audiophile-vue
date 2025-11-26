@@ -59,6 +59,10 @@ const { product } = defineProps(['product'])
 @media screen and (max-width:1024px) {
     .details {
         flex-wrap: wrap;
+
+        h2 {
+            font-size: 28px;
+        }
     }
 
     .feature {
@@ -77,6 +81,13 @@ const { product } = defineProps(['product'])
 }
 
 @media screen and (max-width:700px) {
+    .details {
+        h2 {
+            margin-bottom: 24px;
+            font-size: 24px;
+        }
+    }
+
     .others {
         h2 {
             flex-basis: 45%;
@@ -92,13 +103,6 @@ const { product } = defineProps(['product'])
 }
 
 @media screen and (max-width:500px) {
-    .details {
-        h2 {
-            margin-bottom: 24px;
-            font-size: 24px;
-        }
-    }
-
     .feature {
         margin-bottom: 90px;
     }

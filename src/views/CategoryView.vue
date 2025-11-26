@@ -79,6 +79,15 @@ main {
 }
 
 @media screen and (max-width:1024px) {
+    .categoryTitle {
+        height: 180px;
+
+        h1 {
+            font-size: 36px;
+            line-height: 180px;
+        }
+    }
+
     main {
         padding-top: 120px;
         min-height: 240px;

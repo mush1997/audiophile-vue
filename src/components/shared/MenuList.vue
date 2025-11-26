@@ -187,12 +187,6 @@ const categories = [
             width: 40%;
             min-width: 100px;
         }
-
-        div {
-            p:nth-child(1) {
-                font-size: 15px;
-            }
-        }
     }
 
     .wrapper:last-child {

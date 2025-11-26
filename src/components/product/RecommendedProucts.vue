@@ -76,7 +76,8 @@ const { picSize } = storeToRefs(useSizeStore())
         padding: 0 40px;
 
         h3 {
-            margin-bottom: 56px;
+            margin-bottom: 52px;
+            font-size: 28px;
         }
     }
 
@@ -113,7 +114,13 @@ const { picSize } = storeToRefs(useSizeStore())
     }
 }
 
-@media screen and (max-width:640px) {
+@media screen and (max-width:700px) {
+    .recommended h3 {
+        margin-bottom: 40px;
+        font-size: 24px;
+        letter-spacing: 1px;
+    }
+
     .container {
         justify-content: space-around;
 
@@ -135,12 +142,6 @@ const { picSize } = storeToRefs(useSizeStore())
 @media screen and (max-width:500px) {
     .recommended {
         padding: 0 24px;
-
-        h3 {
-            margin-bottom: 40px;
-            font-size: 24px;
-            letter-spacing: 1px;
-        }
     }
 
     .container {

@@ -153,6 +153,10 @@ function changeSorting(event) {
             padding: 0 5%;
             width: 100%;
 
+            h2 {
+                font-size: 36px;
+            }
+
             button {
                 margin-top: 24px;
             }
