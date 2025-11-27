@@ -9,34 +9,17 @@ const { picSize } = storeToRefs(useSizeStore())
 </script>
 
 <template>
-    <section class="recommended">
-        <h3>You may also like</h3>
-        <div class="container">
-            <div v-for="item in otherItems" :key="item.slug">
-                <img :src="useAssets(`/src${item.image[picSize]}`)" :alt="item.name">
-                <h4>{{ item.name }}</h4>
-                <MainButton @click="$router.push({ path: `/product/${item.slug}` }).catch(error => error)">See
-                    product</MainButton>
-            </div>
+    <div class="container">
+        <div v-for="item in otherItems" :key="item.slug">
+            <img :src="useAssets(`/src${item.image[picSize]}`)" :alt="item.name">
+            <h4>{{ item.name }}</h4>
+            <MainButton @click="$router.push({ path: `/product/${item.slug}` }).catch(error => error)">See
+                product</MainButton>
         </div>
-    </section>
+    </div>
 </template>
 
 <style lang="scss" scoped>
-.recommended {
-    margin: 160px 0;
-    padding: 0 11%;
-    width: 100%;
-    text-align: center;
-
-    h3 {
-        margin-bottom: 64px;
-        font-size: 32px;
-        line-height: 36px;
-        letter-spacing: 1.15px;
-    }
-}
-
 .container {
     display: flex;
     justify-content: center;
@@ -71,16 +54,6 @@ const { picSize } = storeToRefs(useSizeStore())
 }
 
 @media screen and (max-width:1024px) {
-    .recommended {
-        margin: 120px 0;
-        padding: 0 40px;
-
-        h3 {
-            margin-bottom: 52px;
-            font-size: 28px;
-        }
-    }
-
     .container div img {
         max-width: 240px;
     }
@@ -115,12 +88,6 @@ const { picSize } = storeToRefs(useSizeStore())
 }
 
 @media screen and (max-width:700px) {
-    .recommended h3 {
-        margin-bottom: 40px;
-        font-size: 24px;
-        letter-spacing: 1px;
-    }
-
     .container {
         justify-content: space-around;
 
@@ -140,10 +107,6 @@ const { picSize } = storeToRefs(useSizeStore())
 }
 
 @media screen and (max-width:500px) {
-    .recommended {
-        padding: 0 24px;
-    }
-
     .container {
         flex-wrap: wrap;
         justify-content: flex-start;

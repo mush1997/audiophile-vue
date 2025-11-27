@@ -1,6 +1,6 @@
 <script setup>
 import LoadingBar from '@/components/shared/LoadingBar.vue'
-import ProductIntroduction from '@/components/product/ProductIntroduction.vue'
+import ProductItem from '@/components/product/ProductItem.vue'
 
 import { useDataStore } from '@/stores/data'
 import { storeToRefs } from 'pinia'
@@ -8,7 +8,7 @@ import { useRoute } from 'vue-router'
 import { defineAsyncComponent, computed, ref } from 'vue'
 
 const NoDataText = defineAsyncComponent(() => import('@/components/shared/NoDataText.vue'))
-const RecommendedProucts = defineAsyncComponent(() => import('@/components/product/RecommendedProucts.vue'))
+const RecommendedList = defineAsyncComponent(() => import('@/components/product/RecommendedList.vue'))
 
 const dataStore = useDataStore()
 const { productData, finished } = storeToRefs(dataStore)
@@ -35,12 +35,12 @@ if (productData.value.length === 0) { setTimeout(() => getProductsData(), 500) }
                         <p>Please check our products in the categories below!</p>
                     </template>
                 </NoDataText>
-                <ProductIntroduction v-else @showRecommended="renderRecommended = !renderRecommended" :product />
+                <ProductItem v-else @showRecommended="renderRecommended = !renderRecommended" :product />
             </Transition>
         </main>
 
         <Transition name="fade" appear>
-            <RecommendedProucts v-if="renderRecommended" :otherItems="product.others" />
+            <RecommendedList v-if="renderRecommended" :otherItems="product.others" />
         </Transition>
     </div>
 </template>
