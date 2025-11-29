@@ -11,10 +11,12 @@ const modalStore = useModalStore()
 const { showModal } = storeToRefs(modalStore)
 const { closeThankModal } = modalStore
 const { prohibitTab } = useShadowStore()
+const thankModal = useTemplateRef('thankModal')
 const closeModalBtn = useTemplateRef('closeModalBtn')
 
 onMounted(() => {
     document.addEventListener('keydown', prohibitTab)
+    thankModal.value.scrollTop = 0
     closeModalBtn.value.btn.focus()
 })
 
@@ -25,7 +27,7 @@ onBeforeUnmount(() => {
 
 <template>
     <Teleport to="body">
-        <section class="thankModal" :class="{ 'show': showModal }">
+        <section class="thankModal" :class="{ 'show': showModal }" ref="thankModal">
             <img src="@/assets/checkout/icon-order-confirmation.svg" alt="">
             <h2>Thank you for your order</h2>
             <p>We have accepted your order. You will receive an email confirmation shortly.</p>
