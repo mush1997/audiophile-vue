@@ -1,13 +1,14 @@
 <script setup>
 import HeaderSection from '@/components/layout/HeaderSection.vue'
 // import LoadingBar from '@/components/shared/LoadingBar.vue'
-import ProductList from '@/components/category/ProductList.vue'
+// import ProductList from '@/components/category/ProductList.vue'
+import ProductListItem from '@/components/category/ProductListItem.vue'
 
 import { useDataStore } from '@/stores/data'
 import { storeToRefs } from 'pinia'
 import { useRoute } from 'vue-router'
 // import { defineAsyncComponent, computed } from 'vue'
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 
 // const NoDataText = defineAsyncComponent(() => import('@/components/shared/NoDataText.vue'))
 
@@ -18,6 +19,9 @@ const { getProductsData } = dataStore
 const route = useRoute()
 const currentCategory = computed(() => route.params.categoryName.toLowerCase())
 const products = computed(() => productData.value.length === 0 ? [] : productData.value.filter(data => data.category === currentCategory.value))
+
+const sortByDefault = ref(true)
+const sortedProducts = computed(() => sortByDefault.value ? products.value.toReversed() : products.value)
 
 if (productData.value.length === 0) { getProductsData() }
 // if (productData.value.length === 0) { setTimeout(() => getProductsData(), 500) }
@@ -46,8 +50,7 @@ if (productData.value.length === 0) { getProductsData() }
 </NoDataText>
 <ProductList v-else :products />
 </Transition> -->
-            <h1>123456789</h1>
-            <ProductList :products />
+            <ProductListItem :sortedProducts />
         </main>
     </div>
 </template>
@@ -62,7 +65,7 @@ if (productData.value.length === 0) { getProductsData() }
         font-size: 40px;
         line-height: 240px;
         color: $white;
-        // color: red;
+        color: red;
         letter-spacing: 1.5px;
     }
 }
