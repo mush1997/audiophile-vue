@@ -46,7 +46,7 @@ if (productData.value.length === 0) { getProductsData() }
 </NoDataText>
 <ProductList v-else :products />
 </Transition> -->
-
+            <h1>123456789</h1>
             <ProductList :products />
         </main>
     </div>
@@ -62,7 +62,7 @@ if (productData.value.length === 0) { getProductsData() }
         font-size: 40px;
         line-height: 240px;
         color: $white;
-        color: red;
+        // color: red;
         letter-spacing: 1.5px;
     }
 }
