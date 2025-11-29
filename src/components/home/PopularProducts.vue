@@ -13,7 +13,7 @@ const products = computed(() => [
         name: 'ZX9 Speaker',
         description: 'Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.',
         buttonClass: 'blackBtn',
-        bgImg: [useAssets(`/src/assets/home/${picSize.value}/image-speaker-zx9.png`), ('@/assets/home/desktop/pattern-circles.svg')]
+        bgImg: [useAssets(`/src/assets/home/${picSize.value}/image-speaker-zx9.png`), useAssets('/src/assets/home/desktop/pattern-circles.svg')]
     },
     {
         slug: 'zx7-speaker',
