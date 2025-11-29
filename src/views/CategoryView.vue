@@ -17,8 +17,8 @@ const route = useRoute()
 const currentCategory = computed(() => route.params.categoryName.toLowerCase())
 const products = computed(() => productData.value.length === 0 ? [] : productData.value.filter(data => data.category === currentCategory.value))
 
-// if (productData.value.length === 0) { getProductsData() }
-if (productData.value.length === 0) { setTimeout(() => getProductsData(), 500) }
+if (productData.value.length === 0) { getProductsData() }
+// if (productData.value.length === 0) { setTimeout(() => getProductsData(), 500) }
 </script>
 
 <template>
@@ -58,6 +58,7 @@ if (productData.value.length === 0) { setTimeout(() => getProductsData(), 500) }
         font-size: 40px;
         line-height: 240px;
         color: $white;
+        color: red;
         letter-spacing: 1.5px;
     }
 }
