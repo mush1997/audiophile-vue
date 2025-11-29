@@ -1,30 +1,24 @@
 <script setup>
 import HeaderSection from '@/components/layout/HeaderSection.vue'
-// import LoadingBar from '@/components/shared/LoadingBar.vue'
-// import ProductList from '@/components/category/ProductList.vue'
-import ProductListItem from '@/components/category/ProductListItem.vue'
+import LoadingBar from '@/components/shared/LoadingBar.vue'
+import ProductList from '@/components/category/ProductList.vue'
 
 import { useDataStore } from '@/stores/data'
 import { storeToRefs } from 'pinia'
 import { useRoute } from 'vue-router'
-// import { defineAsyncComponent, computed } from 'vue'
-import { ref, computed } from 'vue'
+import { defineAsyncComponent, computed } from 'vue'
 
-// const NoDataText = defineAsyncComponent(() => import('@/components/shared/NoDataText.vue'))
+const NoDataText = defineAsyncComponent(() => import('@/components/shared/NoDataText.vue'))
 
 const dataStore = useDataStore()
-// const { productData, finished } = storeToRefs(dataStore)
-const { productData } = storeToRefs(dataStore)
+const { productData, finished } = storeToRefs(dataStore)
 const { getProductsData } = dataStore
 const route = useRoute()
 const currentCategory = computed(() => route.params.categoryName.toLowerCase())
 const products = computed(() => productData.value.length === 0 ? [] : productData.value.filter(data => data.category === currentCategory.value))
 
-const sortByDefault = ref(true)
-const sortedProducts = computed(() => sortByDefault.value ? products.value.toReversed() : products.value)
-
-if (productData.value.length === 0) { getProductsData() }
-// if (productData.value.length === 0) { setTimeout(() => getProductsData(), 500) }
+// if (productData.value.length === 0) { getProductsData() }
+if (productData.value.length === 0) { setTimeout(() => getProductsData(), 500) }
 </script>
 
 <template>
@@ -38,19 +32,18 @@ if (productData.value.length === 0) { getProductsData() }
         </HeaderSection>
 
         <main>
-            <!-- <Transition name="fade" mode="out-in" appear>
+            <Transition name="fade" mode="out-in" appear>
                 <LoadingBar v-if="!finished" />
                 <NoDataText v-else-if="products.length === 0">
                     <template v-slot:firstLine>
                         <p>Oops! The category you required is not found.</p>
                     </template>
-<template v-slot:secondLine>
+                    <template v-slot:secondLine>
                         <p>Please check the categories below!</p>
                     </template>
-</NoDataText>
-<ProductList v-else :products />
-</Transition> -->
-            <ProductListItem :sortedProducts />
+                </NoDataText>
+                <ProductList v-else :products />
+            </Transition>
         </main>
     </div>
 </template>
@@ -65,7 +58,6 @@ if (productData.value.length === 0) { getProductsData() }
         font-size: 40px;
         line-height: 240px;
         color: $white;
-        color: red;
         letter-spacing: 1.5px;
     }
 }
