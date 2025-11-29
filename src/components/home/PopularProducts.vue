@@ -1,5 +1,6 @@
 <script setup>
 import MainButton from '@/components/shared/MainButton.vue'
+import item1SVG from '@/assets/home/desktop/pattern-circles.svg'
 import { useAssets } from '@/composables/useAssets'
 import { useSizeStore } from '@/stores/size'
 import { storeToRefs } from 'pinia'
@@ -13,7 +14,7 @@ const products = computed(() => [
         name: 'ZX9 Speaker',
         description: 'Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.',
         buttonClass: 'blackBtn',
-        bgImg: [useAssets(`/src/assets/home/${picSize.value}/image-speaker-zx9.png`), useAssets('/src/assets/home/desktop/pattern-circles.svg')]
+        bgImg: [useAssets(`/src/assets/home/${picSize.value}/image-speaker-zx9.png`), item1SVG]
     },
     {
         slug: 'zx7-speaker',
