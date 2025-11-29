@@ -32,18 +32,28 @@ if (productData.value.length === 0) { getProductsData() }
         </HeaderSection>
 
         <main>
-            <Transition name="fade" mode="out-in" appear>
+            <!-- <Transition name="fade" mode="out-in" appear>
                 <LoadingBar v-if="!finished" />
                 <NoDataText v-else-if="products.length === 0">
                     <template v-slot:firstLine>
                         <p>Oops! The category you required is not found.</p>
                     </template>
-                    <template v-slot:secondLine>
+<template v-slot:secondLine>
                         <p>Please check the categories below!</p>
                     </template>
-                </NoDataText>
-                <ProductList v-else :products />
-            </Transition>
+</NoDataText>
+<ProductList v-else :products />
+</Transition> -->
+            <LoadingBar v-if="!finished" />
+            <NoDataText v-else-if="products.length === 0">
+                <template v-slot:firstLine>
+                    <p>Oops! The category you required is not found.</p>
+                </template>
+                <template v-slot:secondLine>
+                    <p>Please check the categories below!</p>
+                </template>
+            </NoDataText>
+            <ProductList v-else :products />
         </main>
     </div>
 </template>
@@ -58,7 +68,7 @@ if (productData.value.length === 0) { getProductsData() }
         font-size: 40px;
         line-height: 240px;
         color: $white;
-        color: red;
+        // color: red;
         letter-spacing: 1.5px;
     }
 }
