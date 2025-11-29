@@ -5,7 +5,7 @@ import MainButton from '@/components/shared/MainButton.vue'
 import { useModalStore } from '@/stores/modal'
 import { useShadowStore } from '@/stores/shadow'
 import { storeToRefs } from 'pinia'
-import { useTemplateRef, onMounted, onBeforeUnmount } from 'vue'
+import { useTemplateRef, onMounted, onBeforeUnmount, nextTick } from 'vue'
 
 const modalStore = useModalStore()
 const { showModal } = storeToRefs(modalStore)
@@ -16,8 +16,11 @@ const closeModalBtn = useTemplateRef('closeModalBtn')
 
 onMounted(() => {
     document.addEventListener('keydown', prohibitTab)
-    thankModal.value.scrollTop = 0
     closeModalBtn.value.btn.focus()
+
+    nextTick(() => {
+        thankModal.value.scrollTop = 0
+    })
 })
 
 onBeforeUnmount(() => {
