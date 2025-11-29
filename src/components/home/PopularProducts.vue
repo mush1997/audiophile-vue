@@ -1,6 +1,6 @@
 <script setup>
 import MainButton from '@/components/shared/MainButton.vue'
-import item1SVG from '@/assets/home/desktop/pattern-circles.svg'
+import item1SVG from './assets/home/desktop/pattern-circles.svg'
 import { useAssets } from '@/composables/useAssets'
 import { useSizeStore } from '@/stores/size'
 import { storeToRefs } from 'pinia'
