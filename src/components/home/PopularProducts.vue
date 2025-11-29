@@ -13,7 +13,7 @@ const products = computed(() => [
         name: 'ZX9 Speaker',
         description: 'Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.',
         buttonClass: 'blackBtn',
-        bgImg: [useAssets(`/src/assets/home/${picSize.value}/image-speaker-zx9.png`), '/src/assets/home/desktop/pattern-circles.svg']
+        bgImg: [useAssets(`/src/assets/home/${picSize.value}/image-speaker-zx9.png`), '/pattern-circles.svg']
     },
     {
         slug: 'zx7-speaker',
@@ -30,14 +30,18 @@ const products = computed(() => [
         bgImg: [useAssets(`/src/assets/home/${picSize.value}/image-earphones-yx1.jpg`)]
     }
 ])
+
+function getBgPath(index) {
+    return products.value[index].bgImg.map(path => `url(${path})`).join(', ');
+}
 </script>
 
 <template>
     <template v-for="(product, index) in products" :key="product.name">
         <section v-if="index === products.length - 1" :class="`item${index + 1}Pic`"
-            :style="{ backgroundImage: `url(${product.bgImg[0]})` }"></section>
+            :style="{ backgroundImage: getBgPath(index) }"></section>
         <section :class="`item${index + 1}`"
-            :style="index === products.length - 1 ? '' : { backgroundImage: `url(${product.bgImg[0]}), url(${product.bgImg[1]})` }">
+            :style="index === products.length - 1 ? '' : { backgroundImage: getBgPath(index) }">
             <div>
                 <h2>{{ product.name }}</h2>
                 <p v-if="index === 0"> {{ product.description }}</p>
