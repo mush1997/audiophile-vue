@@ -19,7 +19,7 @@ onMounted(() => {
     closeModalBtn.value.btn.focus()
 
     nextTick(() => {
-        thankModal.value.scrollTop = 0
+        setTimeout(() => { thankModal.value.scrollTop = 0 }, 50)
     })
 })
 
