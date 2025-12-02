@@ -11,13 +11,11 @@ export const useMenuStore = defineStore('menu', () => {
   const isDesktop = computed(() => width.value > 1024)
   const hideMenu = ref(true)
 
-  function checkDeviceWidth() {
+  watchEffect(() => {
     if (isDesktop.value) {
       hideShadow(hideMenu, menuShadow)
     }
-  }
-
-  watchEffect(checkDeviceWidth)
+  })
 
   return { width, hideMenu }
 })

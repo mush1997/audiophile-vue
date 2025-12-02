@@ -36,8 +36,7 @@ export function useFormValidation() {
       formattedValue += plainText[i]
     }
 
-    inputValue = formattedValue
-    return inputValue
+    return formattedValue
   }
 
   return { checkFormat, formatCardNumber }

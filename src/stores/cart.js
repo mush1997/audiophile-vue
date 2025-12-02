@@ -6,7 +6,7 @@ export const useCartStore = defineStore('cart', () => {
   const cartList = useLocalStorage('cartList', [])
   const hideCart = ref(true)
   const emptyCart = computed(() => cartList.value.length === 0)
-  const total = computed(() => cartList.value.map(item => item.price * item.amount).reduce((pre, next) => pre + next, 0))
+  const total = computed(() => cartList.value.map(item => item.price * item.amount).reduce((prev, next) => prev + next, 0))
   const shipping = ref(50)
   const VAT = computed(() => Math.round(total.value * 0.2))
   const grandTotal = computed(() => Math.round(total.value * 1.2) + shipping.value)
@@ -16,12 +16,12 @@ export const useCartStore = defineStore('cart', () => {
     index < 0 ? cartList.value.push(newItem) : cartList.value[index]['amount'] += quantity
   }
 
-  function plusItem(itemName, itemAmount) {
-    cartList.value.find(item => item['name'] === itemName)['amount'] = itemAmount + 1
+  function plusItem(itemName, prevAmount) {
+    cartList.value.find(item => item['name'] === itemName)['amount'] = prevAmount + 1
   }
 
-  function minusItem(itemName, itemAmount) {
-    cartList.value.find(item => item['name'] === itemName)['amount'] = itemAmount - 1
+  function minusItem(itemName, prevAmount) {
+    cartList.value.find(item => item['name'] === itemName)['amount'] = prevAmount - 1
   }
 
   function removeItem(itemName) {
