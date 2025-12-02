@@ -36,10 +36,6 @@ export function useFormValidation() {
       formattedValue += plainText[i]
     }
 
-    if (inputValue === formattedValue) {
-      return inputValue
-    }
-
     return formattedValue
   }
 

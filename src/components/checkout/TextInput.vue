@@ -21,7 +21,11 @@ const isInvalid = computed(() => field.invalid)
 
 function inputHandler(event) {
     if (name === 'cardNumber') {
-        event.target.value = formatCardNumber(event.target.value)
+        // event.target.value = formatCardNumber(event.target.value)
+        const formattedValue = formatCardNumber(event.target.value)
+        if (formattedValue !== event.target.value) {
+            event.target.value = formattedValue
+        }
     }
 }
 
@@ -45,7 +49,8 @@ useMutationObserver(fieldDiv, (mutation) => {
 .warning,
 .wrong {
     font-size: 12px;
-    color: $warning;
+    // color: $warning;
+    color: yellow;
     position: absolute;
     top: 0;
     right: 0;
