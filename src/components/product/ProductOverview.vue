@@ -7,8 +7,10 @@ const { product, picSize } = defineProps(['product', 'picSize'])
 
 <template>
     <section class="overview">
-        <img :src="useAssets(`/src${product.image[picSize]}`)" :alt="product.name">
-        <div>
+        <div class="mainPic">
+            <img :src="useAssets(`/src${product.image[picSize]}`)" :alt="product.name">
+        </div>
+        <div class="mainInfo">
             <p class="specialTitle" v-if="product.new">New product</p>
             <h1>{{ product.name }}</h1>
             <p class="description">{{ product.description }}</p>
@@ -20,17 +22,22 @@ const { product, picSize } = defineProps(['product', 'picSize'])
 
 <style lang="scss" scoped>
 .overview {
-    min-height: 400px;
     display: flex;
     align-items: center;
 
-    img {
+    .mainPic {
         flex-basis: 48%;
         min-width: 0;
-        border-radius: 10px;
+        min-height: 400px;
+
+        img {
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+        }
     }
 
-    &>div {
+    .mainInfo {
         flex-basis: 52%;
         padding-left: 125px;
 
@@ -59,11 +66,11 @@ const { product, picSize } = defineProps(['product', 'picSize'])
 
 @media screen and (min-width:1700px) {
     .overview {
-        img {
+        .mainPic {
             max-width: 640px;
         }
 
-        &>div {
+        .mainInfo {
             padding-left: 90px;
         }
     }
@@ -71,12 +78,12 @@ const { product, picSize } = defineProps(['product', 'picSize'])
 
 @media screen and (max-width:1024px) {
     .overview {
-        img {
+        .mainPic {
             flex-basis: 50%;
             padding-right: 10%;
         }
 
-        &>div {
+        .mainInfo {
             flex-basis: 50%;
             padding-left: 0;
 
@@ -95,14 +102,13 @@ const { product, picSize } = defineProps(['product', 'picSize'])
 
 @media screen and (max-width:700px) {
     .overview {
-        min-height: auto;
-
-        img {
+        .mainPic {
             flex-basis: 45%;
             padding-right: 24px;
+            min-height: auto;
         }
 
-        &>div {
+        .mainInfo {
             flex-basis: 55%;
 
             .specialTitle {
@@ -127,13 +133,13 @@ const { product, picSize } = defineProps(['product', 'picSize'])
         flex-wrap: wrap;
         align-items: flex-start;
 
-        img {
+        .mainPic {
             flex-basis: 100%;
             margin-bottom: 32px;
             padding-right: 0;
         }
 
-        &>div {
+        .mainInfo {
             flex-basis: auto;
 
             .specialTitle {

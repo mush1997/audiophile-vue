@@ -10,8 +10,10 @@ const { picSize } = storeToRefs(useSizeStore())
 
 <template>
     <section class="product" v-for="product in sortedProducts" :key="product.id">
-        <img :src="useAssets(`/src${product.categoryImage[picSize]}`)" :alt="product.name">
-        <div>
+        <div class="pic">
+            <img :src="useAssets(`/src${product.categoryImage[picSize]}`)" :alt="product.name">
+        </div>
+        <div class="info">
             <p class="specialTitle" v-if="product.new">New product</p>
             <h2>{{ product.name }}</h2>
             <p>{{ product.description }}</p>
@@ -24,18 +26,23 @@ const { picSize } = storeToRefs(useSizeStore())
 <style lang="scss" scoped>
 .product {
     margin-bottom: 160px;
-    min-height: 400px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
 
-    img {
-        flex-shrink: 0;
-        width: 48%;
-        border-radius: 10px;
+    .pic {
+        flex-basis: 48%;
+        min-width: 0;
+        min-height: 400px;
+
+        img {
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+        }
     }
 
-    div {
+    .info {
+        flex-basis: 52%;
         padding-left: 125px;
 
         .specialTitle {
@@ -58,18 +65,18 @@ const { picSize } = storeToRefs(useSizeStore())
 }
 
 .product:nth-of-type(even) {
-    img {
+    .pic {
         order: 1;
     }
 
-    div {
+    .info {
         padding-left: 0;
         padding-right: 125px;
     }
 }
 
 @media screen and (min-width:1200px) {
-    .product img {
+    .product .pic {
         max-width: 640px;
     }
 }
@@ -80,11 +87,11 @@ const { picSize } = storeToRefs(useSizeStore())
         display: block;
         text-align: center;
 
-        img {
+        .pic {
             width: 100%;
         }
 
-        div {
+        .info {
             margin-top: 52px;
             padding: 0 5%;
             width: 100%;
@@ -100,7 +107,7 @@ const { picSize } = storeToRefs(useSizeStore())
     }
 
     .product:nth-of-type(even) {
-        div {
+        .info {
             padding: 0 5%;
         }
     }
@@ -108,7 +115,7 @@ const { picSize } = storeToRefs(useSizeStore())
 
 @media screen and (max-width:500px) {
     .product {
-        div {
+        .info {
             margin-top: 32px;
             padding: 0;
 
@@ -129,7 +136,7 @@ const { picSize } = storeToRefs(useSizeStore())
     }
 
     .product:nth-of-type(even) {
-        div {
+        .info {
             padding: 0;
         }
     }
