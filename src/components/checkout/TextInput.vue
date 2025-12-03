@@ -1,5 +1,4 @@
 <script setup>
-import { useFormValidation } from '@/composables/useFormValidation'
 import { useMutationObserver } from '@vueuse/core'
 import { useTemplateRef, computed } from 'vue'
 
@@ -14,20 +13,9 @@ const { name, inputTitle, placeholder, field, maxlength } = defineProps({
 const emit = defineEmits(['setTyped'])
 const inputVal = defineModel()
 
-const { formatCardNumber } = useFormValidation()
 const fieldDiv = useTemplateRef('fieldDiv')
 const isEmpty = computed(() => field.empty)
 const isInvalid = computed(() => field.invalid)
-
-function inputHandler(event) {
-    if (name === 'cardNumber') {
-        // event.target.value = formatCardNumber(event.target.value)
-        const formattedValue = formatCardNumber(event.target.value)
-        if (formattedValue !== event.target.value) {
-            event.target.value = formattedValue
-        }
-    }
-}
 
 useMutationObserver(fieldDiv, (mutation) => {
     if (mutation[0].target.dataset.ignored === 'true') {
@@ -39,7 +27,7 @@ useMutationObserver(fieldDiv, (mutation) => {
 <template>
     <div :class="{ 'error': isEmpty || isInvalid }" class="field" ref="fieldDiv">
         <p>{{ inputTitle }}</p>
-        <input type="text" :name :placeholder :maxlength autocomplete="off" @input="inputHandler" v-model="inputVal" />
+        <input type="text" :name :placeholder :maxlength autocomplete="off" v-model="inputVal" />
         <p v-show="isEmpty" class="warning">Can't be blank</p>
         <p v-show="isInvalid" class="wrong">Wrong format</p>
     </div>
@@ -49,8 +37,7 @@ useMutationObserver(fieldDiv, (mutation) => {
 .warning,
 .wrong {
     font-size: 12px;
-    // color: $warning;
-    color: yellow;
+    color: $warning;
     position: absolute;
     top: 0;
     right: 0;

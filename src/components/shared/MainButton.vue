@@ -21,7 +21,7 @@ button {
     font-weight: bold;
     letter-spacing: 1px;
     text-transform: uppercase;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .mainBtn {

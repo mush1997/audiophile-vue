@@ -7,7 +7,7 @@ export function useFormValidation() {
     const regexPhoneNumber = /^[0-9]{7,}$/
     const regexAddress = /^[a-zA-Z0-9]+([a-zA-Z0-9-\s]{0,})+[a-zA-Z0-9]$/
     const regexZIPcode = /^[0-9]{3,}$/
-    const regexCardNumber = /^[0-9\s]{19}$/
+    const regexCardNumber = /^[0-9]{4}\s+[0-9]{4}\s+[0-9]{4}\s+[0-9]{4}$/
     const regexCVC = /^[0-9]{3}$/
 
     if (nameAttr === 'name' || nameAttr === 'city' || nameAttr === 'country') {
@@ -27,17 +27,20 @@ export function useFormValidation() {
     }
   }
 
-  function formatCardNumber(inputValue) {
-    const plainText = inputValue.trim().replaceAll(' ', '')
-    let formattedValue = ''
+  // function formatCardNumber(inputValue) {
+  //   const plainText = inputValue.trim().replaceAll(' ', '')
+  //   let formattedValue = ''
 
-    for (let i = 0; i < plainText.length; i++) {
-      if (i > 0 && i % 4 === 0) { formattedValue += ' ' }
-      formattedValue += plainText[i]
-    }
+  //   for (let i = 0; i < plainText.length; i++) {
+  //     if (i > 0 && i % 4 === 0) { formattedValue += ' ' }
 
-    return formattedValue
-  }
+  //     formattedValue += plainText[i]
+  //   }
 
-  return { checkFormat, formatCardNumber }
+  //   if (inputValue === formattedValue) { return inputValue }
+
+  //   return formattedValue
+  // }
+
+  return { checkFormat }
 }
