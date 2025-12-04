@@ -16,7 +16,8 @@ This is a complete front-end solution to the [Audiophile e-commerce website](htt
 - Product browsing and detail display
 - Add/Update/Remove operations with the shopping cart
 - Checkout process with form validation
-- Responsive UI for mobile, tablet and desktop
+- Customized confirmation dialog box & modal
+- Responsive UI for mobile, tablet and desktop (RWD)
 - Dynamic routing with Vue Router
 - State management with Pinia
 
