@@ -89,6 +89,7 @@ const { picSize } = storeToRefs(useSizeStore())
 
         .pic {
             width: 100%;
+            min-height: auto;
         }
 
         .info {
