@@ -7,10 +7,10 @@ const { product, picSize } = defineProps(['product', 'picSize'])
 
 <template>
     <section class="overview">
-        <div class="mainPic">
+        <div class="productPic">
             <img :src="useAssets(`/src${product.image[picSize]}`)" :alt="product.name">
         </div>
-        <div class="mainInfo">
+        <div class="productInfo">
             <p class="specialTitle" v-if="product.new">New product</p>
             <h1>{{ product.name }}</h1>
             <p class="description">{{ product.description }}</p>
@@ -23,139 +23,117 @@ const { product, picSize } = defineProps(['product', 'picSize'])
 <style lang="scss" scoped>
 .overview {
     display: flex;
-    align-items: center;
+}
 
-    .mainPic {
-        flex-basis: 48%;
-        min-width: 0;
-        min-height: 400px;
-
-        img {
-            width: 100%;
-            border-radius: 10px;
-            display: block;
-        }
+.productInfo {
+    .specialTitle {
+        margin-bottom: 16px;
     }
 
-    .mainInfo {
-        flex-basis: 52%;
-        padding-left: 125px;
+    h1 {
+        font-size: 40px;
+        line-height: 44px;
+        letter-spacing: 1.5px;
+    }
 
-        .specialTitle {
-            margin-bottom: 16px;
-        }
+    .description {
+        margin: 32px 0;
+        opacity: 0.5;
+    }
 
-        h1 {
-            font-size: 40px;
-            line-height: 44px;
-            letter-spacing: 1.5px;
-        }
-
-        .description {
-            margin: 32px 0;
-            opacity: 0.5;
-        }
-
-        .price {
-            font-size: 18px;
-            font-weight: bold;
-            letter-spacing: 1.3px;
-        }
+    .price {
+        font-size: 18px;
+        font-weight: bold;
+        letter-spacing: 1.3px;
     }
 }
 
 @media screen and (min-width:1700px) {
-    .overview {
-        .mainPic {
-            max-width: 640px;
-        }
+    .productPic {
+        max-width: 640px;
+    }
 
-        .mainInfo {
-            padding-left: 90px;
-        }
+    .productInfo {
+        padding-left: 90px;
     }
 }
 
 @media screen and (max-width:1024px) {
-    .overview {
-        .mainPic {
-            flex-basis: 50%;
-            padding-right: 10%;
+    .productPic {
+        flex-basis: 50%;
+        padding-right: 10%;
+        max-height: 650px;
+        aspect-ratio: 281/480;
+    }
+
+    .productInfo {
+        flex-basis: 50%;
+        padding-left: 0;
+
+        .specialTitle {
+            font-size: 12px;
         }
 
-        .mainInfo {
-            flex-basis: 50%;
-            padding-left: 0;
-
-            .specialTitle {
-                font-size: 12px;
-            }
-
-            h1 {
-                font-size: 28px;
-                line-height: 32px;
-                letter-spacing: 1px;
-            }
+        h1 {
+            font-size: 28px;
+            line-height: 32px;
+            letter-spacing: 1px;
         }
     }
 }
 
 @media screen and (max-width:700px) {
-    .overview {
-        .mainPic {
-            flex-basis: 45%;
-            padding-right: 24px;
-            min-height: auto;
+    .productPic {
+        flex-basis: 45%;
+        padding-right: 24px;
+    }
+
+    .productInfo {
+        flex-basis: 55%;
+
+        .specialTitle {
+            margin-bottom: 10px;
         }
 
-        .mainInfo {
-            flex-basis: 55%;
+        h1 {
+            font-size: 24px;
+        }
 
-            .specialTitle {
-                margin-bottom: 10px;
-            }
-
-            h1 {
-                font-size: 24px;
-            }
-
-            .description {
-                margin: 16px 0;
-                font-size: 14px;
-                line-height: 22px;
-            }
+        .description {
+            margin: 16px 0;
+            font-size: 14px;
+            line-height: 22px;
         }
     }
 }
 
 @media screen and (max-width:500px) {
     .overview {
-        flex-wrap: wrap;
-        align-items: flex-start;
+        display: block;
+    }
 
-        .mainPic {
-            flex-basis: 100%;
-            margin-bottom: 32px;
-            padding-right: 0;
+    .productPic {
+        margin-bottom: 32px;
+        padding-right: 0;
+        aspect-ratio: 1/1;
+    }
+
+    .productInfo {
+        display: block;
+
+        .specialTitle {
+            margin-bottom: 24px;
+            font-size: 14px;
         }
 
-        .mainInfo {
-            flex-basis: auto;
+        h1 {
+            font-size: 28px;
+        }
 
-            .specialTitle {
-                margin-bottom: 24px;
-                font-size: 14px;
-            }
-
-            h1 {
-                font-size: 28px;
-            }
-
-            .description {
-                margin: 24px 0;
-                font-size: 15px;
-                line-height: 25px;
-            }
+        .description {
+            margin: 24px 0;
+            font-size: 15px;
+            line-height: 25px;
         }
     }
 }

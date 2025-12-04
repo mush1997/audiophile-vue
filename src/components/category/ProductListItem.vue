@@ -10,10 +10,10 @@ const { picSize } = storeToRefs(useSizeStore())
 
 <template>
     <section class="product" v-for="product in sortedProducts" :key="product.id">
-        <div class="pic">
+        <div class="productPic">
             <img :src="useAssets(`/src${product.categoryImage[picSize]}`)" :alt="product.name">
         </div>
-        <div class="info">
+        <div class="productInfo">
             <p class="specialTitle" v-if="product.new">New product</p>
             <h2>{{ product.name }}</h2>
             <p>{{ product.description }}</p>
@@ -27,56 +27,40 @@ const { picSize } = storeToRefs(useSizeStore())
 .product {
     margin-bottom: 160px;
     display: flex;
-    align-items: center;
+}
 
-    .pic {
-        flex-basis: 48%;
-        min-width: 0;
-        min-height: 400px;
-
-        img {
-            width: 100%;
-            border-radius: 10px;
-            display: block;
-        }
+.productInfo {
+    .specialTitle {
+        margin-top: 0;
+        margin-bottom: 16px;
+        opacity: 1;
     }
 
-    .info {
-        flex-basis: 52%;
-        padding-left: 125px;
+    h2 {
+        font-size: 40px;
+        line-height: 44px;
+        letter-spacing: 1.5px;
+    }
 
-        .specialTitle {
-            margin-top: 0;
-            margin-bottom: 16px;
-            opacity: 1;
-        }
-
-        h2 {
-            font-size: 40px;
-            line-height: 44px;
-            letter-spacing: 1.5px;
-        }
-
-        p {
-            margin-top: 32px;
-            opacity: 0.5;
-        }
+    p {
+        margin-top: 32px;
+        opacity: 0.5;
     }
 }
 
 .product:nth-of-type(even) {
-    .pic {
+    .productPic {
         order: 1;
     }
 
-    .info {
+    .productInfo {
         padding-left: 0;
         padding-right: 125px;
     }
 }
 
 @media screen and (min-width:1200px) {
-    .product .pic {
+    .productPic {
         max-width: 640px;
     }
 }
@@ -86,58 +70,61 @@ const { picSize } = storeToRefs(useSizeStore())
         margin-bottom: 120px;
         display: block;
         text-align: center;
+    }
 
-        .pic {
-            width: 100%;
-            min-height: auto;
+    .productPic {
+        width: 100%;
+        aspect-ratio: 689/352;
+    }
+
+    .productInfo {
+        margin-top: 52px;
+        padding: 0 5%;
+        width: 100%;
+        display: block;
+
+        h2 {
+            font-size: 36px;
         }
 
-        .info {
-            margin-top: 52px;
-            padding: 0 5%;
-            width: 100%;
-
-            h2 {
-                font-size: 36px;
-            }
-
-            button {
-                margin-top: 24px;
-            }
+        button {
+            margin-top: 24px;
         }
     }
 
     .product:nth-of-type(even) {
-        .info {
+        .productInfo {
             padding: 0 5%;
         }
     }
 }
 
 @media screen and (max-width:500px) {
-    .product {
-        .info {
-            margin-top: 32px;
-            padding: 0;
+    .productPic {
+        aspect-ratio: 327/352;
+    }
 
-            .specialTitle {
-                margin-bottom: 24px;
-            }
+    .productInfo {
+        margin-top: 32px;
+        padding: 0;
 
-            h2 {
-                font-size: 28px;
-                line-height: 38px;
-                letter-spacing: 2px;
-            }
+        .specialTitle {
+            margin-bottom: 24px;
+        }
 
-            p {
-                margin-top: 24px;
-            }
+        h2 {
+            font-size: 28px;
+            line-height: 38px;
+            letter-spacing: 2px;
+        }
+
+        p {
+            margin-top: 24px;
         }
     }
 
     .product:nth-of-type(even) {
-        .info {
+        .productInfo {
             padding: 0;
         }
     }
