@@ -52,7 +52,7 @@ nav {
 
     a {
         font-size: 12px;
-        line-height: 15px;
+        line-height: 18px;
         color: $dark_gray;
     }
 }
