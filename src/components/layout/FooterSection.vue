@@ -43,9 +43,10 @@ nav {
 }
 
 .attribution {
-    padding: 0 6px 16px 6px;
+    padding: 16px 20px 24px 20px;
     width: 100%;
     font-size: 12px;
+    line-height: 15px;
     color: $dark_gray;
     text-align: center;
 
@@ -102,14 +103,19 @@ nav {
 
         .navLinks {
             :deep(li) {
-                margin: 16px 0 0 0;
+                margin: 16px auto 0 auto;
+                width: fit-content;
                 display: block;
             }
 
             :deep(li):nth-child(1) {
-                margin-top: 0;
+                margin: 0 auto;
             }
         }
+    }
+
+    .attribution {
+        padding: 16px 36px 24px 36px;
     }
 }
 </style>

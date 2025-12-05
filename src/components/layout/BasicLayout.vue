@@ -4,6 +4,7 @@ import MenuList from '@/components/shared/MenuList.vue'
 import AsideSection from '@/components/layout/AsideSection.vue'
 import FooterSection from '@/components/layout/FooterSection.vue'
 import BgShadow from '@/components/layout/BgShadow.vue'
+import BackToTopUnit from '@/components/layout/BackToTopUnit.vue'
 import { defineAsyncComponent } from 'vue'
 
 const ShoppingCart = defineAsyncComponent(() => import('@/components/cart/ShoppingCart.vue'))
@@ -20,6 +21,7 @@ const ShoppingCart = defineAsyncComponent(() => import('@/components/cart/Shoppi
     <AsideSection v-show="$route.name !== 'Checkout'" />
     <FooterSection v-once />
     <BgShadow v-once />
+    <BackToTopUnit v-once />
     <ShoppingCart />
 </template>
 
