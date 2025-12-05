@@ -82,6 +82,10 @@ nav {
             }
         }
     }
+
+    .attribution {
+        padding: 16px 42px 24px 42px;
+    }
 }
 
 @media screen and (max-width:500px) {
@@ -112,10 +116,6 @@ nav {
                 margin: 0 auto;
             }
         }
-    }
-
-    .attribution {
-        padding: 16px 36px 24px 36px;
     }
 }
 </style>

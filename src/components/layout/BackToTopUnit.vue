@@ -108,16 +108,8 @@ function backToTop() {
 
 @media screen and (max-width:500px) {
     .toTopBtn {
-        width: 30px;
-        height: 30px;
         right: 24px;
         bottom: 24px;
-
-        img {
-            margin-top: 10px;
-            width: 12px;
-            height: 6px;
-        }
     }
 }
 </style>
