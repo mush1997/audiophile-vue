@@ -19,8 +19,8 @@ function backToTop() {
 
 <style lang="scss" scoped>
 .toTopBtn {
-    width: 40px;
-    height: 40px;
+    width: 46px;
+    height: 46px;
     border: 1px solid $white;
     background-color: $light_primary;
     opacity: 0;
@@ -32,7 +32,7 @@ function backToTop() {
     transition: all 0.3s ease;
 
     img {
-        margin: 6px auto;
+        margin: 8px auto;
         width: 18px;
         height: 9px;
         display: block;
@@ -89,7 +89,7 @@ function backToTop() {
         border: none;
 
         img {
-            margin: 14px auto;
+            margin: 18px auto;
         }
 
         p {

@@ -43,10 +43,10 @@ nav {
 }
 
 .attribution {
-    padding: 16px 52px 24px 52px;
+    padding: 24px 52px;
     width: 100%;
     font-size: 12px;
-    line-height: 15px;
+    line-height: 18px;
     color: $dark_gray;
     text-align: center;
 
