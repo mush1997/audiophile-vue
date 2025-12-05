@@ -25,8 +25,8 @@ function backToTop() {
     background-color: $light_primary;
     opacity: 0;
     position: fixed;
-    right: 28px;
-    bottom: 28px;
+    right: 24px;
+    bottom: 24px;
     z-index: 100;
     visibility: hidden;
     transition: all 0.3s ease;
@@ -85,15 +85,11 @@ function backToTop() {
 
 @media screen and (max-width:1024px) {
     .toTopBtn {
-        width: 36px;
-        height: 36px;
         border-radius: 50%;
         border: none;
 
         img {
-            margin-top: 13px;
-            width: 14px;
-            height: 7px;
+            margin: 14px auto;
         }
 
         p {
@@ -108,8 +104,7 @@ function backToTop() {
 
 @media screen and (max-width:500px) {
     .toTopBtn {
-        right: 24px;
-        bottom: 24px;
+        bottom: 36px;
     }
 }
 </style>

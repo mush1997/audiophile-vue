@@ -43,7 +43,7 @@ nav {
 }
 
 .attribution {
-    padding: 16px 20px 24px 20px;
+    padding: 16px 52px 24px 52px;
     width: 100%;
     font-size: 12px;
     line-height: 15px;
@@ -82,10 +82,6 @@ nav {
                 margin-left: 0;
             }
         }
-    }
-
-    .attribution {
-        padding: 16px 42px 24px 42px;
     }
 }
 
