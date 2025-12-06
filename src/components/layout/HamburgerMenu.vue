@@ -3,8 +3,7 @@ import MenuList from '@/components/shared/MenuList.vue'
 import { useMenuStore } from '@/stores/menu'
 import { storeToRefs } from 'pinia'
 
-const menuStore = useMenuStore()
-const { hideMenu } = storeToRefs(menuStore)
+const { hideMenu } = storeToRefs(useMenuStore())
 </script>
 
 <template>

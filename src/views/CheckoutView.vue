@@ -32,7 +32,8 @@ main {
 }
 
 .basicHeight {
-    min-height: calc(100vh - 430px);
+    min-height: calc(100vh - 400px);
+    min-height: calc(100dvh - 400px);
 }
 
 @media screen and (max-width:500px) {

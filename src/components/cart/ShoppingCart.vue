@@ -48,7 +48,8 @@ onMounted(() => {
             </OrderListItem>
             <div class="totalSum">
                 <p><span>Total</span><span class="totalNum">$ {{ total.toLocaleString() }}</span></p>
-                <MainButton @click="$router.push({ path: '/checkout' }).catch(error => error)">Checkout</MainButton>
+                <MainButton v-show="$route.name !== 'Checkout'"
+                    @click="$router.push({ path: '/checkout' }).catch(error => error)">Checkout</MainButton>
             </div>
         </template>
     </section>

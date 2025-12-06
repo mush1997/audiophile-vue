@@ -121,7 +121,6 @@ const { picSize } = storeToRefs(useSizeStore())
 
             h4 {
                 max-width: none;
-                font-size: 24px;
             }
 
             button {

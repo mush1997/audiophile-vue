@@ -1,9 +1,12 @@
 <script setup>
+import { useShadowStore } from '@/stores/shadow'
+import { storeToRefs } from 'pinia'
 import { useWindowScroll } from '@vueuse/core'
 import { computed } from 'vue'
 
+const { alertShadow, modalShadow } = storeToRefs(useShadowStore())
 const { y } = useWindowScroll()
-const showBtn = computed(() => y.value > 200)
+const showBtn = computed(() => y.value > 200 && !alertShadow.value && !modalShadow.value)
 
 function backToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -86,7 +89,6 @@ function backToTop() {
 @media screen and (max-width:1024px) {
     .toTopBtn {
         border-radius: 50%;
-        border: none;
 
         img {
             margin: 18px auto;

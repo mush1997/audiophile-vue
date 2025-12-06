@@ -21,7 +21,7 @@ import FooterContent from '@/components/layout/FooterContent.vue'
 footer {
     padding: 75px 11% 0 11%;
     width: 100%;
-    min-height: 365px;
+    min-height: 390px;
     background-color: $footer_bg;
     position: relative;
 

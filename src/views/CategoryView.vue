@@ -64,7 +64,6 @@ if (productData.value.length === 0) { setTimeout(() => getProductsData(), 500) }
 
 main {
     padding-top: 160px;
-    min-height: 280px;
 }
 
 .zoom-in-enter-from,

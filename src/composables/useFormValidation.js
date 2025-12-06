@@ -2,12 +2,12 @@ export function useFormValidation() {
   function checkFormat(nameAttr, inputValue) {
     if (inputValue === '') { return true }
 
-    const regexStr = /^[a-zA-Z]+([a-zA-Z-\s]{0,})+[a-zA-Z]$/
-    const regexEmail = /^([a-zA-Z0-9]{1,})+[a-zA-Z0-9._-]+@([a-zA-Z0-9]{1,})+([a-zA-Z0-9.-]{0,})+(\.[a-zA-Z]{2,})$/
+    const regexStr = /^[a-zA-Z]+[a-zA-Z.\s,-]*[a-zA-Z]+$/
+    const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
     const regexPhoneNumber = /^[0-9]{7,}$/
-    const regexAddress = /^[a-zA-Z0-9]+([a-zA-Z0-9-\s]{0,})+[a-zA-Z0-9]$/
+    const regexAddress = /^[a-zA-Z0-9]+[a-zA-Z0-9.\s,-]*[a-zA-Z0-9]+$/
     const regexZIPcode = /^[0-9]{3,}$/
-    const regexCardNumber = /^[0-9]{4}\s+[0-9]{4}\s+[0-9]{4}\s+[0-9]{4}$/
+    const regexCardNumber = /^[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}$/
     const regexCVC = /^[0-9]{3}$/
 
     if (nameAttr === 'name' || nameAttr === 'city' || nameAttr === 'country') {
