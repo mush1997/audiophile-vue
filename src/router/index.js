@@ -19,7 +19,7 @@ const router = createRouter({
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(savedPosition || { top: 0, behavior: 'smooth' })
-      }, 400)
+      }, 600)
     })
   }
 })

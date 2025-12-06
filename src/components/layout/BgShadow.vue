@@ -29,7 +29,7 @@ const shadowClass = computed(() => ({ 'menuShadow': menuShadow.value, 'cartShado
 .shadow.cartShadow,
 .shadow.modalShadow {
     visibility: visible;
-    animation: normalShadow 0.6s forwards;
+    animation: normalShadow 0.4s forwards;
 }
 
 .shadow.alertShadow {

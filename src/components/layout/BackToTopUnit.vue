@@ -82,7 +82,7 @@ function backToTop() {
     .toTopBtn:hover {
         cursor: pointer;
         background-color: $light_primary;
-        animation: bounce 0.3s ease;
+        animation: bounce 0.3s;
     }
 }
 
