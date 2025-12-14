@@ -1,16 +1,10 @@
 <script setup>
-import HeaderSection from '@/components/layout/HeaderSection.vue'
-import LatestProduct from '@/components/home/LatestProduct.vue'
 import MenuList from '@/components/shared/MenuList.vue'
 import PopularProducts from '@/components/home/PopularProducts.vue'
 </script>
 
 <template>
     <div class="transitionWrapper">
-        <HeaderSection>
-            <LatestProduct />
-        </HeaderSection>
-
         <MenuList />
 
         <main>
@@ -20,14 +14,6 @@ import PopularProducts from '@/components/home/PopularProducts.vue'
 </template>
 
 <style lang="scss" scoped>
-header {
-    height: 730px;
-    background-image: url("@/assets/home/desktop/image-hero.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
-
 .menuList {
     margin-top: 120px;
 }
@@ -40,11 +26,6 @@ main {
 }
 
 @media screen and (max-width:1024px) {
-    header {
-        background-image: url("@/assets/home/tablet/image-header.jpg");
-        background-position: bottom center;
-    }
-
     .menuList {
         margin: 96px 0;
     }
@@ -62,11 +43,6 @@ main {
 }
 
 @media screen and (max-width:500px) {
-    header {
-        height: 600px;
-        background-image: url("@/assets/home/mobile/image-header.jpg");
-    }
-
     .menuList {
         margin: 40px 0 120px 0;
     }

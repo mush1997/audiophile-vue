@@ -11,17 +11,17 @@ const ShoppingCart = defineAsyncComponent(() => import('@/components/cart/Shoppi
 </script>
 
 <template>
-    <HeaderSection v-show="$route.name !== 'Home' && $route.name !== 'Category'" />
+    <HeaderSection />
     <router-view v-slot="{ Component, route }">
-        <Transition name="slide" mode="out-in">
+        <Transition :name="route.meta.transition">
             <component :is="Component" :key="route.path" />
         </Transition>
     </router-view>
     <MenuList v-show="$route.name !== 'Home' && $route.name !== 'Checkout'" />
     <AsideSection v-show="$route.name !== 'Checkout'" />
-    <FooterSection v-once />
-    <BgShadow v-once />
-    <BackToTopUnit v-once />
+    <FooterSection />
+    <BgShadow />
+    <BackToTopUnit />
     <ShoppingCart />
 </template>
 
@@ -31,23 +31,15 @@ const ShoppingCart = defineAsyncComponent(() => import('@/components/cart/Shoppi
     transform: translateY(-80px);
 }
 
-.slide-leave-to {
-    opacity: 0;
-    transform: translateY(80px);
+.slide-enter-active {
+    transition: all 0.5s ease-in-out;
 }
 
-.slide-enter-active,
-.slide-leave-active {
-    transition: all 0.4s ease-out;
-}
-
-.fade-enter-from,
-.fade-leave-to {
+.fade-enter-from {
     opacity: 0;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-    transition: opacity 0.4s ease-out;
+.fade-enter-active {
+    transition: opacity 0.6s ease-in-out;
 }
 </style>

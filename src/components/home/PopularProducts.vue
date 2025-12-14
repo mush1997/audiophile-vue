@@ -118,6 +118,37 @@ section {
     background-color: $block_bg;
 }
 
+@media screen and (hover: hover) {
+
+    .item1:hover button,
+    .item2:hover button,
+    .item3:hover button {
+        animation: bounce 0.6s ease-in 2 alternate-reverse;
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0px);
+    }
+
+    25% {
+        transform: translateY(-8px);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+    75% {
+        transform: translateY(-8px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
 @media screen and (min-width:1600px) {
     section {
         padding: 96px 140px;

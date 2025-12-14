@@ -17,7 +17,7 @@ const route = useRoute()
 const currentProduct = computed(() => route.params.productName.toLowerCase())
 const product = computed(() => productData.value.length === 0 ? [] : productData.value.find(data => data.slug === currentProduct.value))
 const title = computed(() => (product.value && product.value.length !== 0) ? `${product.value.name} | Audiophile` : 'Audiophile')
-const renderRecommended = ref(false)
+const showRecommendedList = ref(false)
 
 // if (productData.value.length === 0) { getProductsData() }
 if (productData.value.length === 0) { setTimeout(() => getProductsData(), 500) }
@@ -42,13 +42,11 @@ onMounted(() => {
                         <p>Please check our products in the categories below!</p>
                     </template>
                 </NoDataText>
-                <ProductItem v-else @showRecommended="renderRecommended = !renderRecommended" :product />
+                <ProductItem v-else @showRecommended="showRecommendedList = !showRecommendedList" :product />
             </Transition>
         </main>
 
-        <Transition name="fade" appear>
-            <RecommendedList v-if="renderRecommended" :otherItems="product.others" />
-        </Transition>
+        <RecommendedList v-show="showRecommendedList" :otherItems="product?.others || []" />
     </div>
 </template>
 

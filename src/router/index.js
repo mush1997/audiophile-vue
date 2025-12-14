@@ -5,11 +5,11 @@ import { storeToRefs } from 'pinia'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
-  { path: '/', name: 'Home', component: () => import('@/views/HomeView.vue'), meta: { title: 'Audiophile Website' } },
-  { path: '/category/:categoryName', name: 'Category', component: () => import('@/views/CategoryView.vue') },
-  { path: '/product/:productName', name: 'Product', component: () => import('@/views/ProductView.vue') },
-  { path: '/checkout', name: 'Checkout', component: () => import('@/views/CheckoutView.vue'), meta: { title: 'Checkout | Audiophile' } },
-  { path: '/:notFound(.*)*', name: 'NotFound', component: () => import('@/views/NotFound.vue'), meta: { title: 'Not Found | Audiophile' } }
+  { path: '/', name: 'Home', component: () => import('@/views/HomeView.vue'), meta: { title: 'Audiophile Website', transition: 'slide' } },
+  { path: '/category/:categoryName', name: 'Category', component: () => import('@/views/CategoryView.vue'), meta: { transition: null } },
+  { path: '/product/:productName', name: 'Product', component: () => import('@/views/ProductView.vue'), meta: { transition: 'slide' } },
+  { path: '/checkout', name: 'Checkout', component: () => import('@/views/CheckoutView.vue'), meta: { title: 'Checkout | Audiophile', transition: 'slide' } },
+  { path: '/:notFound(.*)*', name: 'NotFound', component: () => import('@/views/NotFound.vue'), meta: { title: 'Not Found | Audiophile', transition: 'slide' } }
 ]
 
 const router = createRouter({

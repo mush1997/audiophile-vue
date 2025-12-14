@@ -1,12 +1,11 @@
 <script setup>
-import HeaderSection from '@/components/layout/HeaderSection.vue'
 import LoadingBar from '@/components/shared/LoadingBar.vue'
 import ProductList from '@/components/category/ProductList.vue'
 
 import { useDataStore } from '@/stores/data'
 import { storeToRefs } from 'pinia'
 import { useRoute } from 'vue-router'
-import { defineAsyncComponent, computed, onMounted, watchEffect } from 'vue'
+import { defineAsyncComponent, computed, ref, onMounted, watchEffect } from 'vue'
 
 const NoDataText = defineAsyncComponent(() => import('@/components/shared/NoDataText.vue'))
 
@@ -17,6 +16,7 @@ const route = useRoute()
 const currentCategory = computed(() => route.params.categoryName.toLowerCase())
 const products = computed(() => productData.value.length === 0 ? [] : productData.value.filter(data => data.category === currentCategory.value))
 const title = computed(() => products.value.length === 0 ? 'Audiophile' : `${currentCategory.value[0].toUpperCase()}` + `${currentCategory.value.slice(1)}` + ' | Audiophile')
+const showCategoryTitle = ref(false)
 
 // if (productData.value.length === 0) { getProductsData() }
 if (productData.value.length === 0) { setTimeout(() => getProductsData(), 500) }
@@ -29,16 +29,8 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="transitionWrapper">
-        <HeaderSection>
-            <Transition name="zoom-in" appear>
-                <div class="categoryTitle" v-if="products.length !== 0">
-                    <h1>{{ currentCategory }}</h1>
-                </div>
-            </Transition>
-        </HeaderSection>
-
-        <main>
+    <div class="wrapper" :class="{ 'titleBg': showCategoryTitle }">
+        <main :class="{ 'extraPadding': showCategoryTitle }">
             <Transition name="fade" mode="out-in" appear>
                 <LoadingBar v-if="!finished" />
                 <NoDataText v-else-if="products.length === 0">
@@ -49,71 +41,61 @@ onMounted(() => {
                         <p>Please check the categories below!</p>
                     </template>
                 </NoDataText>
-                <ProductList v-else :products />
+                <ProductList v-else @productListDone="showCategoryTitle = !showCategoryTitle" :currentCategory
+                    :products />
             </Transition>
         </main>
     </div>
 </template>
 
 <style lang="scss" scoped>
-.categoryTitle {
+.wrapper.titleBg::before {
+    content: "";
     width: 100%;
     height: 240px;
-    text-align: center;
-
-    h1 {
-        font-size: 40px;
-        line-height: 240px;
-        color: $white;
-        letter-spacing: 1.5px;
-    }
+    background-color: $black;
+    position: absolute;
+    top: 92px;
+    left: 0;
 }
 
 main {
     padding-top: 160px;
+    min-height: 280px;
 }
 
-.zoom-in-enter-from,
-.zoom-in-leave-to {
-    opacity: 0;
-    transform: scale(0);
-}
-
-.zoom-in-enter-active,
-.zoom-in-leave-active {
-    transition: all 0.4s ease-out;
+.extraPadding {
+    padding-top: calc(160px + 240px);
 }
 
 @media screen and (max-width:1024px) {
-    .categoryTitle {
+    .wrapper.titleBg::before {
         height: 180px;
-
-        h1 {
-            font-size: 36px;
-            line-height: 180px;
-        }
     }
 
     main {
         padding-top: 120px;
         min-height: 240px;
     }
+
+    .extraPadding {
+        padding-top: calc(120px + 180px);
+    }
 }
 
 @media screen and (max-width:500px) {
-    .categoryTitle {
+    .wrapper.titleBg::before {
         height: 100px;
-
-        h1 {
-            font-size: 28px;
-            line-height: 100px;
-        }
     }
 
     main {
         margin-bottom: -60px;
         padding-top: 64px;
         min-height: 214px;
+    }
+
+    .extraPadding {
+        padding-top: calc(64px + 100px);
     }
 }
 </style>
