@@ -5,7 +5,7 @@ const { pics, picSize } = defineProps(['pics', 'picSize'])
 </script>
 
 <template>
-    <section class="pics">
+    <section class="pics" data-aos="fade-up">
         <img :src="useAssets(`/src${pics.first[picSize]}`)" alt="pic 1">
         <img :src="useAssets(`/src${pics.second[picSize]}`)" alt="pic 2">
         <img :src="useAssets(`/src${pics.third[picSize]}`)" alt="pic 3">

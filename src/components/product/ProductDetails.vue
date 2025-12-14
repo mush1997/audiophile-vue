@@ -3,7 +3,7 @@ const { product } = defineProps(['product'])
 </script>
 
 <template>
-    <section class="details">
+    <section class="details" data-aos="fade-up">
         <div class="feature">
             <h2>Features</h2>
             <p v-html="product.features.replaceAll('\n', '<br>')"></p>
