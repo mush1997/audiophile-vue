@@ -1,13 +1,6 @@
 <script setup>
 import BasicLayout from '@/components/layout/BasicLayout.vue'
 import LoadingBar from '@/components/shared/LoadingBar.vue'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
-import { onMounted } from 'vue'
-
-onMounted(() => {
-  AOS.init()
-})
 </script>
 
 <template>
