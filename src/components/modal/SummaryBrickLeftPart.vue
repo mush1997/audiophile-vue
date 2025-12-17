@@ -89,7 +89,7 @@ const isCollapsed = ref(cartList.value.length > 1)
     p {
         font-size: 13px;
         display: inline-block;
-        animation: dropdownOpen 0.4s forwards;
+        animation: dropdownOpen 0.4s;
 
         span {
             font-size: 13px;

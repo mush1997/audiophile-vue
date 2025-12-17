@@ -63,7 +63,7 @@ onBeforeUnmount(() => {
 
 .show {
     visibility: visible;
-    animation: showing 0.4s forwards;
+    animation: showing 0.4s;
 }
 
 @media screen and (max-width: 1024px) {

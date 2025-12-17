@@ -73,7 +73,7 @@ onMounted(() => {
     top: 120px;
     right: 11%;
     z-index: 10;
-    animation: showing 0.6s forwards;
+    animation: showing 0.4s;
 }
 
 .hide {

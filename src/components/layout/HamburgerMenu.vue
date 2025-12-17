@@ -24,7 +24,7 @@ const { hideMenu } = storeToRefs(useMenuStore())
         top: 92px;
         left: 0;
         z-index: 10;
-        animation: showing 0.6s forwards;
+        animation: showing 0.5s;
     }
 }
 
