@@ -39,10 +39,4 @@ router.beforeEach(() => {
   hideShadow(hideCart, cartShadow)
 })
 
-router.afterEach((to) => {
-  if (to.meta.title) {
-    document.title = to.meta.title
-  }
-})
-
 export default router

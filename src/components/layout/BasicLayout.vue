@@ -5,9 +5,26 @@ import AsideSection from '@/components/layout/AsideSection.vue'
 import FooterSection from '@/components/layout/FooterSection.vue'
 import BgShadow from '@/components/layout/BgShadow.vue'
 import BackToTopUnit from '@/components/layout/BackToTopUnit.vue'
-import { defineAsyncComponent } from 'vue'
+
+import { useRoute } from 'vue-router'
+import { defineAsyncComponent, watchEffect, onWatcherCleanup, nextTick } from 'vue'
 
 const ShoppingCart = defineAsyncComponent(() => import('@/components/cart/ShoppingCart.vue'))
+const route = useRoute()
+
+watchEffect(() => {
+    if (!route.meta.title) { return }
+    let timerID
+
+    onWatcherCleanup(() => {
+        if (timerID) { clearTimeout(timerID) }
+    })
+
+    nextTick(() => {
+        timerID = setTimeout(() => { document.title = route.meta.title }, 50)
+    })
+
+})
 </script>
 
 <template>

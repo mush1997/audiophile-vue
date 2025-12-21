@@ -5,7 +5,7 @@ import ProductList from '@/components/category/ProductList.vue'
 import { useDataStore } from '@/stores/data'
 import { storeToRefs } from 'pinia'
 import { useRoute } from 'vue-router'
-import { defineAsyncComponent, computed, ref, onMounted, watchEffect } from 'vue'
+import { defineAsyncComponent, computed, ref, watch, onWatcherCleanup, nextTick } from 'vue'
 
 const NoDataText = defineAsyncComponent(() => import('@/components/shared/NoDataText.vue'))
 
@@ -13,7 +13,7 @@ const dataStore = useDataStore()
 const { productData, finished } = storeToRefs(dataStore)
 const { getProductsData } = dataStore
 const route = useRoute()
-const currentCategory = computed(() => route.params.categoryName.toLowerCase())
+const currentCategory = computed(() => route.params.categoryName?.toLowerCase() || '')
 const products = computed(() => productData.value.length === 0 ? [] : productData.value.filter(data => data.category === currentCategory.value))
 const title = computed(() => products.value.length === 0 ? 'Audiophile' : `${currentCategory.value[0].toUpperCase()}` + `${currentCategory.value.slice(1)}` + ' | Audiophile')
 const showCategoryTitle = ref(false)
@@ -21,11 +21,17 @@ const showCategoryTitle = ref(false)
 // if (productData.value.length === 0) { getProductsData() }
 if (productData.value.length === 0) { setTimeout(() => getProductsData(), 500) }
 
-onMounted(() => {
-    watchEffect(() => {
-        document.title = title.value
+watch(title, (newTitle) => {
+    let timerID
+
+    onWatcherCleanup(() => {
+        clearTimeout(timerID)
     })
-})
+
+    nextTick(() => {
+        timerID = setTimeout(() => { document.title = newTitle }, 50)
+    })
+}, { immediate: true })
 </script>
 
 <template>

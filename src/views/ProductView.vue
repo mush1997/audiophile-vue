@@ -5,7 +5,7 @@ import ProductItem from '@/components/product/ProductItem.vue'
 import { useDataStore } from '@/stores/data'
 import { storeToRefs } from 'pinia'
 import { useRoute } from 'vue-router'
-import { defineAsyncComponent, computed, ref, onMounted, watchEffect } from 'vue'
+import { defineAsyncComponent, computed, ref, watch, onWatcherCleanup, nextTick } from 'vue'
 
 const NoDataText = defineAsyncComponent(() => import('@/components/shared/NoDataText.vue'))
 const RecommendedList = defineAsyncComponent(() => import('@/components/product/RecommendedList.vue'))
@@ -14,19 +14,25 @@ const dataStore = useDataStore()
 const { productData, finished } = storeToRefs(dataStore)
 const { getProductsData } = dataStore
 const route = useRoute()
-const currentProduct = computed(() => route.params.productName.toLowerCase())
+const currentProduct = computed(() => route.params.productName?.toLowerCase() || '')
 const product = computed(() => productData.value.length === 0 ? [] : productData.value.find(data => data.slug === currentProduct.value))
-const title = computed(() => (product.value && product.value.length !== 0) ? `${product.value.name} | Audiophile` : 'Audiophile')
+const title = computed(() => (product.value && !Array.isArray(product.value)) ? `${product.value.name} | Audiophile` : 'Audiophile')
 const showRecommendedList = ref(false)
 
 // if (productData.value.length === 0) { getProductsData() }
 if (productData.value.length === 0) { setTimeout(() => getProductsData(), 500) }
 
-onMounted(() => {
-    watchEffect(() => {
-        document.title = title.value
+watch(title, (newTitle) => {
+    let timerID
+
+    onWatcherCleanup(() => {
+        clearTimeout(timerID)
     })
-})
+
+    nextTick(() => {
+        timerID = setTimeout(() => { document.title = newTitle }, 50)
+    })
+}, { immediate: true })
 </script>
 
 <template>
