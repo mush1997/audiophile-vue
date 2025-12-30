@@ -32,7 +32,7 @@ function backToTop() {
     bottom: 24px;
     z-index: 100;
     visibility: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
 
     img {
         margin: 8px auto;
@@ -61,16 +61,8 @@ function backToTop() {
         transform: translateY(0px);
     }
 
-    25% {
-        transform: translateY(-5px);
-    }
-
     50% {
         transform: translateY(-10px);
-    }
-
-    75% {
-        transform: translateY(-5px);
     }
 
     100% {

@@ -28,23 +28,11 @@
 }
 
 @keyframes load {
-    0% {
+    from {
         opacity: 0.2;
     }
 
-    25% {
-        opacity: 0.4;
-    }
-
-    50% {
-        opacity: 0.6;
-    }
-
-    75% {
-        opacity: 0.8;
-    }
-
-    100% {
+    to {
         opacity: 1;
     }
 }

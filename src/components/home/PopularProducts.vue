@@ -132,16 +132,8 @@ section {
         transform: translateY(0px);
     }
 
-    25% {
-        transform: translateY(-8px);
-    }
-
     50% {
         transform: translateY(-12px);
-    }
-
-    75% {
-        transform: translateY(-8px);
     }
 
     100% {
