@@ -4,7 +4,7 @@ import MainButton from '@/components/shared/MainButton.vue'
 const product = {
     slug: 'xx99-mark-two-headphones',
     name: 'XX99 Mark II Headphones',
-    description: 'The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.'
+    description: 'Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.'
 }
 </script>
 
