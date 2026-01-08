@@ -38,7 +38,7 @@ src/
 
 ## 💡 Technical Highlights: From Vanilla JS to Vue 3 Refactor
 
-This project was originally developed using **Vanilla JavaScript** [JS version GitHub](https://github.com/mush1997/audiophile-js), and it was completely refactored into a **Vue 3 Single Page Application (SPA)** to address challenges in state synchronization and code scalability.
+This project was originally developed using Vanilla JavaScript [(JS version GitHub)](https://github.com/mush1997/audiophile-js), and it was completely refactored into a **Vue 3 Single Page Application** (SPA) to address challenges in state synchronization and code scalability.
 
 Transitioning to Vue 3 provided several critical advantages:
 
