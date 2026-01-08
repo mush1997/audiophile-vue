@@ -36,6 +36,16 @@ src/
 ├── main.js        # Entry point
 ```
 
+## 💡 Technical Highlights: From Vanilla JS to Vue 3 Refactor
+
+This project was originally developed using **Vanilla JavaScript** [JS version GitHub](https://github.com/mush1997/audiophile-js), and it was completely refactored into a **Vue 3 Single Page Application (SPA)** to address challenges in state synchronization and code scalability.
+
+Transitioning to Vue 3 provided several critical advantages:
+
+- **Component-Based Development:** Deconstructed lengthy HTML files into modular Vue components. This significantly reduced code redundancy and improved maintainability, allowing for a more organized and scalable codebase.
+- **Scalable State Management:** Implemented **Pinia** to manage **6 distinct stores** (including the shopping cart and product data). This resolved the data synchronization pain points found in the Vanilla JS version, ensuring data consistency across all pages and views.
+- **Performance & Reactivity:** Using Vue’s built-in reactivity system to automate UI updates. By eliminating extensive manual DOM manipulation, the application became more performant.
+
 ## 🛠️ Technologies
 
 - **Vue** v3.5.18
