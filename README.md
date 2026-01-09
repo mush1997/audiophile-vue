@@ -1,7 +1,7 @@
 # 🎧 Audiophile e-commerce website
 
 A modern e-commerce website selling headphones, earphones, and speakers.  
-This application was primarily built using **Vue 3 (Composition API)**, **Vue Router**, and **Pinia**.
+This application was primarily built with **Vue 3 (Composition API)**, **Vue Router**, and **Pinia**.
 
 ## 🔗 Live Demo
 
