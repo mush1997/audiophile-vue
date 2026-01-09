@@ -1,7 +1,7 @@
 # 🎧 Audiophile e-commerce website
 
-A modern e-commerce website selling headphones, earphones and speakers.  
-This application was primarily built using **Vue 3 (Composition API)**, **Vue Router** and **Pinia**.
+A modern e-commerce website selling headphones, earphones, and speakers.  
+This application was primarily built using **Vue 3 (Composition API)**, **Vue Router**, and **Pinia**.
 
 ## 🔗 Live Demo
 
@@ -14,10 +14,10 @@ This is a complete front-end solution to the [Audiophile e-commerce website](htt
 ## ✨ Features
 
 - Product browsing and detail display
-- Add/Update/Remove operations with the shopping cart
+- Add/Update/Remove operations for the shopping cart with real-time price calculations
 - Checkout process with form validation
-- Customized confirmation dialog box & modal
-- Responsive UI for mobile, tablet and desktop (RWD)
+- Customized confirmation dialog box and modal
+- Responsive UI for mobile, tablet, and desktop devices (RWD)
 - Dynamic routing with Vue Router
 - State management with Pinia
 
@@ -30,21 +30,21 @@ src/
 ├── composables/   # Reusable logic
 ├── router/        # Vue Router configuration
 ├── stores/        # Pinia state management
-├── styles/        # shared CSS/SCSS settings and variables
+├── styles/        # Shared CSS/SCSS settings and variables
 ├── views/         # Page-level components
 ├── App.vue        # Root component
-├── main.js        # Entry point
+└── main.js        # Entry point
 ```
 
-## 💡 Technical Highlights: From Vanilla JS to Vue 3 Refactor
+## 💡 Technical Highlights: Refactoring from Vanilla JS to Vue 3
 
-This project was originally developed using Vanilla JavaScript [(JS version GitHub)](https://github.com/mush1997/audiophile-js), and it was completely refactored into a **Vue 3 Single Page Application** (SPA) to address challenges in state synchronization and code scalability.
+This project was originally developed using Vanilla JavaScript [(JS version GitHub Repository)](https://github.com/mush1997/audiophile-js) and was later fully refactored into a **Vue 3 Single Page Application** (SPA) to address challenges related to state synchronization and code scalability.
 
 Transitioning to Vue 3 provided several critical advantages:
 
-- **Component-Based Development:** Deconstructed lengthy HTML files into modular Vue components. This significantly reduced code redundancy and improved maintainability, allowing for a more organized and scalable codebase.
-- **Scalable State Management:** Implemented **Pinia** to manage **6 distinct stores** (including the shopping cart and product data). This resolved the data synchronization pain points found in the Vanilla JS version, ensuring data consistency across all pages and views.
-- **Performance & Reactivity:** Using Vue’s built-in reactivity system to automate UI updates. By eliminating extensive manual DOM manipulation, the application became more performant.
+- **Component-Based Development:** Deconstructed lengthy HTML files into modular Vue components, significantly reducing code redundancy and enhancing maintainability.
+- **Scalable State Management:** Implemented **Pinia** to manage **six distinct stores**, including the shopping cart and product data. This resolved data synchronization pain points encountered in the Vanilla JS version, ensuring data consistency across all pages and views.
+- **Performance & Reactivity:** Leveraged Vue’s built-in reactivity system to automate UI updates. By eliminating extensive manual DOM manipulation, the application achieved improved performance.
 
 ## 🛠️ Technologies
 
