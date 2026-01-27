@@ -28,7 +28,7 @@ function showHideCart() {
         <NavLinks />
         <div class="cartBtn" @click="showHideCart">
             <img src="@/assets/shared/desktop/icon-cart.svg" alt="cart">
-            <p>{{ cartList.length || 0 }}</p>
+            <p>{{ cartList.length }}</p>
         </div>
     </nav>
 </template>

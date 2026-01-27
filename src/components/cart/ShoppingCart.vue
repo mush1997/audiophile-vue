@@ -38,7 +38,7 @@ onMounted(() => {
 <template>
     <section class="cart" :class="{ 'hide': hideCart }" ref="cart">
         <div class="cartTitle">
-            <p>Cart (<span>{{ cartList.length || 0 }}</span>)</p>
+            <p>Cart (<span>{{ cartList.length }}</span>)</p>
             <p @click="removeAll">Remove All</p>
         </div>
         <p v-if="emptyCart" class="defaultText">Your cart is empty.</p>

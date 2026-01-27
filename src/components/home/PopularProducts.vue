@@ -39,9 +39,9 @@ function getBgPath(index) {
 <template>
     <template v-for="(product, index) in products" :key="product.name">
         <section v-if="index === products.length - 1" :class="`item${index + 1}Pic`"
-            :style="{ backgroundImage: getBgPath(index) }" data-aos="fade-up"></section>
+            :style="{ backgroundImage: getBgPath(index) }"></section>
         <section :class="`item${index + 1}`"
-            :style="index === products.length - 1 ? '' : { backgroundImage: getBgPath(index) }" data-aos="fade-up">
+            :style="index === products.length - 1 ? '' : { backgroundImage: getBgPath(index) }">
             <div>
                 <h2>{{ product.name }}</h2>
                 <p v-if="index === 0"> {{ product.description }}</p>

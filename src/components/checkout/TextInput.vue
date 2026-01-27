@@ -29,13 +29,12 @@ useMutationObserver(fieldDiv, (mutation) => {
         <p>{{ inputTitle }}</p>
         <input type="text" :name :placeholder :maxlength autocomplete="off" v-model="inputVal" />
         <p v-show="isEmpty" class="warning">Can't be blank</p>
-        <p v-show="isInvalid" class="wrong">Wrong format</p>
+        <p v-show="isInvalid" class="warning">Wrong format</p>
     </div>
 </template>
 
 <style lang="scss" scoped>
-.warning,
-.wrong {
+.warning {
     font-size: 12px;
     color: $warning;
     position: absolute;
